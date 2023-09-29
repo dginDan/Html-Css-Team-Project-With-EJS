@@ -1,0 +1,22 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body text-center">
+            <%- include ('./partials/messages') %>
+            <h1><i class="fab fa-brands fa-node-js fa-3x"></i></h1>
+            <h2>Menu</h2>
+            <!-- pour admin = if user admin = toggle add user-->
+            <% if (typeof user != "undefined") { %>
+                <% if (user.roles.includes('admin')) { %>
+                    <a href="/ajoutUsager" class="btn btn-primary btn-block mb-2">Ajouter un usager</a>
+                    <% } %>
+            <% } %>
+            <!-- pour admin & gestion = if user admin || gestion = toggle list user-->
+            <% if (typeof user != "undefined") { %>
+                <% if (user.roles.includes('admin') || user.roles.includes('gestion')) {%>
+                    <a href="/listeUsers" class="btn btn-primary btn-block mb-2">Affichage de la liste des usagers</a>
+                    <% } %>
+            <% } %>
+            <a href="/quitter" class="btn btn-secondary btn-block">Quitter</a>
+        </div>
+    </div>
+</div>

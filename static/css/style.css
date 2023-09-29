@@ -1,0 +1,52 @@
+body {
+    background-color: blanchedalmond;
+    color:  blue;
+}
+.login {
+    text-align: right;
+}
+.imgProfil {
+    width: 100px;
+}
+
+/* listeUsagers styles */
+.listeUsagers-ul {
+    padding: 0;
+}
+
+.listeUsagers-li {
+    list-style-type: none;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.listeUsagers-imgProfil {
+    width: 100px;
+    margin-right: 20px;
+    max-height: 100px;
+}
+
+.listeUsagers-info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.listeUsagers-info > span {
+    font-weight: bold;
+}
+
+.listeUsagers-actions {
+    float: right;
+    margin-top: -30px;
+}
+
+.listeUsagers-actionIcon {
+    margin-right: 10px;
+}
+.class-button:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+.class-button-selected {
+    background-color: #aaa;
+}

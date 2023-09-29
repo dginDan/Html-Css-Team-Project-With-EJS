@@ -1,0 +1,37 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <%- include ('./partials/messages') %>
+            <h1><i class="fas fa-solid fa-hat-wizard fa-xl"></i> Création de votre héro</h1>
+            <form action="/userAddClient" method="post" enctype="multipart/form-data">
+                <br>
+                <div class="form-group">
+                    <label for="nom">Comment vous appelez-vous, Héro ?</label>
+                    <input type="text" name="nom" id="nom" class="form-control" placeholder="Ashkel">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="abc@yandex.com">
+                </div>
+                <br>
+                <%- include ('./partials/edit_passwords') %>
+                <%- include ('./partials/edit_image') %>
+                <img id="imagePreview" src="" alt="Image Preview" style="display:none;">
+                <br>
+                <h2>Choisissez votre classe</h2>
+                <input type="hidden" id="chosenClass" name="characterClass">
+                <button type="button" id="Warrior" class="class-button">Warrior</button>
+                <button type="button" id="Mage" class="class-button">Mage</button>
+                <button type="button" id="Archer" class="class-button">Archer</button>                                             
+                <br><br>
+                <button type="submit" id="continueButton" class="btn btn-primary btn-block">Continuer</button>
+                <input type="hidden" id="chosenClass" name="chosenClass">
+                <br>
+                <p><a href="/login" class="btn btn-secondary btn-block">Annuler</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/choisirClasse.js"></script>

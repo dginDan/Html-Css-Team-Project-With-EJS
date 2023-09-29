@@ -1,0 +1,15 @@
+<br>
+<div class="form-group">
+    <label for="email">Votre nom</label>
+    <input type="text" name="nom" id="nom" class="form-control" placeholder="Ashkel"
+    value="<%= typeof nom != 'undefined' ? nom : '' %>"
+    >
+</div>
+<br>
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" class="form-control" placeholder="abc@yandex.com"
+    value="<%= typeof email != 'undefined' ? email : '' %>" <%= typeof emailREADONLY != 'undefined' ? 'readonly' : '' %>
+    >
+</div>
+<br>

@@ -1,0 +1,21 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <%- include ('./partials/messages') %>
+            <h1><i class="fas fa-regular fa-image"></i> Modifier Avatar</h1>
+            <form action="/editImage" method="post" enctype="multipart/form-data">
+                <%- include ('./partials/edit_image') %>
+                <button type="submit" class="btn btn-primary btn-block">Continuer</button>
+                <div>
+                    <div class="form-group">
+                        <label for="email"></label>
+                        <input type="hidden" name="email" id="email" class="form-control" placeholder="abc@yandex.com"
+                        value="<%= typeof email != 'undefined' ? email : '' %>" <%= typeof emailREADONLY != 'undefined' ? 'readonly' : '' %>
+                        >
+                    </div>
+                <p><a href="/menu" class="btn btn-secondary btn-block">Retourner au menu</a></p>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

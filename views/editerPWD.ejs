@@ -1,0 +1,37 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <%- include ('./partials/messages') %>
+            <h1><i class="fas fa-solid fa-lock"></i></i> Modifier Password</h1>
+            <br>
+            <form action="/editPassword" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="email">L'user que vous êtes entrain de modifier</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="abc@yandex.com"
+                    value="<%= typeof email != 'undefined' ? email : '' %>" <%= typeof emailREADONLY != 'undefined' ? 'readonly' : '' %>
+                    >
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="newPassword">Nouveau mot de passe</label>
+                    <input type="password" name="newPassword" id="newPassword" class="form-control" placeholder="••••••••••"
+                    value="<%= typeof newPassword != 'undefined' ? newPassword : '' %>"
+                    >
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="newPassword2">Confirmer le nouveau mot de passe</label>
+                    <input type="password" name="newPassword2" id="newPassword2" class="form-control" placeholder="••••••••••"
+                    value="<%= typeof newPassword2 != 'undefined' ? newPassword2 : '' %>"
+                    >
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Continuer</button>
+                <div>
+                    <p><a href="/menu" class="btn btn-secondary btn-block">Retourner au menu</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
