@@ -63,6 +63,7 @@
     "has-proto": "^1.0.1",
     "has-symbols": "^1.0.3",
     "http-errors": "^2.0.0",
+    "i18n": "^0.15.1",
     "iconv-lite": "^0.6.3",
     "ieee754": "^1.2.1",
     "ignore-by-default": "^1.0.1",
@@ -154,7 +155,6 @@
     "xtend": "^4.0.2",
     "yallist": "^4.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
