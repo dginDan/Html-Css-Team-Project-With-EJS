@@ -154,7 +154,6 @@
     "xtend": "^4.0.2",
     "yallist": "^4.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
@@ -169,5 +168,6 @@
   "bugs": {
     "url": "https://github.com/allanjoshuaf/projetFinalOct2023/issues"
   },
-  "homepage": "https://github.com/allanjoshuaf/projetFinalOct2023#readme"
+  "homepage": "https://github.com/allanjoshuaf/projetFinalOct2023#readme",
+  "keywords": []
 }

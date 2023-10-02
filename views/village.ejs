@@ -1,0 +1,35 @@
+<div id="accueilBox">
+    <div id="accueil">
+        <div id="villagePic">
+            <div>
+                <a href="/taverne">
+                    <button id="boutonTaverne">Entrer dans la taverne</button>
+                </a>
+            </div>
+            <div>
+                <a href="/shop">
+                    <button id="boutonShop">Entrer dans le shop</button>
+                </a>
+            </div>
+            <div>
+                <a href="/jouer">
+                    <button id="boutonJouer">Jouer!</button>
+                </a>
+            </div>
+        </div>
+    </div>
+        <div id="gameInfo">
+            <% if (typeof(user) !="undefined"){ %>
+                <p>Utilisateur : <%= user.nom %></p>
+                <p></p>
+                <p>Classe : <%= user.characterClass %></p>
+                <p>Équipement : <%= user.sword %></p>
+                <p>Pièces d'or : <%= user.gold %></p>
+            <% } %>
+            <hr style="border-width: 4px;">
+            <br>
+            <p>Bienvenue sur le Projet Jjadd! Pour commencer à jouer, appuyer sur le bouton Jouer!</p>
+            <p>Pour aller magasiner, appuyez sur le bouton Entrer dans le shop!</p>
+            <p>Pour plus d'informations, appuyez sur Entrer dans la taverne!</p>
+        </div>
+</div>

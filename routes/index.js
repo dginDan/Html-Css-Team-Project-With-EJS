@@ -31,15 +31,14 @@ router.post('/userLogin', (requete, reponse, next) => {
     }
 );
 //page menu
-router.get('/menu', isAuthentified, (requete, reponse)=>{
+router.get('/village', isAuthentified, (requete, reponse)=>{
     const user = requete.user;
     console.log(requete.user);
-    reponse.render(`menu`, {
-        'title': 'Menu',
+    reponse.render(`village`, {
+        'title': 'village',
         user : user 
     });
 });
-
 // bouton quitter qui renvoit à page login '/'
 router.get('/quitter', (requete, reponse, next)=>{
     requete.logOut(function(err){ 

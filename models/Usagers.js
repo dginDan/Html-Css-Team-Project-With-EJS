@@ -40,6 +40,14 @@ let schemaUsager = mongoose.Schema({
         type: String,
         enum: ['Warrior', 'Mage', 'Archer']  // Les classes disponibles
       },
+    gold: {
+        type: String,
+        required: true
+    },
+    sword: {
+        type:String,
+        required:true
+    }
 });
 
 let Usagers = module.exports = mongoose.model('usagers', schemaUsager);

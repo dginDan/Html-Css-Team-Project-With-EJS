@@ -50,3 +50,86 @@ body {
 .class-button-selected {
     background-color: #aaa;
 }
+.buttonsHeader {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#headerPotions {
+    flex: 1;
+    width: 19.2%;
+    height: 20%;
+    margin:-5px
+}
+
+#headerBar {
+    border-color: forestgreen;
+    height: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(29, 147, 216);
+    
+}
+
+.buttonsHeader button {
+    width: 200px;
+    height: 75px;
+    text-align: center;
+    border-radius: 10px;
+    border-style: none;
+
+}
+
+#accueil {
+    border-width: 16px;
+    border-color: rgb(77, 77, 77);
+    border-style: solid;
+    width: 80vw;
+    height: 82vh;
+    margin-left: 10px;
+    border-style: ridge;
+    margin-top: -10px;
+}
+
+#villagePic {
+    background-image: url('../images/villageBackgroundPlaceholder.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    filter: brightness(200%);
+    box-shadow: 10px;
+    flex: 1;
+}
+
+#boutonTaverne {
+    position: absolute;
+    top: 105px;
+    left: 500px;
+}
+
+#boutonShop {
+    position: absolute;
+    top: 180px;
+    left: 200px;
+}
+
+#boutonJouer {
+    position: absolute;
+    bottom: 350px;
+    left: 150px;
+}
+
+#gameInfo {
+    margin-left: 10px;
+    max-width: 340px;
+    margin-right: 5px;
+}
+
+#accueilBox {
+    display: flex;
+    flex-direction: row;
+}
