@@ -42,11 +42,11 @@ let schemaUsager = mongoose.Schema({
       },
     gold: {
         type: String,
-        required: true
+        required: false
     },
     sword: {
         type:String,
-        required:true
+        required:false
     }
 });
 

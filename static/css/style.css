@@ -105,22 +105,36 @@ body {
     flex: 1;
 }
 
+#tavernePic {
+    background-image: url('../images/taverneBackgroundPlaceholder.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    box-shadow: 10px;
+    flex: 1;
+}
+
 #boutonTaverne {
     position: absolute;
     top: 105px;
     left: 500px;
+    font-weight: bold;
 }
 
 #boutonShop {
     position: absolute;
     top: 180px;
     left: 200px;
+    font-weight: bold;
 }
 
 #boutonJouer {
     position: absolute;
     bottom: 350px;
     left: 150px;
+    font-weight: bold;
 }
 
 #gameInfo {
@@ -132,4 +146,22 @@ body {
 #accueilBox {
     display: flex;
     flex-direction: row;
+}
+
+#boutonBartender {
+    position: absolute;
+    left: 25%;
+    top: 310px;
+}
+
+#boutonMysteriousMan {
+    position: absolute;
+    right: 800px;
+    top: 350px;
+}
+
+#boutonSortirTaverne {
+    position: absolute;
+    bottom:100px;
+    left:35%;
 }

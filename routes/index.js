@@ -39,6 +39,13 @@ router.get('/village', isAuthentified, (requete, reponse)=>{
         user : user 
     });
 });
+router.get('/taverne', isAuthentified, (requete, reponse)=>{
+    const user = requete.user;
+    reponse.render(`taverne`, {
+        'title': 'taverne',
+        user : user 
+    });
+});
 // bouton quitter qui renvoit à page login '/'
 router.get('/quitter', (requete, reponse, next)=>{
     requete.logOut(function(err){ 
