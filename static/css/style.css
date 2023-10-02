@@ -103,6 +103,7 @@ body {
     filter: brightness(200%);
     box-shadow: 10px;
     flex: 1;
+    position:relative;
 }
 
 #tavernePic {
@@ -114,26 +115,27 @@ body {
     height: 100%;
     box-shadow: 10px;
     flex: 1;
+    position:relative;
 }
 
 #boutonTaverne {
     position: absolute;
-    top: 105px;
-    left: 500px;
+    top: 10%;
+    left: 35%;
     font-weight: bold;
 }
 
 #boutonShop {
     position: absolute;
-    top: 180px;
-    left: 200px;
+    top: 20%;
+    left: 10%;
     font-weight: bold;
 }
 
 #boutonJouer {
     position: absolute;
-    bottom: 350px;
-    left: 150px;
+    bottom: 40%;
+    left: 10%;
     font-weight: bold;
 }
 
@@ -150,18 +152,54 @@ body {
 
 #boutonBartender {
     position: absolute;
-    left: 25%;
-    top: 310px;
+    left: 35%;
+    top: 35%;
 }
 
-#boutonMysteriousMan {
+#boutonMysteryMan {
     position: absolute;
-    right: 800px;
-    top: 350px;
+    right: 35%;
+    top: 35%;
 }
 
 #boutonSortirTaverne {
     position: absolute;
-    bottom:100px;
-    left:35%;
+    bottom:1%;
+    left:40%;
+}
+
+.hiddenBartender {
+    opacity: 0;
+}
+
+.hiddenMysteryMan {
+    opacity: 0;
+}
+
+#bartenderDialogue {
+    position: absolute;
+    left: 18%;
+    top: 9%;
+    max-width: 200px;
+    word-wrap: break-word;
+    border: 2px solid #000;
+    background-color: #502308;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.75;
+}
+
+#mysteryManDialogue {
+    position: absolute;
+    right: 16%;
+    top: 18%;
+    max-width: 200px;
+    word-wrap: break-word;
+    border: 2px solid #000;
+    background-color: #502308;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.75;
 }
