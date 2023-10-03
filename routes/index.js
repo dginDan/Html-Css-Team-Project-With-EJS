@@ -24,7 +24,7 @@ router.get('/', (requete, reponse)=>{
 //le post si bien authentifier, redirect a menu else login(meme page) '/'
 router.post('/userLogin', (requete, reponse, next) => {
     passport.authenticate('local', {
-        successRedirect: '/menu',
+        successRedirect: '/village',
         failureRedirect: '/',
         failureFlash: true
     })(requete, reponse, next);
