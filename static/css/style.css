@@ -5,9 +5,7 @@ body {
     color:  blue;
 }
 .login {
-    text-align: right;
     color: #ffe5d1;
-    margin-top: 10px;
 }
 .imgProfil {
     width: 100px;
@@ -59,75 +57,97 @@ body {
 
 
 /* Css header/navigation */
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 .navbar {
     background-color: #8b572a;
-    padding: 10px 0;
+    display: flex;
+    padding: 10px 0px;
     text-align: center;
+    justify-content: center;
     margin-bottom: 30px;
-    height: 100px;
+    height: 50px;
 }
-
 .navbar ul {
     list-style: none;
+    display: flex;
     padding: 0;
     margin: 0;
     justify-content: space-between;
     align-items: center;
 }
-
 .navbar ul li {
-    margin-left:120px;
+    margin-left:60px;
+    margin-right: 20px;
 }
-
 .navbar ul li a {
     text-decoration: none;
     color: #ffe5d1; 
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     transition: color 0.2s ease;
 }
-
 .navbar ul li a:hover {
     color: #d7a66b; 
 }
 
+.loginContainer {
+    align-items: center;
+    padding: auto;
+}
 .iconBox {
     align-items: center;
-    justify-content: center;
     float: right;
 }
 .icon {
-    width: 32px;
+    width: 26px;
     height: auto;
     margin-right: 5px;
 }
 .br {
     width: 2px;
-    height: 80%; 
-    background-color: #ffe5d1; 
-    margin-left: -120px;
+    background-color: #ffe5d1;
+    margin-left: 40px;
 }
 .buttonNav {
     text-decoration: none;
     color: #ffe5d1; 
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
+    align-items: center;
 }
 .buttonNav:hover {
     color: #d7a66b;
 }
+#rightButtons {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
 /*Fin du css header/nav */
 
 /*Début du css pour accueil et taverne */
+.adContainer {
+    display: inline-block;
+    height: 180px;
+    width: 500px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3ex;
+    margin-top: -1.7ex;
+}
 #accueil {
     border-width: 16px;
     border-color: rgb(77, 77, 77);
     border-style: solid;
     width: 80vw;
-    height: 82vh;
+    height: 80vh;
     margin-left: 10px;
     border-style: ridge;
     margin-top: -10px;
@@ -167,22 +187,39 @@ body {
 
 
 #boutonTaverne:hover {
-    background-color: #e76819;
+    background-color: #f2ceb7;
     cursor: pointer; 
 }
 
 
 #boutonShop:hover {
-    background-color: #e76819;
+    background-color: #f2ceb7;
     cursor: pointer; 
 }
 
 
 #boutonJouer:hover {
-    background-color: #e76819;
+    background-color: #f2ceb7;
     cursor: pointer; 
 }
-
+#boutonGamble {
+    position: absolute;
+    bottom:10px;
+    right: 250px;
+}
+#boutonGamble:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+#boutonGamble:hover {
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+.casinoAd {
+    flex: 1;
+    width: 120%;
+    height: auto;
+}
 
 #boutonShop {
     position: absolute;
@@ -206,7 +243,9 @@ body {
 
 #accueilBox {
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #boutonBartender:hover{
