@@ -132,10 +132,10 @@ body {
 
 /*Début du css pour accueil et taverne */
 #accueil {
-    border-width: 24px;
-    border-color: rgb(117, 69, 38);
+    border-width: 18px;
+    border-color: rgb(23, 14, 7);
     border-style: solid;
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 5px 5px 5px rgb(102, 97, 83);
     width: 80vw;
     height: 85vh;
     margin-left: 10px;
