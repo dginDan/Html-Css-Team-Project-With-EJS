@@ -1,21 +1,33 @@
 <nav class="navbar">
-    <ul>
-        <li><a href="/village">Village (Accueil)</a></li>
-        <li><a href="/profil">Profil</a></li>
-        <li><a href="/forum">Forum</a></li>
-    </ul>
-    <div class="br"></div>
-    <a class="buttonNav" href="/apropos">À Propos</a>
-    <a class="buttonNav" href="/nousjoindre">Nous Joindre</a>
-    <ul>
-        <li>
-            <% if (typeof(user) !="undefined"){ %>
-                <p class="login">Bienvenue, <%= user.nom %> (<%= user.email %>)!</p>
-            <% } %>
-        </li>
-    </ul>
-    <div class="iconBox">
-        <a href=""><img class="icon" src="images/fb.png" alt=""></a>
-        <a href=""><img class="icon" src="images/x.png" alt=""></a>
+    <div class="navContainer">
+        <div class="list1">
+            <ul>
+                <li style="margin-bottom: auto;"><a href="/village">Village (Accueil)</a></li>
+                <li style="margin-bottom: auto;"><a href="/profil">Profil</a></li>
+                <li style="margin-bottom: auto;"><a href="/forum">Forum</a></li>
+            </ul>
+        </div>
+        <div class="br"></div>
+        <div id="rightButtons">
+            <ul>
+                <li><a class="buttonNav" href="/apropos">À Propos</a></li>
+                <li><a class="buttonNav" href="/nousjoindre">Nous Joindre</a></li>
+        </ul>
     </div>
+    <div class="br"></div>
+    <div class="loginContainer">
+        <ul>
+            <li class="login">
+                <% if (typeof(user) !="undefined"){ %>
+                    Bienvenue, <%= user.nom %> (<%= user.email %>)!
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <div class="br" style="margin-right: 32px;"></div>
+        <div class="iconContainer">
+            <a href=""><img class="icon" src="images/fb.png" alt=""></a>
+            <a href=""><img class="icon" src="images/x.png" alt=""></a>
+        </div>
+</div>
   </nav>  
