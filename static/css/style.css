@@ -60,11 +60,20 @@ body {
 
 /* Css header/navigation */
 .navbar {
-    background-color: #8b572a;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: #fdf1e9;
+    border-bottom: #fdf1e9;
+    border-style:solid;
+    border-width: 5px;
+    display: flex;
+    background-color: #754929;
     padding: 10px 0;
     text-align: center;
     margin-bottom: 30px;
     height: 100px;
+    opacity: 0.90;
+    
 }
 
 .navbar ul {
@@ -123,11 +132,12 @@ body {
 
 /*Début du css pour accueil et taverne */
 #accueil {
-    border-width: 16px;
-    border-color: rgb(77, 77, 77);
+    border-width: 24px;
+    border-color: rgb(117, 69, 38);
     border-style: solid;
+    box-shadow: 5px 5px 5px black;
     width: 80vw;
-    height: 82vh;
+    height: 85vh;
     margin-left: 10px;
     border-style: ridge;
     margin-top: -10px;
@@ -244,10 +254,12 @@ body {
 
 .hiddenBartender {
     opacity: 0;
+    padding: 0px;
 }
 
 .hiddenMysteryMan {
     opacity: 0;
+    padding: 0px;
 }
 
 #bartenderDialogue {
@@ -262,6 +274,10 @@ body {
     padding: 10px;
     border-radius: 5px;
     opacity: 0.75;
+}
+
+#paddingNpcText {
+    padding: 10px;
 }
 
 #mysteryManDialogue {

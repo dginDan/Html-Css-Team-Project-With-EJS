@@ -45,5 +45,5 @@ boutonMysteryMan.addEventListener('click', ()=>{
 
     mysteryManDialogue.textContent = prochainDialogue;
     indexDialogueMysteryMan += 1;
-    mysteryManDialogue.classList.remove('hiddenMysteryMan')
+    mysteryManDialogue.classList.remove('hiddenMysteryMan');
 })

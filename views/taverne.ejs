@@ -19,12 +19,13 @@
     </div>
         <div id="gameInfo">
             <% if (typeof(user) !="undefined"){ %>
-                <p>Utilisateur : <%= user.nom %></p>
+                <p style="font-weight: bold;"><span class="characterKeywords">Utilisateur:</span> <%= user.nom %></p>
                 <p></p>
-                <p>Classe : <%= user.characterClass %></p>
-                <p>Équipement : <%= user.sword %></p>
-                <p>Pièces d'or : <%= user.gold %></p>
-            <% } %>
+                <p style="font-weight: bold;"><span class="characterKeywords">Classe:</span> <%= user.characterClass %></p>
+                <p style="font-weight: bold;"><span class="characterKeywords">Équipement:</span> <%= user.inventory == undefined? "Vous n'avez aucun item en votre possession!" : user.inventory%> %></p>
+                <br>
+                <div style="display: flex;"><img style="height: 32px;width: auto; margin-top: -8px;" src="images/coins.png" alt=""> <p style="font-weight: bold;"><%= user.gold == undefined? '0' : user.gold %> pièces d'or</p></div>
+                <% } %>
             <hr style="border-width: 4px;">
             <br>
             <p>Bienvenue sur <span style="font-weight: bold; color: rgb(35, 100, 165);">Projet Jjadd!</span></p>
