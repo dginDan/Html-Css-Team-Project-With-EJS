@@ -1,0 +1,21 @@
+<nav class="navbar">
+    <ul>
+        <li><a href="/village">Village (Accueil)</a></li>
+        <li><a href="/profil">Profil</a></li>
+        <li><a href="/forum">Forum</a></li>
+    </ul>
+    <div class="br"></div>
+    <a class="buttonNav" href="/apropos">À Propos</a>
+    <a class="buttonNav" href="/nousjoindre">Nous Joindre</a>
+    <ul>
+        <li>
+            <% if (typeof(user) !="undefined"){ %>
+                <p class="login">Bienvenue, <%= user.nom %> (<%= user.email %>)!</p>
+            <% } %>
+        </li>
+    </ul>
+    <div class="iconBox">
+        <a href=""><img class="icon" src="images/fb.png" alt=""></a>
+        <a href=""><img class="icon" src="images/x.png" alt=""></a>
+    </div>
+  </nav>  
