@@ -42,7 +42,7 @@ let schemaUsager = mongoose.Schema({
       },
     gold: {
         type: String,
-        required: false
+        default:10
     },
     sword: {
         type:String,
