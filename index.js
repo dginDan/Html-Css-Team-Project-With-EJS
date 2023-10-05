@@ -30,7 +30,7 @@ require('./config/passport')(passport);
 const PORT = process.env.PORT || 8000;
 
 mongoose.set('strictQuery', false); // eviter une erreur lors de npm run dev
-mongoose.connect('');
+mongoose.connect('mongodb+srv://pficegep:pfi12345678!@cluster0.vrxbwhl.mongodb.net/pfi');
 const db = mongoose.connection;
 db.on('error', (err) => {
     console.error('Un problème est survenu, voici l\'erreur :', err);
