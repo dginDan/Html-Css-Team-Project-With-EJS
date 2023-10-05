@@ -65,11 +65,10 @@ body {
 .navbar {
     background-color: #8b572a;
     display: flex;
-    padding: 10px 0px;
     text-align: center;
     justify-content: center;
     margin-bottom: 30px;
-    height: 50px;
+    height: 55px;
 }
 .navbar ul {
     list-style: none;
@@ -99,15 +98,7 @@ body {
     align-items: center;
     padding: auto;
 }
-.iconBox {
-    align-items: center;
-    float: right;
-}
-.icon {
-    width: 26px;
-    height: auto;
-    margin-right: 5px;
-}
+
 .br {
     width: 2px;
     background-color: #ffe5d1;

@@ -2,9 +2,9 @@
     <div class="navContainer">
         <div class="list1">
             <ul>
-                <li style="margin-bottom: auto;"><a href="/village">Village (Accueil)</a></li>
-                <li style="margin-bottom: auto;"><a href="/profil">Profil</a></li>
-                <li style="margin-bottom: auto;"><a href="/forum">Forum</a></li>
+                <li style="margin-top: 5px;"><a href="/village">Village (Accueil)</a></li>
+                <li style="margin-top: 5px;"><a href="/modifUsager">Profil</a></li>
+                <li style="margin-top: 5px;"><a href="/forum">Forum</a></li>
             </ul>
         </div>
         <div class="br"></div>
@@ -19,15 +19,12 @@
         <ul>
             <li class="login">
                 <% if (typeof(user) !="undefined"){ %>
-                    Bienvenue, <%= user.nom %> (<%= user.email %>)!
+                    <img src="/images/<%= user.nomImage %>" alt="User Image" width="40" height="40" style="margin-right: 7px; margin-top: -3px; margin-left: -20px;" class="rounded-circle mr-2 profile-img ">
+                    Bienvenue, <%= user.nom %> (<%= user.email %>)! -
+                    <a href="/quitter">Se déconnecter</a>
                 <% } %>
             </li>
         </ul>
     </div>
-    <div class="br" style="margin-right: 32px;"></div>
-        <div class="iconContainer">
-            <a href=""><img class="icon" src="images/fb.png" alt=""></a>
-            <a href=""><img class="icon" src="images/x.png" alt=""></a>
-        </div>
 </div>
   </nav>  
