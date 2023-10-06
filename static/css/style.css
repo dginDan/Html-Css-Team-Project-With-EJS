@@ -61,6 +61,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100vw;
+    height: 4vh;
 }
 .navbar {
     flex: 1;
@@ -184,7 +185,7 @@ body {
 }
 #accueil {
     border-width: 16px;
-    border-color: rgb(26, 12, 2);
+    border-color: rgb(3, 2, 0);
     border-style: solid;
     box-shadow: 5px 5px 5px rgb(102, 97, 83);
     width: 80vw;

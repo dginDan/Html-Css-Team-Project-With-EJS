@@ -7,11 +7,12 @@
                 <li style="margin-top: 5px;"><a href="/forum">Forum</a></li>
             </ul>
         </div>
-        
-        <div class="searchContainer">
-            <i class="fas fa-search searchButton"></i>
-            <input type="search" class="searchInput" placeholder="Search">
-        </div>
+        <form action="https://www.google.com/search" method="GET" target="_blank" id="searchForm">
+            <div class="searchContainer">
+                <i id="searchIcon" class="fas fa-search searchButton"></i>
+                <input type="text" class="searchInput" name="q" placeholder="Rechercher">
+            </div>
+        </form>
         <div>
         </div>
         <div id="rightButtons">
@@ -34,3 +35,15 @@
     </div>
 </div>
   </nav>  
+  
+
+<script>
+
+//Fonction pour envoyer la recherche au click de la loupe
+  const searchForm = document.getElementById('searchForm');
+  const searchIcon = document.getElementById('searchIcon');
+  searchIcon.addEventListener('click', () => {
+    searchForm.submit();
+  });
+
+</script>
