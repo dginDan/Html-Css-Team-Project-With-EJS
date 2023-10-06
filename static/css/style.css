@@ -61,7 +61,6 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100vw;
-    height: 4vh;
 }
 .navbar {
     flex: 1;
@@ -98,13 +97,16 @@ body {
 
 .loginContainer {
     align-items: center;
-    padding: auto;
+    padding: 0;
+    width: 600px;
 }
 
 .br {
+    align-items: center;
     width: 2px;
     background-color: #ffe5d1;
-    margin-left: 40px;
+    height: 30px;
+    margin-top: 4px;
 }
 .buttonNav {
     text-decoration: none;
@@ -113,11 +115,9 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     transition: color 0.2s ease;
-    align-items: center;
 }
-#rightButtons {
+.rightButtons {
     display: flex;
-    flex: 1;
     justify-content: flex-end;
 }
 .searchContainer {
@@ -128,7 +128,7 @@ body {
     margin: auto;
     padding: 0px;
     width: 50px;
-    margin-left: 350px;
+    margin-left: 120px;
   }
   .searchInput {
     border: none;
@@ -145,21 +145,22 @@ body {
     left: 0;
 }
 .searchButton {
-    background-color: #8b572a;
     border: none;
     color: #ffe5d1;
     padding: 10px 10px;
     cursor: pointer;
     border-radius: 180px 20px 20px 180px;
-    transition:background-color 0.5s ease-in-out;
-}
-  .searchButton:hover {
-    background-color: #d1daff;
+    transition:background-color 0.3s ease-in-out;
 }
   .searchInput {
     display: flex;
 }
+
 .searchContainer:hover .searchInput {
+    width: 200px;
+    opacity: 1;
+}
+.searchInput:focus {
     width: 200px;
     opacity: 1;
 }
@@ -168,8 +169,15 @@ body {
     border-right: #8b572a;
     border-radius: 30px 0px 0px 30px;
     color:#8b572a;
-    transition: color 0.6s ease-in-out;
-    transition:background-color 0.2s ease-in-out;
+    transition: color 0.4s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+}
+
+.searchContainer:focus #searchButton {
+    background-color: #ffe5d1;
+    border-right: #8b572a;
+    border-radius: 30px 0px 0px 30px;
+    color:#8b572a;
 }
 /*Fin du css header/nav */
 
