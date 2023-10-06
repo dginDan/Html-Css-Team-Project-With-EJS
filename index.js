@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const multer = require("multer");
 const upload = multer({dest:'./uploads'});
+const bodyParser = require('body-parser');
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
@@ -21,6 +22,7 @@ const storage = multer.diskStorage({
     },
 });
 
+app.use(bodyParser.json());
 app.use(upload.any()); // plusieurs televersement images (fonctonne le mieux, autres merdique/bug) (retourne tableau)
 
 //configuration de passeport
@@ -69,11 +71,20 @@ app.use(
         next();
     }
 );
-app.use (require('./routes/usagers'));
+app.use('/discussions', require('./routes/discussions'));
+app.use ('/usagers',require('./routes/usagers'));
 app.use('/', require('./routes/index'));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
+
+
+const i18n = require('./config/i18nConfig');
+
+console.log(i18n.getLocales()); // ['en', 'fr']
+console.log(i18n.setLocale('fr')); // 'en'
+console.log(i18n.__('Hello')); // 'Hello'
+console.log(i18n.__n('You have %s message', 5)); // 'You have 5 messages'
 
 app.listen( PORT,  console.log(`Serveur démarré sur le port ${PORT} `));
 

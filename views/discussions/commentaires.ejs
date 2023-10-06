@@ -1,0 +1,55 @@
+<div class="row mt-2">
+    <div class="col-md-15 m-auto">
+        <div class="container mt-8">
+         
+      <h2><i class="fas fa-book-open"></i> Forum de discussion</h2>
+     <%let discussion = liste; let id= liste[0]._id;%>
+      <table class="table table-striped">
+          <thead>
+            <tr>
+            <th><h3><%= liste[0].auteur %></h3></th>                     
+            </tr>
+          </thead>
+          <tbody>
+           <tr>
+                <td><h4><%= liste[0].message %></h4><br><p style="font-size: smaller;"><%= liste[0].date %></p></td>
+           </tr>  
+          </tbody>  
+        <%if (discussion[0].commentaires.length > 0){%>  
+         <% for (let commentaire of discussion[0].commentaires){ %>
+            <thead>
+                <tr>
+                    <th><h3><%=commentaire.auteur%> </h3></th>            
+                </tr>
+              </thead>
+              <tbody>
+               <tr>
+                <td><h4><%= commentaire.commentaire %></h4>
+                <br> <p style="font-size: smaller;"><%=commentaire.date%></p>
+                </td>
+               </tr>  
+              </tbody>  
+           
+            <% }%>
+           <% }%>
+        </table>
+        <div class="row mt-5">
+            <div class="col-md-6 m-auto">
+                <div class="card card-body">
+                   
+                    <h1><i class="fas fa-book"></i>   Votre commentaire</h1>
+                    <form action="/discussions/commentaires/ajouter/<%=id%>" method="post" >
+                        <div class="form-group">
+                      
+                          <%- include('../partials/discussions/commentaire') %>
+                          
+                        </div>
+                                       
+                        <button type="submit" class="btn btn-primary btn-block mb-2">Confirmer l'ajout du commentaire</button>
+                        <a href="/discussions" class="btn btn-secondary btn-block mb-2">
+                            Retour au forum
+                        </a>
+                    </form>
+                </div>
+            </div>
+          </div>   
