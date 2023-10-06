@@ -209,7 +209,7 @@
 </style>
 
 <script>
-    // Function to toggle the visibility of a list with a given class
+    // Fonction pour rendre des elements visible en utilisant leurs classes
     function toggleListVisibility(className) {
       let list = document.querySelector("." + className);
       if (list) {
@@ -228,7 +228,6 @@
     document.getElementById("potions").addEventListener("click", function () {
       toggleListVisibility("potionHiddenGuide");
     });
-  
     //event on click section 3
     document.getElementById("buffs").addEventListener("click", function () {
       toggleListVisibility("buffHiddenGuide");
@@ -239,7 +238,6 @@
     document.getElementById("luck").addEventListener("click", function () {
       toggleListVisibility("luckHiddenGuide");
     });
-  
     //event on click section 3
     document.getElementById("barkeeper").addEventListener("click", function () {
       toggleListVisibility("barkeeperHiddenGuide");
@@ -250,12 +248,15 @@
     document.getElementById("stranger").addEventListener("click", function () {
       toggleListVisibility("strangerHiddenGuide");
     });
+    //event on click section 4
     document.getElementById("commentJouer").addEventListener("click", function () {
       toggleListVisibility("descriptionJeuHiddenGuide");
     });
+    //event on click section 5
     document.getElementById("overallLuck").addEventListener("click", function () {
       toggleListVisibility("overallLuckHiddenGuide");
     });
+    //event on click section 6
     document.getElementById("gold").addEventListener("click", function () {
       toggleListVisibility("goldHiddenGuide");
     });
