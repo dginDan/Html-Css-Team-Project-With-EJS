@@ -319,3 +319,11 @@ body {
 }
 /*Fin du css pour accueil et taverne */
 
+/*Début du css pour shop */
+.card-img-top {
+    height: 200px;  
+    object-fit: cover;  
+}
+
+/*Fin du css pour shop */
+
