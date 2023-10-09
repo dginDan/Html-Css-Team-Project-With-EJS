@@ -7,7 +7,6 @@ const discussions = require("../models/discussions");
 
 router.get('/', (requete, reponse) => {
     const user = requete.user;
-    console.log('requete.user?????????', requete.user);
     Discussions.find({}).sort({date: -1}).exec()
     .then(listeDiscussions => {
         reponse.render('discussions/discussions', {
@@ -16,29 +15,11 @@ router.get('/', (requete, reponse) => {
             liste:listeDiscussions
         });
     })
-});
-
-router.get('/commentaires/:_id', (requete, reponse) => {
-    const user = requete.user;
-    const id = requete.params._id;
-    console.log('id',id); 
-    console.log('requete.user?????????', requete.user);
-    Discussions.find({"_id":id}).exec()
-    .then(discussion => {
-        console.log('liste',discussion);
-        reponse.render('discussions/commentaires', {
-            titrePage: "Forum de discusions",
-            user:user,
-            liste:discussion
-        });
-    })
-});
-    
+});    
 
 router.get('/ajouter', (requete, reponse) => {
     const user = requete.user;
-    console.log('...................................................user et user.nom', user);
-    reponse.render('discussions/ajouter', {
+       reponse.render('discussions/ajouter', {
         titrePage: "Ajout d'une discussion",
         user: user
     });
@@ -69,6 +50,29 @@ const user = requete.user;
 
 
 });
+router.get('/supprimer/:_id',  (requete, reponse, next) => {
+    const id = requete.params._id;
+
+    Discussions.findOneAndDelete({ '_id': id }).exec()
+        .then(siSupprimé => {
+            requete.flash('success_msg', `La discussion a été supprimé avec succès`);
+            reponse.redirect('/discussions');
+        })
+        .catch(err => console.log('supression ne fonctionne pas  ' + err))
+});
+
+router.get('/commentaires/:_id', (requete, reponse) => {
+    const user = requete.user;
+    const id = requete.params._id;
+    Discussions.find({"_id":id}).exec()
+    .then(discussion => {
+        reponse.render('discussions/commentaires', {
+            titrePage: "Forum de discusions",
+            user:user,
+            liste:discussion
+        });
+    })
+});
 
 router.get('/commentaires/ajouter/:_id', (requete, reponse) => {
     const user = requete.user;
@@ -81,7 +85,6 @@ router.get('/commentaires/ajouter/:_id', (requete, reponse) => {
 });
 router.post('/commentaires/ajouter/:_id', (requete, reponse) => {
     const user = requete.user;
-    console.log('user');
     const nouvelleDate = new Date();
     const date = nouvelleDate.toDateString();
     const id = requete.params._id;
@@ -101,5 +104,20 @@ router.post('/commentaires/ajouter/:_id', (requete, reponse) => {
     })
    .catch(err => console.log(err));
 
+});
+
+router.get('/commentaire/supprimer/:info',  (requete, reponse, next) => {
+   const info = requete.params.info.split(",");
+ 
+    const id = info.shift();
+    const commentaire =info.shift();
+    console.log('comm sup',id, commentaire);
+    let filtre = {"_id": id};
+    Discussions.findOneAndUpdate(filtre,  { $pull: { commentaires: {commentaire}  } }).exec()
+        .then(siSupprimé => {
+            requete.flash('success_msg', `le commentaire a été supprimé avec succès`);
+            reponse.redirect('/discussions');
+        })
+        .catch(err => console.log('supression ne fonctionne pas  ' + err))
 });
 module.exports =router;

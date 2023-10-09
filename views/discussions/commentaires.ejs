@@ -15,11 +15,16 @@
                 <td><h4><%= liste[0].message %></h4><br><p style="font-size: smaller;"><%= liste[0].date %></p></td>
            </tr>  
           </tbody>  
-        <%if (discussion[0].commentaires.length > 0){%>  
-         <% for (let commentaire of discussion[0].commentaires){ %>
+        <%if (discussion[0].commentaires.length > 0){ let index=-1; let info=[];  
+          for (let commentaire of discussion[0].commentaires){ 
+             index++; %>
             <thead>
                 <tr>
-                    <th><h3><%=commentaire.auteur%> </h3></th>            
+                    <th><%info = [id, commentaire.commentaire]; %>
+                      
+                      <h3><% if (user.roles.includes('moderateur')) {%><a href="/discussions/commentaire/supprimer/<%-info%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
+                      <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer le commentaire"> </i>
+                      </a><%}%><%=commentaire.auteur%> </h3></th>            
                 </tr>
               </thead>
               <tbody>
@@ -37,7 +42,7 @@
             <div class="col-md-6 m-auto">
                 <div class="card card-body">
                    
-                    <h1><i class="fas fa-book"></i>   Votre commentaire</h1>
+                    <h1><i class="fas fa-book"></i> Votre commentaire</h1>
                     <form action="/discussions/commentaires/ajouter/<%=id%>" method="post" >
                         <div class="form-group">
                       

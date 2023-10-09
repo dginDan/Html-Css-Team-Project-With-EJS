@@ -17,14 +17,14 @@
           </thead>
           <tbody>
          <% for (let discussion of liste){ %>
-           <tr href="/discussions/supprimer/<%=discussion._id%>" >
-             <td><h5><a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
+           <tr >
+             <td><h5><% if (user.roles.includes('moderateur')) {%><a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
               <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer la discussions"> </i>
-              </a><a href="/discussions/commentaires/<%=discussion._id%>"> <%= discussion.titre %></a></h5>
+              </a><%}%><a href="/discussions/commentaires/<%=discussion._id%>"> <%= discussion.titre %></a></h5>
              </td>
               <td><%= discussion.auteur %></td>
               <td><%= discussion.date %></td>
-             </tr>
+            </tr>
             </a>
             <tr>
               <a href="/discussions/commentaires/<%=discussion._id%>"> 

@@ -11,7 +11,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const multer = require("multer");
 const upload = multer({dest:'./uploads'});
-const bodyParser = require('body-parser');
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     },
 });
 
-app.use(bodyParser.json());
+
 app.use(upload.any()); // plusieurs televersement images (fonctonne le mieux, autres merdique/bug) (retourne tableau)
 
 //configuration de passeport
