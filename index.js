@@ -44,6 +44,7 @@ db.once('open', () => {
 // configuration de Express et des intergiciels
 app.use(expressLayouts);
 
+app.use('/assets', express.static('./static/assets'));
 app.use('/css', express.static('./static/css'));
 app.use('/js', express.static('./static/js'));
 app.use('/images', express.static('./static/images'));
@@ -71,8 +72,11 @@ app.use(
         next();
     }
 );
+
+app.use('/items', require('./routes/items'));
+app.use (require('./routes/usagers'));
 app.use('/discussions', require('./routes/discussions'));
-app.use ('/usagers',require('./routes/usagers'));
+
 app.use('/', require('./routes/index'));
 
 app.set('views', './views');

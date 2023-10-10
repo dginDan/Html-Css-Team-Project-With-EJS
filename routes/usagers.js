@@ -219,30 +219,36 @@ router.post('/userAddClient',(requete, reponse)=>{
     }
 });
 
-//page modifier user via son email
-router.get('/modifUsager/:email', isAdmin, (requete, reponse)=>{
+// user modifier
+router.get('/modifUsager/:email?', isAuthentified, (requete, reponse) => {
     const user = requete.user;
-    const email = requete.params.email;
-    Usagers.findOne({'email': email})
-    .then(myUser=>{
-        //user trouver dans la bd, pret pour modif
-        const admin = myUser.roles.find(elem=> elem=="admin");
-        const  gestion = myUser.roles.find(elem=> elem=="gestion");
-        reponse.render('modifUsager', {
-            'title': 'Modification d\'un usager',
-            user : user,
-            nom : myUser.nom,
-            email : myUser.email,
-            admin : admin,
-            gestion : gestion,
-            emailREADONLY: true
+    const email = requete.params.email || user.email;
+
+    Usagers.findOne({ 'email': email })
+        .then(myUser => {
+            const admin = myUser.roles.find(elem => elem == "admin");
+            const gestion = myUser.roles.find(elem => elem == "gestion");
+
+            if (user.roles.includes("admin") || user.email === email) {
+                reponse.render('modifUsager', {
+                    'title': 'Modification d\'un usager',
+                    user: user,
+                    nom: myUser.nom,
+                    email: myUser.email,
+                    admin: admin,
+                    gestion: gestion,
+                    emailREADONLY: true
                 });
-    })
-    .catch(err=> {
-        console.log(err);
-        requete.flash('error_msg', 'Erreur interne, contactez l\'administrateur');
-        reponse.redirect('/');
-    });
+            } else {
+                requete.flash('error_msg', 'Accès non autorisé');
+                reponse.redirect('/');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            requete.flash('error_msg', 'Erreur interne, contactez l\'administrateur');
+            reponse.redirect('/');
+        });
 });
 // user modifier
 router.post('/userModif', isAuthentified, (requete, reponse)=>{
@@ -269,16 +275,20 @@ router.post('/userModif', isAuthentified, (requete, reponse)=>{
     } else {
         const newUser = {nom : nom, roles : roles};
         Usagers.findOneAndUpdate({email : email}, newUser)    
-            .then(doc=>{        
-                requete.flash('success_msg', 'Usager modifié avec succès');
-                reponse.redirect('/listeUsers');
-            })
-            .catch(err=>console.log('modification dans la bd na pas fonctionnee', err));
+        .then(doc => {
+            if (requete.user.roles.includes('admin')) {
+              requete.flash('success_msg', 'Usager modifié avec succès');
+              reponse.redirect('/listeUsers');
+            } else {
+              requete.flash('success_msg', 'Profil modifié avec succès');
+              reponse.redirect('/menu');
+            }
+          })
     };
 });
 
 // page image user modif
-router.get('/editerImage/:email', isAdmin, (requete, reponse)=>{
+router.get('/editerImage/:email', isAuthentified, (requete, reponse)=>{
     const user = requete.user;
     const email = requete.params.email;
     Usagers.findOne({'email': email})
@@ -295,7 +305,11 @@ router.get('/editerImage/:email', isAdmin, (requete, reponse)=>{
     .catch(err=> {
         console.log(err);
         requete.flash('error_msg', 'Erreur interne, contactez l\'administrateur');
-        reponse.redirect('/listeUsagers');
+        if (requete.user.roles.includes('admin')) {
+            reponse.redirect('/listeUsers');
+          } else {
+            reponse.redirect('/menu');
+          }
     });
 });
 // image user modifier
@@ -328,19 +342,27 @@ router.post('/editImage', isAuthentified, (requete, reponse)=>{
         Usagers.findOneAndUpdate({email : email}, user)
             .then(doc=>{     
                 requete.flash('success_msg', 'Votre avatar a été modifié avec succès');
-                reponse.redirect('/listeUsers');
+                if (requete.user.roles.includes('admin')) {
+                    reponse.redirect('/listeUsers');
+                  } else {
+                    reponse.redirect('/menu');
+                  }
                 
             })
             .catch(err=>{
                 console.log('modification dans la bd na pas fonctionnee', err);
                 requete.flash('error_msg', 'Erreur interne, contactez l\'administrateur');
-                reponse.redirect('/listeUsagers');
+                if (requete.user.roles.includes('admin')) {
+                    reponse.redirect('/listeUsers');
+                  } else {
+                    reponse.redirect('/menu');
+                  }
             });
     };
 });
 //----------------------------------------------------------------------------------------------------Get/Post Pour la page MODIFIER PASSWORD
 // page pwd user modif
-router.get('/editerPWD/:email', isAdmin, (requete, reponse)=>{
+router.get('/editerPWD/:email', isAuthentified, (requete, reponse)=>{
     const user = requete.user;
     const email = requete.params.email;
     Usagers.findOne({'email': email})
@@ -357,7 +379,11 @@ router.get('/editerPWD/:email', isAdmin, (requete, reponse)=>{
     .catch(err=> {
         console.log(err);
         requete.flash('error_msg', 'Erreur interne, contactez l\'administrateur');
-        reponse.redirect('/listeUsagers');
+        if (requete.user.roles.includes('admin')) {
+            reponse.redirect('/listeUsers');
+          } else {
+            reponse.redirect('/menu');
+          }
     });
 });
 // page pwd post user modif
@@ -399,12 +425,20 @@ router.post('/editPassword', isAuthentified, (requete, reponse) => {
                     .then(user => {
                         console.log(email);
                     requete.flash('success_msg', 'Le mot de passe a été modifié avec succès !');
-                    reponse.redirect('/listeUsers');
+                    if (requete.user.roles.includes('admin')) {
+                        reponse.redirect('/listeUsers');
+                      } else {
+                        reponse.redirect('/menu');
+                      }
                     })
                     .catch(err=>{
                     console.log('modification dans la bd na pas fonctionnee', err);
                     requete.flash('error_msg', 'Erreur interne, contactez l\'administrateur');
-                    reponse.redirect('/listeUsers');
+                    if (requete.user.roles.includes('admin')) {
+                        reponse.redirect('/listeUsers');
+                      } else {
+                        reponse.redirect('/menu');
+                      }
                     });
                 });
         });

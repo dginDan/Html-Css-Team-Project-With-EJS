@@ -1,0 +1,41 @@
+<%- include ('./partials/navigation') %>
+<div id="accueilBox">
+    <div id="accueil">
+        <div id="tavernePic">
+            <div>
+                    <button id="boutonBartender">Parler</button>
+                    <div id="bartenderDialogue" class="hiddenBartender"></div>
+            </div>
+            <div>
+                    <button id="boutonMysteryMan">Parler</button>
+                    <div id="mysteryManDialogue" class="hiddenMysteryMan"></div>
+            </div>
+            <div>
+                <a href="/village">
+                    <button id="boutonSortirTaverne">Sortir de la taverne</button>
+                </a>
+            </div>
+            <div>
+                <button id="boutonGamble">Loterie</button>
+            </div>
+        </div>
+    </div>
+        <div id="gameInfo">
+            <% if (typeof(user) !="undefined"){ %>
+                <p style="font-weight: bold;"><span class="characterKeywords">Utilisateur:</span> <%= user.nom %></p>
+                <p></p>
+                <p style="font-weight: bold;"><span class="characterKeywords">Classe:</span> <%= user.characterClass %></p>
+                <p style="font-weight: bold;"><span class="characterKeywords">Équipement:</span> <%= user.inventory == undefined? "Vous n'avez aucun item en votre possession!" : user.inventory%> %></p>
+                <br>
+                <div style="display: flex;"><img style="height: 32px;width: auto; margin-top: -8px;" src="images/coins.png" alt=""> <p style="font-weight: bold;"><%= user.gold == undefined? '0' : user.gold %> pièces d'or</p></div>
+                <% } %>
+            <hr style="border-width: 4px;">
+            <br>
+            <p>Bienvenue sur <span style="font-weight: bold; color: rgb(35, 100, 165);">Projet Jjadd!</span></p>
+            <p>Appuyez sur les boutons <em>Parler</em>pour intéragir avec les personnages</p>
+            <p>Vous pouvez parler au serveur pour régénérer vos points de vie!(Just kidding!)</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum cumque voluptate odit neque eaque magni praesentium repellat reiciendis perspiciatis ipsum vel, repellendus dolores soluta minima ullam nobis distinctio consequatur rem?</p>
+        </div>
+</div>
+
+<script src="/js/dialogues.js"></script>

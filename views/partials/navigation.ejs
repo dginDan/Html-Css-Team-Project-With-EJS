@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <div class="navContainer">
+        <div class="list1">
+            <ul>
+                <li style="margin-top: 5px;"><a href="/village">Village (Accueil)</a></li>
+                <li style="margin-top: 5px;"><a href="/modifUsager">Profil</a></li>
+                <li style="margin-top: 5px;"><a href="/forum">Forum</a></li>
+            </ul>
+        </div>
+        <div class="br"></div>
+        <div id="rightButtons">
+            <ul>
+                <li><a class="buttonNav" href="/apropos">À Propos</a></li>
+                <li><a class="buttonNav" href="/nousjoindre">Nous Joindre</a></li>
+        </ul>
+    </div>
+    <div class="br"></div>
+    <div class="loginContainer">
+        <ul>
+            <li class="login">
+                <% if (typeof(user) !="undefined"){ %>
+                    <img src="/images/<%= user.nomImage %>" alt="User Image" width="40" height="40" style="margin-right: 7px; margin-top: -3px; margin-left: -20px;" class="rounded-circle mr-2 profile-img ">
+                    Bienvenue, <%= user.nom %> (<%= user.email %>)! -
+                    <a href="/quitter">Se déconnecter</a>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+</div>
+  </nav>  

@@ -1,9 +1,11 @@
+/*Css listes/login*/
+
 body {
-    background-color: blanchedalmond;
+    background-color: rgb(255, 215, 205);
     color:  blue;
 }
 .login {
-    text-align: right;
+    color: #ffe5d1;
 }
 .imgProfil {
     width: 100px;
@@ -50,3 +52,312 @@ body {
 .class-button-selected {
     background-color: #aaa;
 }
+
+/* Fin du css listes/login*/
+
+
+/* Css header/navigation */
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.navbar {
+    background-color: #8b572a;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    height: 55px;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar ul li {
+    margin-left:60px;
+    margin-right: 20px;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffe5d1; 
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+.navbar ul li a:hover {
+    color: #d7a66b; 
+}
+
+.loginContainer {
+    align-items: center;
+    padding: auto;
+}
+
+.br {
+    width: 2px;
+    background-color: #ffe5d1;
+    margin-left: 40px;
+}
+.buttonNav {
+    text-decoration: none;
+    color: #ffe5d1; 
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    align-items: center;
+}
+.buttonNav:hover {
+    color: #d7a66b;
+}
+#rightButtons {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+/*Fin du css header/nav */
+
+/*Début du css pour accueil et taverne */
+.adContainer {
+    display: inline-block;
+    height: 180px;
+    width: 500px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3ex;
+    margin-top: -1.7ex;
+}
+#accueil {
+    border-width: 16px;
+    border-color: rgb(26, 12, 2);
+    border-style: solid;
+    box-shadow: 5px 5px 5px rgb(102, 97, 83);
+    width: 80vw;
+    height: 90vh;
+    margin-left: 10px;
+    border-style: ridge;
+    margin-top: -10px;
+}
+
+#villagePic {
+    background-image: url('../images/villageBackgroundPlaceholder.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    filter: brightness(200%);
+    flex: 1;
+    position:relative;
+}
+
+#tavernePic {
+    background-image: url('../images/taverneBackgroundPlaceholder.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    position:relative;
+}
+
+#boutonTaverne {
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    font-weight: bold;
+}
+
+
+#boutonTaverne:hover {
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+
+
+#boutonShop:hover {
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+
+
+#boutonJouer:hover {
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+#boutonGamble {
+    position: absolute;
+    bottom:10px;
+    right: 250px;
+}
+#boutonGamble:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+#boutonGamble:hover {
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+.casinoAd {
+    flex: 1;
+    width: 120%;
+    height: auto;
+}
+
+#boutonShop {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    font-weight: bold;
+}
+
+#boutonJouer {
+    position: absolute;
+    bottom: 40%;
+    left: 10%;
+    font-weight: bold;
+}
+
+#gameInfo {
+    margin-left: 10px;
+    max-width: 340px;
+    margin-right: 5px;
+}
+
+#accueilBox {
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#boutonBartender:hover{
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+
+#boutonMysteryMan:hover{
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+
+#boutonSortirTaverne:hover{
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+
+#boutonBartender {
+    position: absolute;
+    left: 35%;
+    top: 35%;
+}
+
+#boutonMysteryMan {
+    position: absolute;
+    right: 35%;
+    top: 35%;
+}
+
+#boutonSortirTaverne {
+    position: absolute;
+    bottom:1%;
+    left:40%;
+}
+
+.hiddenBartender {
+    opacity: 0;
+    padding: 0px;
+}
+
+.hiddenMysteryMan {
+    opacity: 0;
+    padding: 0px;
+}
+
+#bartenderDialogue {
+    position: absolute;
+    left: 18%;
+    top: 9%;
+    max-width: 200px;
+    word-wrap: break-word;
+    border: 2px solid #000;
+    background-color: #502308;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.75;
+}
+
+#paddingNpcText {
+    padding: 10px;
+}
+
+#mysteryManDialogue {
+    position: absolute;
+    right: 16%;
+    top: 18%;
+    max-width: 200px;
+    word-wrap: break-word;
+    border: 2px solid #000;
+    background-color: #502308;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0.75;
+}
+
+.characterKeywords {
+    font-weight: bolder;
+    color: #814f38;
+}
+/*Fin du css pour accueil et taverne */
+
+/*Début du css pour shop */
+.col-md-3 h3 {
+    color: #8b572a; 
+    font-weight: bold;
+}
+
+.col-md-3 a {
+    text-decoration: none;
+    color: #8b572a; 
+}
+
+.col-md-3 a:hover {
+    color: #502308 ; 
+}
+
+.card-img-top {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-title {
+    color:  #8b572a; 
+}
+
+.card-text {
+    color: #8b572a ; 
+}
+
+.btn.btn-custom {
+    background-color: #8b572a; 
+    border-color: #8b572a; 
+    color: #ffe5d1;
+}
+
+.btn.btn-custom:hover, .btn.btn-custom:active, .btn.btn-custom:active:focus {
+    background-color: #d7a66b ;
+    border-color: #d7a66b ;
+    color:#502308 ;
+} 
+/*Fin du css pour shop */
+
