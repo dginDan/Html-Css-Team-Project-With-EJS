@@ -12,6 +12,7 @@ const session = require("express-session");
 const multer = require("multer");
 const upload = multer({dest:'./uploads'});
 
+
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
         callback(null, './uploads');
@@ -20,6 +21,7 @@ const storage = multer.diskStorage({
         callback(null, file.fieldname);
     },
 });
+
 
 app.use(upload.any()); // plusieurs televersement images (fonctonne le mieux, autres merdique/bug) (retourne tableau)
 
@@ -73,10 +75,20 @@ app.use(
 
 app.use('/items', require('./routes/items'));
 app.use (require('./routes/usagers'));
+app.use('/discussions', require('./routes/discussions'));
+
 app.use('/', require('./routes/index'));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
+
+
+const i18n = require('./config/i18nConfig');
+
+console.log(i18n.getLocales()); 
+console.log(i18n.setLocale('fr')); 
+console.log(i18n.__('Hello')); 
+console.log(i18n.__n('You have %s message', 5)); 
 
 app.listen( PORT,  console.log(`Serveur démarré sur le port ${PORT} `));
 

@@ -376,10 +376,44 @@ body {
 /*Fin du css pour accueil et taverne */
 
 /*Début du css pour shop */
-.card-img-top {
-    height: 200px;  
-    object-fit: cover;  
+.col-md-3 h3 {
+    color: #8b572a; 
+    font-weight: bold;
 }
 
+.col-md-3 a {
+    text-decoration: none;
+    color: #8b572a; 
+}
+
+.col-md-3 a:hover {
+    color: #502308 ; 
+}
+
+.card-img-top {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-title {
+    color:  #8b572a; 
+}
+
+.card-text {
+    color: #8b572a ; 
+}
+
+.btn.btn-custom {
+    background-color: #8b572a; 
+    border-color: #8b572a; 
+    color: #ffe5d1;
+}
+
+.btn.btn-custom:hover, .btn.btn-custom:active, .btn.btn-custom:active:focus {
+    background-color: #d7a66b ;
+    border-color: #d7a66b ;
+    color:#502308 ;
+} 
 /*Fin du css pour shop */
 
