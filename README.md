@@ -1,6 +1,7 @@
-** Porjet final octobre 2023 lionel groulx **
+** Projet final octobre 2023 lionel groulx **
 ** Allan - Dany - Jacob - Jessica - Dominic **
 ** 26/09/23 **
+
 **************************************************************************************************************
 
 Projet final pour le cours de Pilon Alain octobre 2023 avant de pouvoir integrer notre stage 

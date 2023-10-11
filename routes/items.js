@@ -8,6 +8,7 @@ const router = express.Router();
 // Affichage de la page Shop
 router.get('/shop', isAuthentified, (requete, reponse) => {
     const categorie = requete.query.categorie;
+    const user = requete.user;
     let query = {};
 
     if (categorie) {
@@ -17,7 +18,8 @@ router.get('/shop', isAuthentified, (requete, reponse) => {
     Items.find(query).exec()
         .then(items => {
             reponse.render('shop', {
-                items: items
+                items: items,
+                user:user
             });
         })
         .catch(err => {
