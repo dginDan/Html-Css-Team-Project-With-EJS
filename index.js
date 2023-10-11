@@ -85,10 +85,10 @@ app.set('view engine', 'ejs');
 
 const i18n = require('./config/i18nConfig');
 
-console.log(i18n.getLocales()); // ['en', 'fr']
-console.log(i18n.setLocale('fr')); // 'en'
-console.log(i18n.__('Hello')); // 'Hello'
-console.log(i18n.__n('You have %s message', 5)); // 'You have 5 messages'
+console.log(i18n.getLocales()); 
+console.log(i18n.setLocale('fr')); 
+console.log(i18n.__('Hello')); 
+console.log(i18n.__n('You have %s message', 5)); 
 
 app.listen( PORT,  console.log(`Serveur démarré sur le port ${PORT} `));
 

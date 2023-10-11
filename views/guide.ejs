@@ -1,0 +1,265 @@
+<%- include ('./partials/navigation') %>
+<div class="guideContainer">
+    <div class="guideBox">
+        <ul>
+            <li class="categories">Items</li>
+            <ul>
+                <li id="épées">Les Épées</li>
+                <ul class="swordHiddenGuide">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+                <li id="boucliers">Les Boucliers</li> 
+                <ul class="shieldHiddenGuide">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+                <li id="potions">Les Potions</li>
+                <ul class="potionHiddenGuide">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </ul>
+        </ul>
+    </div>
+
+    <div class="guideBox">
+        <ul>
+            <li class="categories">Tarot</li>
+            <ul>
+                <li id="buffs">Les Buffs</li>
+                <ul class="buffHiddenGuide">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+                <li id="debuffs">Les Debuffs</li> 
+                <ul  class="debuffHiddenGuide">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+                <li id="luck">Luck</li>
+                <ul class="luckHiddenGuide">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+            </ul>
+        </ul>
+    </div>
+    <div class="guideBox">
+        <ul>
+            <li class="categories">Taverne</li>
+            <ul>
+                <li id="barkeeper">Barkeeper</li>
+                <p class="barkeeperHiddenGuide">Description</p>
+                <li id="lottery">Loterie</li>
+                <p class="lotteryHiddenGuide">Description</p>
+                <li id="stranger">Étrangé</li>
+                <p class="strangerHiddenGuide">Description</p>
+            </ul>
+        </ul>
+    </div>
+    <div class="guideBox">
+        <ul>
+            <li class="categories">Jeu</li>
+            <ul>
+                <li id="commentJouer">Comment jouer?</li>
+                <p class="descriptionJeuHiddenGuide">Description de comment jouer...</p>
+            </ul>
+        </ul>
+    </div>
+    <div class="guideBox">
+        <ul>
+            <li class="categories">Luck</li>
+            <ul>
+                <li id="overallLuck">Plus de chance? - où, quand et comment?</li>
+                <p class="overallLuckHiddenGuide">Description</p>
+            </ul>
+        </ul>
+    </div>
+    <div class="guideBox">
+        <ul>
+            <li class="categories">Gold</li>
+            <ul>
+                <li id="gold">Que faire avec mes pièces d'Or?</li>
+                <p class="goldHiddenGuide">Description</p>
+            </ul>
+        </ul>
+    </div>
+</div>
+
+
+
+<style>
+.guideContainer {
+    color: #ffe5d1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 50vh;
+}
+.guideBox {
+    border: solid;
+    border-color: #281a0e;
+    width: 24vw;
+    flex-wrap: wrap;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height: 35vh;
+    background-image: url('../images/plank.png');
+    background-position: 49% 85%;
+    margin: 10px;
+}
+.guideBox ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0px;
+}
+.guideBox li {
+    list-style-type: none;
+    text-align: center;
+    padding: 0px;
+    cursor: pointer;
+}
+.swordHiddenGuide {
+    display: none;
+}
+.shieldHiddenGuide {
+    display: none;
+}
+.potionHiddenGuide {
+    display: none;
+}
+.buffHiddenGuide {
+    display: none;
+}
+.debuffHiddenGuide {
+    display: none;
+}
+.luckHiddenGuide {
+    display: none;
+}
+.barkeeperHiddenGuide {
+    display: none;
+}
+.lotteryHiddenGuide {
+    display: none;
+}
+.strangerHiddenGuide {
+    display: none;
+}
+.descriptionJeuHiddenGuide {
+    display: none;
+}
+.overallLuckHiddenGuide {
+    display:none;
+}
+.goldHiddenGuide {
+    display: none;
+}
+#épées {
+    text-decoration: underline;
+}
+#boucliers {
+    text-decoration: underline;
+}
+#potions {
+    text-decoration: underline;
+}
+#buffs {
+    text-decoration: underline;
+}
+#debuffs {
+    text-decoration: underline;
+}
+#luck {
+    text-decoration: underline;
+}
+#barkeeper {
+    text-decoration: underline;
+}
+#lottery {
+    text-decoration: underline;
+}
+#stranger {
+    text-decoration: underline;
+}
+#commentJouer {
+    text-decoration: underline;
+}
+#overallLuck {
+    text-decoration: underline;
+}
+#gold {
+    text-decoration: underline;
+}
+.categories {
+    font-weight: bolder;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+</style>
+
+<script>
+    // Fonction pour rendre des elements visible en utilisant leurs classes
+    function toggleListVisibility(className) {
+      let list = document.querySelector("." + className);
+      if (list) {
+        list.style.display =
+          list.style.display === "block" ? "none" : "block";
+      }
+    }
+  
+    //event on click section 1
+    document.getElementById("épées").addEventListener("click", function () {
+      toggleListVisibility("swordHiddenGuide");
+    });
+    document.getElementById("boucliers").addEventListener("click", function () {
+      toggleListVisibility("shieldHiddenGuide");
+    });
+    document.getElementById("potions").addEventListener("click", function () {
+      toggleListVisibility("potionHiddenGuide");
+    });
+    //event on click section 3
+    document.getElementById("buffs").addEventListener("click", function () {
+      toggleListVisibility("buffHiddenGuide");
+    });
+    document.getElementById("debuffs").addEventListener("click", function () {
+      toggleListVisibility("debuffHiddenGuide");
+    });
+    document.getElementById("luck").addEventListener("click", function () {
+      toggleListVisibility("luckHiddenGuide");
+    });
+    //event on click section 3
+    document.getElementById("barkeeper").addEventListener("click", function () {
+      toggleListVisibility("barkeeperHiddenGuide");
+    });
+    document.getElementById("lottery").addEventListener("click", function () {
+      toggleListVisibility("lotteryHiddenGuide");
+    });
+    document.getElementById("stranger").addEventListener("click", function () {
+      toggleListVisibility("strangerHiddenGuide");
+    });
+    //event on click section 4
+    document.getElementById("commentJouer").addEventListener("click", function () {
+      toggleListVisibility("descriptionJeuHiddenGuide");
+    });
+    //event on click section 5
+    document.getElementById("overallLuck").addEventListener("click", function () {
+      toggleListVisibility("overallLuckHiddenGuide");
+    });
+    //event on click section 6
+    document.getElementById("gold").addEventListener("click", function () {
+      toggleListVisibility("goldHiddenGuide");
+    });
+  </script>
+  
+  
