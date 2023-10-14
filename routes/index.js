@@ -6,8 +6,7 @@
 const express = require('express');
 const passport = require('passport');
 const Mots=require('../models/Mots');
-
-
+const Usagers = require('../models/Usagers');
 
 const fonctRoute = require('../config/fonctRoute').fonctRoute;
 
@@ -36,14 +35,21 @@ router.post('/userLogin', (requete, reponse, next) => {
     }
 );
 //page menu
-router.get('/village', isAuthentified, (requete, reponse)=>{
-    const user = requete.user;
-    console.log(requete.user);
-    reponse.render(`village`, {
-        'title': 'village',
-        user : user 
+router.get('/village', isAuthentified, (requete, reponse) => {
+    Usagers.findOne({ email: requete.session.passport.user })
+    .populate('inventaire')
+    .then(user => {
+        reponse.render('village', {
+            'title': 'village',
+            'user': user 
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        reponse.status(500).send('Erreur lors de la récupération des données.');
     });
 });
+
 router.get('/taverne', isAuthentified, (requete, reponse)=>{
     const user = requete.user;
     reponse.render(`taverne`, {
