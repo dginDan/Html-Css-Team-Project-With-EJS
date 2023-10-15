@@ -1,30 +1,69 @@
 <%- include ('./partials/navigation') %>
-<div class="container mt-5">
+<div class="container mt-5 custom-container">
     <div class="row">
+        
+        <!-- Catégories -->
         <div class="col-md-3">
             <h3>Catégories</h3>
+            <p class="gold-balance">Vous avez <%= user.gold %> pièces d'or</p>
             <ul class="list-group">
                 <li class="list-group-item"><a href="/items/shop"><i class="fas fa-list"></i> Tous les articles</a></li>
                 <li class="list-group-item"><a href="/items/shop?categorie=Boucliers"><i class="fas fa-shield-alt"></i> Boucliers</a></li>
                 <li class="list-group-item"><a href="/items/shop?categorie=Armes"><i class="fas fa-broom"></i> Armes</a></li>
                 <li class="list-group-item"><a href="/items/shop?categorie=Potions"><i class="fas fa-flask"></i> Potions</a></li>
             </ul>
-        </div>
-        <div class="col-md-9">
-            <div class="row">
-                <% items.forEach(item => { %>
-                    <div class="col-md-3 mb-4">
-                        <div class="card h-100 shadow-sm">
-                            <img class="card-img-top" src="/assets/<%= item.imageItem %>" alt="<%= item.nom %>">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title"><%= item.nom %></h5>
-                                <p class="card-text"><%= item.prix %>$</p>
-                                <a href="#" class="btn btn-custom">Ajouter au panier</a>
-                            </div>
-                        </div>
-                    </div>
-                <% }); %>
+            <div class="container mt-5 mb-5">
+                <a href="/village" class="btn btn-custom">Retour à l'accueil</a>
             </div>
         </div>
+
+        <!--Section items -->
+        <div class="col-md-6">
+    <div class="row">
+        <% items.forEach(item => { %>
+            <!-- Ajout de la marge à droite -->
+            <div class="col-md-4 mb-4 mr-3">
+                <div class="card h-100 shadow-sm">
+                    <img class="card-img-top" src="/assets/<%= item.imageItem %>" alt="<%= item.nom %>">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><%= item.nom %></h5>
+                        <p class="card-text"><%= item.prix %> pièces d'or</p>
+                        <form action="/items/ajouter-au-panier/<%= item._id %>" method="POST">
+                            <button type="submit" class="btn btn-custom">Ajouter au panier</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
     </div>
+</div>
+
+       <!-- Section Panier -->
+       <div class="col-md-3">
+    <div class="cart bg-light p-4 rounded shadow-sm">
+        <h4 class="mb-4">Panier</h4>
+        <% if(cart && cart.items.length > 0) { %>
+            <% cart.items.forEach(item => { %>
+                <div class="cart-item mb-3">
+                    <strong><%= item.nom %></strong>
+                    <br>
+                    <span class="badge badge-primary mr-2"><i class="fas fa-coins"></i> <%= item.prix %> pièces d'or</span>
+                    <span class="badge badge-success"><i class="fas fa-box"></i> Quantité : <%= item.quantite %></span>
+                    <hr>
+                </div>
+            <% }); %>
+            <strong>Total :</strong> <%= cart.total %> pièces d'or
+            <form action="/items/acheter-panier" method="POST" class="mt-2">
+                <button type="submit" class="btn btn-custom btn-block">Ajouter a l'inventaire</button>
+            </form>
+            <!-- Bouton Vider le panier à l'intérieur de la condition -->
+            <form action="/items/vider-panier" method="POST" class="mt-2">
+                <button type="submit" class="btn btn-danger btn-block">Vider le panier</button>
+            </form>
+        <% } else { %>
+            <p class="text-muted">Votre panier est vide.</p>
+        <% } %>
+    </div>
+</div>
+</div>
 </div>

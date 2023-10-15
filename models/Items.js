@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 
 let schemaItem = mongoose.Schema({
     
-    _id:  { 
-        type: String,
-    },
+    _id: mongoose.Schema.Types.ObjectId,
+    
     nom: {
         type: String,
         required: true,
@@ -18,7 +17,7 @@ let schemaItem = mongoose.Schema({
         required: true,
     },
     prix: {
-        type: String,  
+        type: Number,  
         required: true
     },
     imageItem: {

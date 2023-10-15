@@ -7,6 +7,7 @@ body {
 .login {
     color: #ffe5d1;
 }
+
 .imgProfil {
     width: 100px;
 }
@@ -270,6 +271,14 @@ body {
     height: auto;
 }
 
+.link-inventaire {
+    color: #000000;
+}
+
+.link-inventaire:hover {
+    color: #502308; 
+}
+
 #boutonShop {
     position: absolute;
     top: 20%;
@@ -385,6 +394,12 @@ body {
 /*Fin du css pour accueil et taverne */
 
 /*Début du css pour shop */
+
+.custom-container {
+    max-width: 100%;
+    margin-left: 0;
+}
+
 .col-md-3 h3 {
     color: #8b572a; 
     font-weight: bold;
@@ -424,5 +439,13 @@ body {
     border-color: #d7a66b ;
     color:#502308 ;
 } 
+
+.badge-primary {
+    background-color: #d7a66b; 
+}
+
+.badge-success {
+    background-color: #8b572a; 
+}
 /*Fin du css pour shop */
 

@@ -26,8 +26,10 @@
             <% if (typeof(user) !="undefined"){ %>
                 <p style="font-weight: bold;"><span class="characterKeywords1">Utilisateur:</span> <%= user.nom %></p>
                 <p></p>
-                <p style="font-weight: bold;"><span class="characterKeywords2">Classe:</span> <%= user.characterClass %></p>
-                <p style="font-weight: bold;"><span class="characterKeywords3">Équipement:</span> <span id="itemsOrNone"><%= user.inventory == undefined? "Vous n'avez aucun item en votre possession!" : user.inventory %></span></p>
+                <p style="font-weight: bold;"><span class="characterKeywords">Classe:</span> <%= user.characterClass %></p>
+                <p style="font-weight: bold;"><span class="characterKeywords">Équipement:</span> 
+                    <a href="/inventaire" class="link-inventaire">Voir mon inventaire</a>
+                </p>
                 <br>
                 <div style="display: flex;"><img style="height: 32px;width: auto; margin-top: -8px;" src="images/coins.png" alt=""><p style="font-weight: bold;"> <%= user.gold == undefined? '0' : user.gold %>&nbsp;</p><p class="characterKeywords4" style="font-weight: bold;">pièces d'or</p></div>
             <% } %>

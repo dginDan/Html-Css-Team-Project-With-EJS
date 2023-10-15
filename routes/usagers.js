@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const nodeJSpath = require('path');
 const fs = require('fs').promises; 
 //les schemas
+const Items = require('../models/Items'); 
 const Usagers = require('../models/Usagers');
 //3x is = role d'un user & ses droits expliquer dans config/auth
 const {isAuthentified, isAdmin, isGestion} = require('../config/auth');
@@ -443,6 +444,25 @@ router.post('/editPassword', isAuthentified, (requete, reponse) => {
                 });
         });
     }
+});
+
+// Inventaire de l'usager
+router.get('/inventaire', isAuthentified, (requete, reponse) => {
+    Usagers.findOne({ email: requete.session.passport.user })
+    .populate('inventaire.item')
+    .then(user => {
+        if (!user) {
+            throw new Error('Utilisateur non trouvé');
+        }
+        reponse.render('inventaire', {
+            user: user,
+            items: user.inventaire
+        });
+    })
+    .catch(err => {
+        console.error(err);
+        reponse.status(500).send('Erreur lors de la récupération de l\'inventaire.');
+    });
 });
 
 
