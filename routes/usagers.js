@@ -12,13 +12,13 @@ const fs = require('fs').promises;
 //les schemas
 const Usagers = require('../models/Usagers');
 //3x is = role d'un user & ses droits expliquer dans config/auth
-const {isAuthentified, isAdmin, isGestion} = require('../config/auth');
+const {isAuthentified, isAdmin, isGestion, isModerateur} = require('../config/auth');
 const { error } = require('console');
 
 const router = express.Router();
 
 //page qui liste les users
-router.get('/listeUsers', isGestion, (requete, reponse)=>{
+router.get('/listeUsers', isAdmin, (requete, reponse)=>{
     const user = requete.user;
 
     Usagers.find({}).sort({date: -1}).exec()

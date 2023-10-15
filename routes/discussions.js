@@ -2,10 +2,11 @@ const Discussions = require("../models/discussions");
 const express = require('express');
 const router = express.Router();
 const mongoose =require("mongoose");
-const discussions = require("../models/discussions");
+const {isAuthentified, isModerateurAuteurCommentaire,isModerateurAuteurDiscussion} = require('../config/auth');
 
 
-router.get('/', (requete, reponse) => {
+
+router.get('/',isAuthentified, (requete, reponse) => {
     const user = requete.user;
     Discussions.find({}).sort({date: -1}).exec()
     .then(listeDiscussions => {
@@ -17,16 +18,17 @@ router.get('/', (requete, reponse) => {
     })
 });    
 
-router.get('/ajouter', (requete, reponse) => {
+router.get('/ajouter',isAuthentified, (requete, reponse) => {
     const user = requete.user;
        reponse.render('discussions/ajouter', {
         titrePage: "Ajout d'une discussion",
         user: user
     });
 });
-router.post('/ajouter',  (requete, reponse, next) => {
+router.post('/ajouter',isAuthentified,  (requete, reponse, next) => {
 const {titre,commentaire}=requete.body;
 const user = requete.user;
+
        
     if ((typeof titre === null || titre.trim().length === 0 ) || (typeof commentaire === null || commentaire.trim().length === 0 ) )
     
@@ -39,7 +41,9 @@ const user = requete.user;
         const date = nouvelleDate.toDateString();
         const message =commentaire;
         const auteur=user.nom;
-        const nouvellediscussion= new Discussions({_id,titre,auteur,date,message})
+        const courriel=user.email
+        console.log('discussion email', courriel);
+        const nouvellediscussion= new Discussions({_id,titre,auteur,date,courriel,message})
         nouvellediscussion.save()
         .then(()=>{
         requete.flash('success_msg','Discussion ajouté avec succes');
@@ -50,18 +54,20 @@ const user = requete.user;
 
 
 });
-router.get('/supprimer/:_id',  (requete, reponse, next) => {
+router.get('/supprimer/:_id',isModerateurAuteurDiscussion,  (requete, reponse, next) => {
     const id = requete.params._id;
-
+    console.log('1');
     Discussions.findOneAndDelete({ '_id': id }).exec()
         .then(siSupprimé => {
+            console.log('2');
             requete.flash('success_msg', `La discussion a été supprimé avec succès`);
+            console.log('3');
             reponse.redirect('/discussions');
         })
         .catch(err => console.log('supression ne fonctionne pas  ' + err))
 });
 
-router.get('/commentaires/:_id', (requete, reponse) => {
+router.get('/commentaires/:_id',isAuthentified, (requete, reponse) => {
     const user = requete.user;
     const id = requete.params._id;
     Discussions.find({"_id":id}).exec()
@@ -74,7 +80,7 @@ router.get('/commentaires/:_id', (requete, reponse) => {
     })
 });
 
-router.get('/commentaires/ajouter/:_id', (requete, reponse) => {
+router.get('/commentaires/ajouter/:_id',isAuthentified, (requete, reponse) => {
     const user = requete.user;
     const _id = requete.params._id;
     reponse.render('discussions/ajouterCommentaire', {
@@ -83,13 +89,15 @@ router.get('/commentaires/ajouter/:_id', (requete, reponse) => {
         _id
     });
 });
-router.post('/commentaires/ajouter/:_id', (requete, reponse) => {
+router.post('/commentaires/ajouter/:_id',isAuthentified, (requete, reponse) => {
     const user = requete.user;
     const nouvelleDate = new Date();
     const date = nouvelleDate.toDateString();
     const id = requete.params._id;
+    const auteur= user.nom;
+    const courriel= user.email;
     const commentaire=requete.body.commentaire;
-    const message={auteur:user.nom,date:date,commentaire:commentaire}
+    const message={auteur:auteur,date:date,courriel:courriel,commentaire:commentaire}
     let filtre = {"_id": id};
     let options = {$push: {
         commentaires: {
@@ -100,23 +108,24 @@ router.post('/commentaires/ajouter/:_id', (requete, reponse) => {
     Discussions.findOneAndUpdate(filtre, options).exec()
     .then(()=>{
         requete.flash('success_msg', 'Commentaire ajouté avec succes');
-        reponse.redirect('/discussions');  
+        reponse.redirect(`/discussions/commentaires/${id}`);  
     })
    .catch(err => console.log(err));
 
 });
 
-router.get('/commentaire/supprimer/:info',  (requete, reponse, next) => {
+router.get('/commentaire/supprimer/:info',isModerateurAuteurCommentaire,  (requete, reponse, next) => {
    const info = requete.params.info.split(",");
+   console.log('info  .. ', info);
  
     const id = info.shift();
+    const courriel=info.shift();
     const commentaire =info.shift();
-    console.log('comm sup',id, commentaire);
     let filtre = {"_id": id};
     Discussions.findOneAndUpdate(filtre,  { $pull: { commentaires: {commentaire}  } }).exec()
         .then(siSupprimé => {
             requete.flash('success_msg', `le commentaire a été supprimé avec succès`);
-            reponse.redirect('/discussions');
+            reponse.redirect(`/discussions/commentaires/${id}`);
         })
         .catch(err => console.log('supression ne fonctionne pas  ' + err))
 });

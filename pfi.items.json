@@ -1,0 +1,130 @@
+[{
+  "_id": {
+    "$oid": "65280010e07763312a62e83e"
+  },
+  "nom": "Épée en argent",
+  "description": "",
+  "prix": "5",
+  "imageItem": "épéeArgent.png",
+  "categorie": "Armes"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e842"
+  },
+  "nom": "Épée turquoise",
+  "description": "",
+  "prix": "5",
+  "imageItem": "épéeTurquoise.png",
+  "categorie": "Armes"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e845"
+  },
+  "nom": "Potion mauve",
+  "description": "",
+  "prix": "2",
+  "imageItem": "potionMauve.png",
+  "categorie": "Potions"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e847"
+  },
+  "nom": "Potion vert",
+  "description": "",
+  "prix": "2",
+  "imageItem": "potionVert.png",
+  "categorie": "Potions"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e840"
+  },
+  "nom": "Épée Noir",
+  "description": "",
+  "prix": "5",
+  "imageItem": "épéeNoir.png",
+  "categorie": "Armes"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e843"
+  },
+  "nom": "Potion bleu",
+  "description": "",
+  "prix": "2",
+  "imageItem": "potionBleu.png",
+  "categorie": "Potions"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e846"
+  },
+  "nom": "Potion rouge",
+  "description": "",
+  "prix": "2",
+  "imageItem": "potionRouge.png",
+  "categorie": "Potions"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e848"
+  },
+  "nom": "Bouclier rouge",
+  "description": "",
+  "prix": "10",
+  "imageItem": "bouclierRouge.png",
+  "categorie": "Boucliers"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e84a"
+  },
+  "nom": "Bouclier en bois",
+  "description": "",
+  "prix": "10",
+  "imageItem": "bouclierBois.png",
+  "categorie": "Boucliers"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e83f"
+  },
+  "nom": "Épée en bronze",
+  "description": "",
+  "prix": "5",
+  "imageItem": "épéeBronze.png",
+  "categorie": "Armes"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e841"
+  },
+  "nom": "Épée en or",
+  "description": "",
+  "prix": "5",
+  "imageItem": "épéeOr.png",
+  "categorie": "Armes"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e844"
+  },
+  "nom": "Potion jaune",
+  "description": "",
+  "prix": "2",
+  "imageItem": "potionJaune.png",
+  "categorie": "Potions"
+},
+{
+  "_id": {
+    "$oid": "65280010e07763312a62e849"
+  },
+  "nom": "Bouclier bleu",
+  "description": "",
+  "prix": "10",
+  "imageItem": "bouclierBleu.png",
+  "categorie": "Boucliers"
+}]

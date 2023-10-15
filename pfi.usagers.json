@@ -1,0 +1,144 @@
+[{
+  "_id": "651eaa295574efb54036db8f",
+  "nom": "Test",
+  "email": "test@gmail.com",
+  "password": "$2a$10$4Ydn07v6T0ddi8P3IBjnFOcIhq70ija.bhVEvIxFBzEh1XXMUykK.",
+  "nomImage": "b209230f353cc92fa9aa275f0a9a2c15",
+  "roles": [
+    "normal"
+  ],
+  "characterClass": "Warrior",
+  "date": {
+    "$date": "2023-10-05T12:20:57.109Z"
+  },
+  "__v": 0
+},
+{
+  "_id": "651ec8d551828224e9b2355b",
+  "nom": "Blykes",
+  "email": "Blykes@gmail.com",
+  "password": "$2a$10$0RAZgBUDY7n77tgU.BnQ/O0.2r0yCsCG6FRpe0LiorvMGmfCe/MNi",
+  "nomImage": "60ad3345c1db5dd91b96cb99772ad12f",
+  "roles": [
+    "normal"
+  ],
+  "characterClass": "Archer",
+  "gold": "10",
+  "date": {
+    "$date": "2023-10-05T14:31:49.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": "652091d9eb4859cceb29f92c",
+  "nom": "Ashkel",
+  "email": "Allanjoshuaf@hotmail.com",
+  "password": "$2a$10$C.mvdtbi0/UVAr0LmqopxeJzQT0JiEG6DkDzzZHUqErwLnyA2dwQC",
+  "nomImage": "8699be6d8aa74663fdd481b6dbbdf011",
+  "roles": [
+    "normal"
+  ],
+  "characterClass": "Mage",
+  "gold": "10",
+  "date": {
+    "$date": "2023-10-06T23:01:45.575Z"
+  },
+  "__v": 0
+},
+{
+  "_id": "6521cc42c29382881fc0e6ed",
+  "nom": "Jess",
+  "email": "jess@gmail.com",
+  "password": "$2a$10$Ajj0St6fPEFAuEzsSy/DH.diGFeLGMMa8zy4gr0UFGJ0LicP7bdN.",
+  "nomImage": "85c7a58900b69ae2499421b570507e53",
+  "roles": [
+    "normal"
+  ],
+  "characterClass": "Archer",
+  "gold": 9688,
+  "date": {
+    "$date": "2023-10-07T21:23:14.632Z"
+  },
+  "__v": 65,
+  "inventaire": [
+    {
+      "item": {
+        "$oid": "65280010e07763312a62e845"
+      },
+      "quantite": 1,
+      "_id": {
+        "$oid": "652ab9c99d34d0a4718ef9fc"
+      }
+    },
+    {
+      "item": {
+        "$oid": "65280010e07763312a62e83e"
+      },
+      "quantite": 1,
+      "_id": {
+        "$oid": "652abcab9d34d0a4718efb0d"
+      }
+    },
+    {
+      "item": {
+        "$oid": "65280010e07763312a62e842"
+      },
+      "quantite": 1,
+      "_id": {
+        "$oid": "652abcab9d34d0a4718efb0e"
+      }
+    }
+  ],
+  "cart": {
+    "items": [],
+    "total": 0
+  }
+},
+{
+  "_id": "652c3d0273a659531996481c",
+  "nom": "Wade Wilson",
+  "email": "deadpool@gmail.com",
+  "password": "$2a$10$kaLgVwj3BlaEjHHsnSs9KOK4UWwRZait1nJMc1it.kEPf0VQhka3W",
+  "nomImage": "085cd3141b94fe25f823b2ebf2e56b30",
+  "roles": [
+    "normal"
+  ],
+  "characterClass": "Warrior",
+  "gold": "10",
+  "date": {
+    "$date": "2023-10-15T19:26:58.118Z"
+  },
+  "__v": 0
+},
+{
+  "_id": "652c3d1d73a659531996481f",
+  "nom": "Alain",
+  "email": "alain@gmail.com",
+  "password": "$2a$10$xj9vypSWjP..XrAmbuuJfOnMiEfNHbCp8O8I6OGV7Zeq5om0aiAaC",
+  "nomImage": "7b2f70453f88130e8b0c5081b73d8bd2",
+  "roles": [
+    "normal"
+  ],
+  "characterClass": "Mage",
+  "gold": "10",
+  "date": {
+    "$date": "2023-10-15T19:27:25.914Z"
+  },
+  "__v": 0
+},
+{
+  "_id": "652c3f1b73a659531996484f",
+  "nom": "Porco Rosso",
+  "email": "porco@gmail.com",
+  "password": "$2a$10$1ST7P8ZDVtoAhgRa0K4Kne6ytjgAIfP7lnS9CqDjcwECQ0/8BUP2u",
+  "nomImage": "4f3aaf4298206c35c1d32c5b3bb8c9e5",
+  "roles": [
+    "normal"
+  ],
+  "characterClass": "Archer",
+  "gold": "10",
+  "date": {
+    "$date": "2023-10-15T19:35:55.109Z"
+  },
+  "__v": 0
+}]

@@ -21,9 +21,9 @@
              index++; %>
             <thead>
                 <tr>
-                    <th><%info = [id, commentaire.commentaire]; %>
+                    <th><%info = [id,commentaire.courriel,commentaire.commentaire]; %>
                       
-                      <h3><% if (user.roles.includes('moderateur')) {%><a href="/discussions/commentaire/supprimer/<%-info%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
+                      <h3><% if (user.roles.includes('moderateur')||(user.email===commentaire.courriel)) {%><a href="/discussions/commentaire/supprimer/<%-info%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
                       <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer le commentaire"> </i>
                       </a><%}%><%=commentaire.auteur%> </h3></th>            
                 </tr>
