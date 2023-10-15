@@ -97,7 +97,6 @@ body {
 
 .loginContainer {
     align-items: center;
-    padding: 0;
     width: 600px;
 }
 
@@ -107,6 +106,7 @@ body {
     background-color: #ffe5d1;
     height: 30px;
     margin-top: 4px;
+    margin-right: -50px;
 }
 .buttonNav {
     text-decoration: none;
@@ -119,6 +119,7 @@ body {
 .rightButtons {
     display: flex;
     justify-content: flex-end;
+    padding-right: 25px;
 }
 .searchContainer {
     background-color: #8b572a;
@@ -369,7 +370,15 @@ body {
     opacity: 0.75;
 }
 
-.characterKeywords {
+.characterKeywords1 {
+    font-weight: bolder;
+    color: #814f38;
+}
+.characterKeywords2 {
+    font-weight: bolder;
+    color: #814f38;
+}
+.characterKeywords3 {
     font-weight: bolder;
     color: #814f38;
 }
