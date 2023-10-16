@@ -19,7 +19,7 @@
           <tbody>
          <% for (let discussion of liste){ %>
            <tr >
-             <td><h5><% if (user.roles.includes('moderateur')) {%><a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
+             <td><h5><% if (user.roles.includes('moderateur')||user.email===discussion.courriel) {%><a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
               <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer la discussions"> </i>
               </a><%}%><a href="/discussions/commentaires/<%=discussion._id%>"> <%= discussion.titre %></a></h5>
              </td>

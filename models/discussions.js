@@ -22,6 +22,10 @@ let schemaDiscussions = mongoose.Schema({
         type: String,
         required: true
     },
+    courriel:{
+        type: String,
+        required: true
+    },
     commentaires: [ ]
    
 });
