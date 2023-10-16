@@ -5,8 +5,6 @@ const bartenderDialogue = document.getElementById('bartenderDialogue');
 const mysteryManDialogue = document.getElementById('mysteryManDialogue');
 
 
-
-
 const bartenderDialoguesFr = [
     "Bartender: Une tite bière mon Pierre?",
     "Bartender: Si tu vas magasiner des potions, tu peux récupérer des points de vie!",
@@ -25,8 +23,6 @@ const mysteryManDialoguesFr = [
     "Mysterious Man: ...",
     "Mysterious Man: J'ai exercé mes fonctions! Laisse moi tranquille!"
 ];
-
-
 
 
 //initialization du dialogue à la position 0 du tableau
