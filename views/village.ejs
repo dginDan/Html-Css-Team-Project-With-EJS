@@ -1,4 +1,5 @@
 <%- include ('./partials/navigation') %>
+<%- include ('./partials/messages') %>
 <div id="accueilBox">
     <div id="accueil">
         <div id="villagePic">
@@ -39,5 +40,11 @@
             <p id="pressPlay"><%= translations.pressPlay %></p>
             <p id="pressShop"><%= translations.pressShop %></p>
             <p id="pressTavern"><%= translations.pressTavern %></p>
+            <!-- pour admin & gestion = if user admin || gestion = toggle list user-->
+            <% if (typeof user != "undefined") { %>
+                <% if (user.roles.includes('admin') || user.roles.includes('gestion')) {%>
+                    <a href="/listeUsers" class="btn btn-primary btn-block mb-2">Affichage de la liste des usagers</a>
+                    <% } %>
+            <% } %>
         </div>
 </div>
