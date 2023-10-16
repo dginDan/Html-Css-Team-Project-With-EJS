@@ -1,23 +1,26 @@
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body text-center">
-            <%- include ('./partials/messages') %>
-            <h1><i class="fas fa-sign-in-alt"></i> Login</h1>
-            <form action="/userLogin" method="post">
+<%- include ('./partials/messages') %>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body text-center login-container">
+                <h1 class="login-header"><i class="fas fa-gamepad"></i> Connectez-vous et Jouez</h1>
                 <br>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="abc@yandex.com">
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="••••••••••">
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <a href="./ajoutUsagerClient" class="btn btn-primary btn-block">Créer un compte</a>
-            </form>
+                <form action="/userLogin" method="post">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Adresse Email</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Entrez votre email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> Mot de Passe</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de passe">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary custom-button">Se connecter</button>
+                    <p class="create-account-link">Pas encore de compte? <a href="./ajoutUsagerClient">Créez-en un</a></p>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+<div class="background-image"></div>
