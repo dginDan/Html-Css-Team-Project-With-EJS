@@ -1,0 +1,27 @@
+<%- include ('./partials/navigation') %>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Inventaire de <%= user.nom %></h2>
+    <p class="text-center">Il vous reste <%= user.gold %> pièces d'or</p>
+    <div class="text-center mt-5">
+        <a href="/village" class="btn btn-custom mr-2">Retour à l'accueil</a>
+        <a href="/items/shop" class="btn btn-custom">Retour à la boutique</a>
+    </div>
+    
+    <div class="row mt-5">
+        <% items.forEach(entry => { %>
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <img src="/assets/<%= entry.item.imageItem %>" alt="<%= entry.item.nom %>" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= entry.item.nom %></h5>
+                        <p class="card-text"><%= entry.item.description %></p>
+                        <p class="card-text">Quantité: <%= entry.quantite %></p>
+                        <form action="/items/supprimer/<%= entry.item._id %>" method="POST">
+                            <button type="submit" class="btn btn-custom">Supprimer l'item</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>

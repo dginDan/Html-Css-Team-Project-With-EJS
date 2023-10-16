@@ -41,13 +41,24 @@ let schemaUsager = mongoose.Schema({
         enum: ['Warrior', 'Mage', 'Archer']  // Les classes disponibles
       },
     gold: {
-        type: String,
+        type: Number,
         default:10
     },
     sword: {
         type:String,
         required:false
-    }
+    },
+    cart: {
+        items: [{
+            itemId: { type: mongoose.Schema.Types.ObjectId, ref: 'items' },
+            quantite: { type: Number, default: 1 }
+        }],
+        total: { type: Number, default: 0 }
+    },
+    inventaire: [{
+        item: { type: mongoose.Schema.Types.ObjectId, ref: 'items' },
+        quantite: { type: Number, default: 1 }
+    }]
 });
 
 let Usagers = module.exports = mongoose.model('usagers', schemaUsager);
