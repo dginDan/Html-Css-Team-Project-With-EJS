@@ -6,10 +6,8 @@
 const express = require('express');
 const passport = require('passport');
 
-
 const Usagers = require('../models/Usagers');
 let userLanguage = 'fr';
-const fonctRoute = require('../config/fonctRoute').fonctRoute;
 
 //3x is = role d'un user & ses droits expliquer dans config/auth
 const {isAuthentified, isAdmin, isGestion} = require('../config/auth');
