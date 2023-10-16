@@ -430,6 +430,7 @@ body {
     border-color: #d7a66b ;
     color:#502308 ;
 } 
+<<<<<<< HEAD
 
 .badge-primary {
     background-color: #d7a66b; 
@@ -439,4 +440,60 @@ body {
     background-color: #8b572a; 
 }
 /*Fin du css pour shop */
+=======
+>>>>>>> 50fd677db1f794ebcf7dcc444885506c11c8fd06
 
+.badge-primary {
+    background-color: #d7a66b; 
+}
+
+.badge-success {
+    background-color: #8b572a; 
+}
+/*Fin du css pour shop */
+.background-image {
+    background-image: url('../images/villageBackgroundPlaceholder.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    opacity: 0.7;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: -1;
+}
+
+/* Pour la page choix de la classe */
+.class-card {
+    border: 2px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.class-card img {
+    width: 300px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.class-card.hover {
+    border: 2px solid #666;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.class-card.selected {
+    border: 2px solid #007bff;  /* Couleur bleue de Bootstrap pour la cohérence */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+/* Fin */
+/*Pour montrer l'image qu'on va uploader*/
+#imagePreview {
+    width: 200px;
+    height: auto;
+    max-height: 500px;
+    display: none;
+}
