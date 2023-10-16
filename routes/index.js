@@ -7,7 +7,7 @@ const express = require('express');
 const passport = require('passport');
 const Mots=require('../models/Mots');
 const Usagers = require('../models/Usagers');
-
+let userLanguage = 'fr';
 const fonctRoute = require('../config/fonctRoute').fonctRoute;
 
 //3x is = role d'un user & ses droits expliquer dans config/auth
@@ -34,14 +34,25 @@ router.post('/userLogin', (requete, reponse, next) => {
     })(requete, reponse, next);
     }
 );
+//set du language de l'utilisateur
+router.get('/setLanguage/:lang', (req, res) => {
+    const lang = req.params.lang; 
+    req.session.userLanguage = lang; 
+    userLanguage = lang;
+    res.redirect('back'); 
+    console.log(userLanguage);
+    console.log("Langue sélectionnée : ", lang);
+  });
 //page menu
 router.get('/village', isAuthentified, (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     Usagers.findOne({ email: requete.session.passport.user })
     .populate('inventaire')
     .then(user => {
         reponse.render('village', {
             'title': 'village',
-            'user': user 
+            'user': user,
+            'translations': reponse.locals.translations[userLanguage],
         });
     })
     .catch(err => {
@@ -51,17 +62,22 @@ router.get('/village', isAuthentified, (requete, reponse) => {
 });
 
 router.get('/taverne', isAuthentified, (requete, reponse)=>{
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     reponse.render(`taverne`, {
         'title': 'taverne',
-        user : user 
+        user : user,
+        userLanguage : userLanguage,
+        'translations': reponse.locals.translations[userLanguage],
     });
 });
 router.get('/guide', (requete, reponse)=>{
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     reponse.render(`guide`, {
         'title': 'Guide de jeu',
-        user : user 
+        user : user,
+        'translations': reponse.locals.translations[userLanguage],
     });
 });
 // bouton quitter qui renvoit à page login '/'

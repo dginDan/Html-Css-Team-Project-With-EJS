@@ -204,7 +204,9 @@ body {
     border-style: ridge;
     margin-top: -10px;
 }
-
+.highlight {
+    color: rgb(59, 59, 196);
+}
 #villagePic {
     background-image: url('../images/villageBackgroundPlaceholder.png');
     background-size: cover;
@@ -306,12 +308,20 @@ body {
     justify-content: center;
 }
 
-#boutonBartender:hover{
+#boutonBartenderEn:hover{
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+#boutonBartenderFr:hover{
     background-color: #f2ceb7;
     cursor: pointer; 
 }
 
-#boutonMysteryMan:hover{
+#boutonMysteryManEn:hover{
+    background-color: #f2ceb7;
+    cursor: pointer; 
+}
+#boutonMysteryManFr:hover{
     background-color: #f2ceb7;
     cursor: pointer; 
 }
@@ -321,13 +331,23 @@ body {
     cursor: pointer; 
 }
 
-#boutonBartender {
+#boutonBartenderEn {
+    position: absolute;
+    left: 35%;
+    top: 35%;
+}
+#boutonBartenderFr {
     position: absolute;
     left: 35%;
     top: 35%;
 }
 
-#boutonMysteryMan {
+#boutonMysteryManFr {
+    position: absolute;
+    right: 35%;
+    top: 35%;
+}
+#boutonMysteryManEn {
     position: absolute;
     right: 35%;
     top: 35%;
@@ -387,7 +407,7 @@ body {
     font-weight: bolder;
     color: #814f38;
 }
-.characterKeywords3 {
+#characterKeywords3 {
     font-weight: bolder;
     color: #814f38;
 }

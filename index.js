@@ -11,6 +11,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const multer = require("multer");
 const upload = multer({dest:'./uploads'});
+const enTranslations = require('./locales/en.json');
+const frTranslations = require('./locales/fr.json');
 
 
 const storage = multer.diskStorage({
@@ -39,7 +41,7 @@ db.on('error', (err) => {
 });
 db.once('open', () => {
     console.log('Connexion à la dataBase réussi !');
-})
+});  
 
 // configuration de Express et des intergiciels
 app.use(expressLayouts);
@@ -72,6 +74,14 @@ app.use(
         next();
     }
 );
+//middleware pour translation
+app.use((req, res, next) => {
+    res.locals.translations = {
+      en: enTranslations,
+      fr: frTranslations,
+    };
+    next();
+  });
 
 app.use('/items', require('./routes/items'));
 app.use (require('./routes/usagers'));
@@ -81,14 +91,6 @@ app.use('/', require('./routes/index'));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
-
-
-const i18n = require('./config/i18nConfig');
-
-console.log(i18n.getLocales()); 
-console.log(i18n.setLocale('fr')); 
-console.log(i18n.__('Hello')); 
-console.log(i18n.__n('You have %s message', 5)); 
 
 app.listen( PORT,  console.log(`Serveur démarré sur le port ${PORT} `));
 

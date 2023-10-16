@@ -8,6 +8,7 @@ const router = express.Router();
 
 // Affichage de la page Shop
 router.get('/shop', isAuthentified, (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     const categorie = requete.query.categorie;
     const user = requete.user;
     let query = {};
@@ -40,7 +41,8 @@ router.get('/shop', isAuthentified, (requete, reponse) => {
             reponse.render('shop', {
                 items: data.items,
                 user: user,
-                cart: data.cart
+                cart: data.cart,
+                'translations': reponse.locals.translations[userLanguage],
             });
         })
         .catch(err => {

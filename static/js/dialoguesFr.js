@@ -1,11 +1,13 @@
 //Setup des dialogues avec les NPCs
-const boutonBartender = document.getElementById('boutonBartender');
+const boutonBartenderFr = document.getElementById('boutonBartenderFr');
+const boutonMysteryManFr = document.getElementById('boutonMysteryManFr');
 const bartenderDialogue = document.getElementById('bartenderDialogue');
-const boutonMysteryMan = document.getElementById('boutonMysteryMan');
 const mysteryManDialogue = document.getElementById('mysteryManDialogue');
 
 
-const bartenderDialogues = [
+
+
+const bartenderDialoguesFr = [
     "Bartender: Une tite bière mon Pierre?",
     "Bartender: Si tu vas magasiner des potions, tu peux récupérer des points de vie!",
     "Bartender: Plus ton arme vaut cher, plus t'es puissant! ...Naturellement",
@@ -16,7 +18,7 @@ const bartenderDialogues = [
     "Bartender: AAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!!!!!!!!!!!!!!!"
 ];
 
-const mysteryManDialogues = [
+const mysteryManDialoguesFr = [
     "Mysterious Man: Je suis l'homme mystérieux!",
     "Mysterious Man: Très mystérieux!",
     "Mysterious Man: ...",
@@ -25,33 +27,35 @@ const mysteryManDialogues = [
 ];
 
 
-//initialization du dialogue à la position 0 du tableau
-let indexDialogueBartender = 0;
-//On click du bouton, on affiche le text et commence le dialogue. On incrémente la position dans le tableau avec indexDialogue += 1
-boutonBartender.addEventListener('click', ()=> {
-    const prochainDialogue = bartenderDialogues[indexDialogueBartender];
 
+
+//initialization du dialogue à la position 0 du tableau
+let indexDialogueBartenderFr = 0;
+//On click du bouton, on affiche le text et commence le dialogue. On incrémente la position dans le tableau avec indexDialogue += 1
+boutonBartenderFr.addEventListener('click', ()=> {
+    const prochainDialogue = bartenderDialoguesFr[indexDialogueBartenderFr];
     bartenderDialogue.textContent = prochainDialogue;
-    indexDialogueBartender += 1;
+    indexDialogueBartenderFr += 1;
     bartenderDialogue.classList.add('bartenderTextPadding');
     bartenderDialogue.classList.remove('hiddenBartender');
-    if (indexDialogueBartender > bartenderDialogues.length){
+    if (indexDialogueBartenderFr > bartenderDialoguesFr.length){
         bartenderDialogue.classList.remove('bartenderTextPadding');
     }
 });
 
-
 //initialization du dialogue à la position 0 du tableau
-let indexDialogueMysteryMan = 0;
+let indexDialogueMysteryManFr = 0;
 //On click du bouton, on affiche le text et commence le dialogue. On incrémente la position dans le tableau avec indexDialogue += 1
-boutonMysteryMan.addEventListener('click', ()=>{
-    const prochainDialogue = mysteryManDialogues[indexDialogueMysteryMan];
-
+boutonMysteryManFr.addEventListener('click', ()=>{
+    const prochainDialogue = mysteryManDialoguesFr[indexDialogueMysteryManFr];
     mysteryManDialogue.textContent = prochainDialogue;
-    indexDialogueMysteryMan += 1;
+    indexDialogueMysteryManFr += 1;
     mysteryManDialogue.classList.add('mysteryManTextPadding');
     mysteryManDialogue.classList.remove('hiddenMysteryMan');
-    if (indexDialogueMysteryMan > mysteryManDialogues.length){
+    if (indexDialogueMysteryManFr > mysteryManDialoguesFr.length){
         mysteryManDialogue.classList.remove('mysteryManTextPadding');
     }
-})
+});
+
+
+

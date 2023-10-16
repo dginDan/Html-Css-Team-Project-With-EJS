@@ -21,23 +21,26 @@ const router = express.Router();
 //page qui liste les users
 router.get('/listeUsers', isGestion, (requete, reponse)=>{
     const user = requete.user;
-
+    const userLanguage = requete.session.userLanguage || 'fr';
     Usagers.find({}).sort({date: -1}).exec()
     .then(users => {
     reponse.render(`listeUsagers`, {
         'title': 'Users',
         user : user,
-        'liste': users // liste des users récupérés de la base de données
+        'liste': users, // liste des users récupérés de la base de données
+        'translations': reponse.locals.translations[userLanguage],
         });
     })
 });
 
 // page ajout new user
 router.get('/ajoutUsager', isAdmin, (requete, reponse)=>{
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     reponse.render(`ajoutUsager`, {
         'title': 'New User',
-        user : user 
+        user : user ,
+        'translations': reponse.locals.translations[userLanguage],
             });
 });
 
@@ -133,9 +136,11 @@ router.post('/userAdd', isAuthentified, (requete, reponse)=>{
 //page GET creation user pour le CLIENT
 router.get('/ajoutUsagerClient',(requete, reponse)=>{
     const user = requete.user;
+    const userLanguage = requete.session.userLanguage || 'fr';
     reponse.render(`ajoutUsagerClient`, {
         'title': 'New User',
-        user : user 
+        user : user ,
+        'translations': reponse.locals.translations[userLanguage],
             });
 });
 //page POST creation user pour le CLIENT
@@ -222,6 +227,7 @@ router.post('/userAddClient',(requete, reponse)=>{
 
 // user modifier
 router.get('/modifUsager/:email?', isAuthentified, (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     const email = requete.params.email || user.email;
 
@@ -238,7 +244,8 @@ router.get('/modifUsager/:email?', isAuthentified, (requete, reponse) => {
                     email: myUser.email,
                     admin: admin,
                     gestion: gestion,
-                    emailREADONLY: true
+                    emailREADONLY: true,
+                    'translations': reponse.locals.translations[userLanguage],
                 });
             } else {
                 requete.flash('error_msg', 'Accès non autorisé');
@@ -292,6 +299,7 @@ router.post('/userModif', isAuthentified, (requete, reponse)=>{
 router.get('/editerImage/:email', isAuthentified, (requete, reponse)=>{
     const user = requete.user;
     const email = requete.params.email;
+    const userLanguage = requete.session.userLanguage || 'fr';
     Usagers.findOne({'email': email})
     .then(myUser=>{
         console.log('l\adresse email de l\'usager est:', email);
@@ -300,7 +308,8 @@ router.get('/editerImage/:email', isAuthentified, (requete, reponse)=>{
             user : user,
             email : myUser.email,
             nomImage : myUser.nomImage,
-            emailREADONLY : true
+            emailREADONLY : true,
+            'translations': reponse.locals.translations[userLanguage],
                 });
     })
     .catch(err=> {
@@ -364,6 +373,7 @@ router.post('/editImage', isAuthentified, (requete, reponse)=>{
 //----------------------------------------------------------------------------------------------------Get/Post Pour la page MODIFIER PASSWORD
 // page pwd user modif
 router.get('/editerPWD/:email', isAuthentified, (requete, reponse)=>{
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     const email = requete.params.email;
     Usagers.findOne({'email': email})
@@ -374,7 +384,8 @@ router.get('/editerPWD/:email', isAuthentified, (requete, reponse)=>{
             email : myUser.email,
             newPassword : myUser.newPassword,
             newPassword2 : myUser.newPassword2,
-            emailREADONLY: true
+            emailREADONLY: true,
+            'translations': reponse.locals.translations[userLanguage],
                 });
     })
     .catch(err=> {
@@ -448,6 +459,7 @@ router.post('/editPassword', isAuthentified, (requete, reponse) => {
 
 // Inventaire de l'usager
 router.get('/inventaire', isAuthentified, (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     Usagers.findOne({ email: requete.session.passport.user })
     .populate('inventaire.item')
     .then(user => {
@@ -456,7 +468,8 @@ router.get('/inventaire', isAuthentified, (requete, reponse) => {
         }
         reponse.render('inventaire', {
             user: user,
-            items: user.inventaire
+            items: user.inventaire,
+            'translations': reponse.locals.translations[userLanguage],
         });
     })
     .catch(err => {

@@ -1,8 +1,35 @@
 {
-    "Hello": "Привіт",
-    "You have %s message": {
-       "one": "Ви маєте %s повідомлення",
-       "other": "Ви маєте %s повідомлень"
-    }
- }
- 
+    "home": "Village (Accueil)",
+    "profile": "Profil",
+    "contactUs": "Nous Joindre",
+    "welcome": "Bienvenue, ",
+    "logout": "Se Déconnecter",
+    "tavern": "Taverne",
+    "shop": "Shop",
+    "play":"Jouer!",
+    "user":"Utilisateur: ",
+    "class":"Classe: ",
+    "currentGold":"Pièces d'Or",
+    "inventory":"Voir mon inventaire",
+    "welcomeProject":"Bienvenue sur Project Jjadd!",
+    "pressPlay":"Appuyez sur le bouton Jouer! pour commencer",
+    "pressShop":"Appuyez sur le bouton Shop pour magasiner",
+    "pressTavern":"Appuyez sur le bouton Taverne...",
+    "talk":"Parler",
+    "exit":"Sortir de la taverne",
+    "bartenderSpeech": ["Bartender: Une tite bière mon Pierre?",
+    "Bartender: Si tu vas magasiner des potions, tu peux récupérer des points de vie!",
+    "Bartender: Plus ton arme vaut cher, plus t'es puissant! ...Naturellement",
+    "Bartender: Il y a une rumeur qu'un trésor incroyable peut être obtenu lors d'une victoire contre un Roi Slime...",
+    "Bartender: C'est tout... J'ai tout dis. Scram!",
+    "Bartender: Arrête de me faire perdre mon temps, j'ai du travail à faire et d'la bière à servir!",
+    "Bartender: SCRAM!",
+    "Bartender: AAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!!!!!!!!!!!!!!!"],
+    "mysteryManSpeech": ["Mysterious Man: Je suis l'homme mystérieux!",
+    "Mysterious Man: Très mystérieux!",
+    "Mysterious Man: ...",
+    "Mysterious Man: ...",
+    "Mysterious Man: J'ai exercé mes fonctions! Laisse moi tranquille!"],
+    "lottery": "loterie",
+    "googleSearch": "Rechercher sur Google"
+  }

@@ -1,7 +1,35 @@
 {
-    "Hello": "Hello",
-    "You have %s message": {
-       "one": "You have %s message",
-       "other": "You have %s messages"
-    }
- }
+    "home": "Village (Home)",
+    "profile": "Profile",
+    "contactUs": "Contact us",
+    "welcome": "Welcome, ",
+    "logout": "Logout",
+    "tavern": "Tavern",
+    "shop": "Shop",
+    "play":"Let's Play!",
+    "user":"User: ",
+    "class":"Class: ",
+    "currentGold":"Gold Coins",
+    "inventory":"View inventory",
+    "welcomeProject":"Welcome to Project Jjadd!",
+    "pressPlay":"Press Let's Play! to begin",
+    "pressShop":"Press Shop to buy items",
+    "pressTavern":"Press Tavern to gamble",
+    "talk":"Talk",
+    "exit":"Exit to village",
+    "bartenderSpeech": ["Bartender: Whaddaya want, scumbucket?",
+    "Bartender: Go buy potions if you need extra bonuses",
+    "Bartender: The stronger the weapon, the higher the damage output! ...Obviously.",
+    "Bartender: There's a rumor that a king slime can bring riches...",
+    "Bartender: I've said enough. Go away if you're not gonna drink!",
+    "Bartender: You're wasting my time! Go play with horses or something!",
+    "Bartender: LEAVE ME ALONE",
+    "Bartender: AAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!!!!!!!!!!!!!!!"],
+    "mysteryManSpeech": ["Mysterious Man: I am the mysterious man!",
+    "Mysterious Man: Very mysterious!!",
+    "Mysterious Man: ...",
+    "Mysterious Man: ...",
+    "Mysterious Man: I've completed my function, now leave me alone"],
+    "lottery": "lottery",
+    "googleSearch": "Search Google"
+  }

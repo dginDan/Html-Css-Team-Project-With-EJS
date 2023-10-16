@@ -4,17 +4,17 @@
         <div id="villagePic">
             <div>
                 <a href="/taverne">
-                    <button id="boutonTaverne">Taverne</button>
+                    <button id="boutonTaverne"><%= translations.tavern %></button>
                 </a>
             </div>
             <div>
                 <a href="/items/shop">
-                    <button id="boutonShop">Shop</button>
+                    <button id="boutonShop"><%= translations.shop %></button>
                 </a>
             </div>
             <div>
                 <a href="/jouer">
-                    <button id="boutonJouer">Jouer!</button>
+                    <button id="boutonJouer"><%= translations.play %></button>
                 </a>
             </div>
         </div>
@@ -24,51 +24,20 @@
             <a href="/taverne"><img class="casinoAd" src="images/casinoAd.gif" alt="casinoAd" style="width: 104%;"></a>
             <hr style="border-width: 4px;">
             <% if (typeof(user) !="undefined"){ %>
-                <p style="font-weight: bold;"><span class="characterKeywords1">Utilisateur:</span> <%= user.nom %></p>
+                <p style="font-weight: bold;"><span class="characterKeywords1"><%= translations.user %></span> <%= user.nom %></p>
                 <p></p>
-                <p style="font-weight: bold;"><span class="characterKeywords">Classe:</span> <%= user.characterClass %></p>
-                <p style="font-weight: bold;"><span class="characterKeywords">Équipement:</span> 
-                    <a href="/inventaire" class="link-inventaire">Voir mon inventaire</a>
+                <p style="font-weight: bold;"><span class="characterKeywords2"><%= translations.class %></span> <%= user.characterClass %></p>
+                <p style="font-weight: bold;"><a href="/inventaire" class="link-inventaire" id="inventaireTrad" style="font-weight: bolder; color: #814f38;"><%= translations.inventory %></a>
+                    
                 </p>
                 <br>
-                <div style="display: flex;"><img style="height: 32px;width: auto; margin-top: -8px;" src="images/coins.png" alt=""><p style="font-weight: bold;"> <%= user.gold == undefined? '0' : user.gold %>&nbsp;</p><p class="characterKeywords4" style="font-weight: bold;">pièces d'or</p></div>
+                <div style="display: flex;"><img style="height: 32px;width: auto; margin-top: -8px;" src="images/coins.png" alt=""><p style="font-weight: bold;"> <%= user.gold == undefined? '0' : user.gold %>&nbsp;</p><p class="characterKeywords4" style="font-weight: bold;"><%= translations.currentGold %></p></div>
             <% } %>
             <hr style="border-width: 4px;">
             <br>
-            <p id="welcome">Bienvenue sur <span style="font-weight: bold; color: rgb(35, 100, 165);">Project Jjadd!</span></p>
-            <p id="pressPlay">Appuyez sur le bouton <em>Jouer!</em> pour commencer le jeu</p>
-            <p id="pressShop">Appuyez sur le bouton <em>Shop</em> pour magasiner</p>
-            <p id="pressTavern">Appuyez sur le bouton <em>Taverne</em> pour plus d'informations...</p>
+            <p id="welcome"><%= translations.welcomeProject %></p>
+            <p id="pressPlay"><%= translations.pressPlay %></p>
+            <p id="pressShop"><%= translations.pressShop %></p>
+            <p id="pressTavern"><%= translations.pressTavern %></p>
         </div>
 </div>
-
-<script>
-   
-    function translateToEnglish() {
-    document.querySelector("#boutonTaverne").innerText = "Tavern";
-    document.querySelector("#boutonJouer").innerText = "Play!";
-    document.querySelector(".characterKeywords1").innerText = "User: ";
-    document.querySelector(".characterKeywords2").innerText = "Class: ";
-    document.querySelector(".characterKeywords3").innerText = "Inventory: ";
-    document.querySelector(".characterKeywords4").innerText = "gold coins";
-    document.querySelector("#welcome").innerHTML = 'Welcome to <span style="font-weight: bold; color: rgb(35, 100, 165);">Project Jjadd!</span>';
-    document.querySelector("#pressPlay").innerHTML = "Press the <em>Play!</em> button to begin";
-    document.querySelector("#pressShop").innerHTML = "Press the <em>Shop</em> button to buy items";
-    document.querySelector("#pressTavern").innerHTML = "Press the <em>Tavern</em> button to enter the Tavern";
-    document.querySelector("#itemsOrNone").innerHTML = `<%= user.inventory == undefined? "You've got no items yet! Visit the Shop!" : user.inventory %>`;
-}
-
-function translateToFrench() {
-    document.querySelector("#boutonTaverne").innerText = "Taverne";
-    document.querySelector("#boutonJouer").innerText = "Jouer!";
-    document.querySelector(".characterKeywords1").innerText = "Utilisateur: ";
-    document.querySelector(".characterKeywords2").innerText = "Classe: ";
-    document.querySelector(".characterKeywords3").innerText = "Inventaire: ";
-    document.querySelector(".characterKeywords4").innerText = "pièces d'or";
-    document.querySelector("#welcome").innerHTML = 'Bienvenue sur <span style="font-weight: bold; color: rgb(35, 100, 165);">Project Jjadd!</span>';
-    document.querySelector("#pressPlay").innerHTML = "Appuyez sur le bouton <em>Jouer!</em> pour commencer";
-    document.querySelector("#pressShop").innerHTML = "Appuyez sur le bouton <em>Shop</em> pour magasiner";
-    document.querySelector("#pressTavern").innerHTML = "Appuyez sur le bouton <em>Taverne</em> pour entrer dans la taverne";
-    document.querySelector("#itemsOrNone").innerHTML = `<%= user.inventory == undefined? "You've got no items yet! Visit the Shop!" : user.inventory %>`;
-}
-</script>

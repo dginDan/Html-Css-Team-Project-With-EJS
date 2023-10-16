@@ -2,15 +2,15 @@
     <div class="navContainer">
         <div class="list1">
             <ul>
-                <li style="margin-top: 5px;"><a href="/village" id="villageTrad">Village (Accueil)</a></li>
-                <li style="margin-top: 5px;"><a href="/modifUsager" id="profilTrad">Profil</a></li>
+                <li style="margin-top: 5px;"><a href="/village"><%= translations.home %></a></li>
+                <li style="margin-top: 5px;"><a href="/modifUsager"><%= translations.profile %></a></li>
                 <li style="margin-top: 5px;"><a href="/discussions">Forum</a></li>
             </ul>
         </div>
         <form action="https://www.google.com/search" method="GET" target="_blank" id="searchForm" >
             <div class="searchContainer">
                 <i id="searchButton" class="fas fa-search searchButton"></i>
-                <input type="text" class="searchInput" name="q" placeholder="Google">
+                <input type="text" class="searchInput" name="q" placeholder="<%= translations.googleSearch %>">
             </div>
         </form>
         <div>
@@ -18,7 +18,7 @@
         <div class="rightButtons">
             <ul>
                 <li><a class="buttonNav" href="/guide">Guide</a></li>
-                <li><a class="buttonNav" href="/apropos" id="nousJoindreTrad">Nous Joindre</a></li>
+                <li><a class="buttonNav" href="/apropos"><%= translations.contactUs %></a></li>
         </ul>
     </div>
     <div class="br"></div>
@@ -27,9 +27,9 @@
             <li class="login">
                 <% if (typeof(user) !="undefined"){ %>
                     <img src="/images/<%= user.nomImage %>" alt="User Image" width="40" height="40" style="margin-right: 7px; margin-top: -3px; margin-left: -20px;" class="rounded-circle mr-2 profile-img ">
-                    <span class="loginTrad">Bienvenue, </span><%= user.nom %> (<%= user.email %>)! -
-                    <a href="/quitter" class="logoutTrad">Se déconnecter</a>
-                    <button id="languageToggle" style="position: absolute; margin-left: 7px; margin-top: 3px; right: 15px;">EN</button>
+                    <span ><%= translations.welcome %> </span><%= user.nom %> (<%= user.email %>)! -
+                    <a href="/quitter"><%= translations.logout %></a>
+                    <a href="/setLanguage/en">EN</a>|<a href="/setLanguage/fr">FR</a>
                 <% } %>
             </li>
         </ul>

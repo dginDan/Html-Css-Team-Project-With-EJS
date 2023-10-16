@@ -6,22 +6,26 @@ const discussions = require("../models/discussions");
 
 
 router.get('/', (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     Discussions.find({}).sort({date: -1}).exec()
     .then(listeDiscussions => {
         reponse.render('discussions/discussions', {
             titrePage: "Forum de discusions",
             user:user,
-            liste:listeDiscussions
+            liste:listeDiscussions,
+            'translations': reponse.locals.translations[userLanguage],
         });
     })
 });    
 
 router.get('/ajouter', (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
        reponse.render('discussions/ajouter', {
         titrePage: "Ajout d'une discussion",
-        user: user
+        user: user,
+        'translations': reponse.locals.translations[userLanguage],
     });
 });
 router.post('/ajouter',  (requete, reponse, next) => {
@@ -52,7 +56,6 @@ const user = requete.user;
 });
 router.get('/supprimer/:_id',  (requete, reponse, next) => {
     const id = requete.params._id;
-
     Discussions.findOneAndDelete({ '_id': id }).exec()
         .then(siSupprimé => {
             requete.flash('success_msg', `La discussion a été supprimé avec succès`);
@@ -62,6 +65,7 @@ router.get('/supprimer/:_id',  (requete, reponse, next) => {
 });
 
 router.get('/commentaires/:_id', (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     const id = requete.params._id;
     Discussions.find({"_id":id}).exec()
@@ -69,12 +73,14 @@ router.get('/commentaires/:_id', (requete, reponse) => {
         reponse.render('discussions/commentaires', {
             titrePage: "Forum de discusions",
             user:user,
-            liste:discussion
+            liste:discussion,
+            'translations': reponse.locals.translations[userLanguage],
         });
     })
 });
 
 router.get('/commentaires/ajouter/:_id', (requete, reponse) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     const _id = requete.params._id;
     reponse.render('discussions/ajouterCommentaire', {
@@ -108,7 +114,6 @@ router.post('/commentaires/ajouter/:_id', (requete, reponse) => {
 
 router.get('/commentaire/supprimer/:info',  (requete, reponse, next) => {
    const info = requete.params.info.split(",");
- 
     const id = info.shift();
     const commentaire =info.shift();
     console.log('comm sup',id, commentaire);
