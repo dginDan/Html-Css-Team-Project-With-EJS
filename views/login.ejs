@@ -1,32 +1,24 @@
-<<<<<<< HEAD
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body text-center">
-            <%- include ('./partials/messages') %>
-            <h1><i class="fas fa-sign-in-alt"></i> Login</h1>
-            <form action="/userLogin" method="post">
-=======
 <%- include ('./partials/messages') %>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6 m-auto">
             <div class="card card-body text-center login-container">
-                <h1 class="login-header"><i class="fas fa-gamepad"></i> Connectez-vous et Jouez</h1>
->>>>>>> 50fd677db1f794ebcf7dcc444885506c11c8fd06
+                <h1 class="login-header"><i class="fas fa-gamepad"></i><%= translations.loginAndPlay %></h1>
                 <br>
                 <form action="/userLogin" method="post">
                     <div class="form-group">
-                        <label for="email"><i class="fas fa-envelope"></i> Adresse Email</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Entrez votre email">
+                        <label for="email"><i class="fas fa-envelope"></i><%= translations.email %></label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="<%= translations.enterEmail %>">
                     </div>
                     <div class="form-group">
-                        <label for="password"><i class="fas fa-lock"></i> Mot de Passe</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Entrez votre mot de passe">
+                        <label for="password"><i class="fas fa-lock"></i><%= translations.password %></label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="<%= translations.enterPwd %>">
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary custom-button">Se connecter</button>
-                    <p class="create-account-link">Pas encore de compte? <a href="./ajoutUsagerClient">Créez-en un</a></p>
+                    <button type="submit" class="btn btn-primary custom-button"><%= translations.login %></button>
+                    <p class="create-account-link"><%= translations.noAccount %> <a href="./ajoutUsagerClient"><%= translations.createAccount %></a></p>
                 </form>
+                <div><a href="/setLanguage/en">EN</a>&nbsp;|&nbsp;<a href="/setLanguage/fr">FR</a></div>
             </div>
         </div>
     </div>

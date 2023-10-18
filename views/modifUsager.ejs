@@ -6,9 +6,9 @@
             <h1>
                 <i class="fas fa-user-plus"></i>
                 <% if (user.roles && user.roles.includes('admin')) { %>
-                  Modification d'un usager
+                  <%= translations.editUser %>
                 <% } else { %>
-                  Modification du profil
+                  <%= translations.editProfile %>
                 <% } %>
               </h1>
             <form action="/userModif" method="post" >
@@ -19,21 +19,21 @@
                   
                 <br>
                 <div class="form-group">
-                    <a href="/editerPWD/<%= email %>">Modifier le mot de passe</a>
+                    <a href="/editerPWD/<%= email %>"><%= translations.modifyPwd %></a>
                 </div>
                 <div class="form-group">
-                    <a href="/editerImage/<%= email %>">Modifier l'image</a>
+                    <a href="/editerImage/<%= email %>"><%= translations.modifyPicture %></a>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary btn-block">
                     <% if (user.roles && user.roles.includes('admin')) { %>
-                      Confirmer la modification de l'usager
+                      <%= translations.confirmModify %>
                     <% } else { %>
-                      Confirmer la modification du profil
+                      <%= translations.confirmModify %>
                     <% } %>
                 </button>
                 <div>
-                <p><a href="/village" class="btn btn-secondary btn-block">Retourner à l'accueil</a></p>
+                <p><a href="/village" class="btn btn-secondary btn-block"><%= translations.backToHome %></a></p>
             </div>
             </form>
         </div>

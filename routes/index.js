@@ -17,19 +17,23 @@ const router = express.Router();
 
 //page initiale aka login
 router.get('/', (requete, reponse)=>{
+    const userLanguage = requete.session.userLanguage || 'fr';
     const user = requete.user;
     reponse.render(`login`, {
         'title': 'Login',
         user : user,
+        'translations': reponse.locals.translations[userLanguage],
             });
 });
 
 //le post si bien authentifier, redirect a menu else login(meme page) '/'
 router.post('/userLogin', (requete, reponse, next) => {
+    const userLanguage = requete.session.userLanguage || 'fr';
     passport.authenticate('local', {
         successRedirect: '/village',
         failureRedirect: '/',
-        failureFlash: true
+        failureFlash: true,
+        'translations': reponse.locals.translations[userLanguage],
     })(requete, reponse, next);
     }
 );
@@ -95,6 +99,7 @@ router.get('/quitter', (requete, reponse, next)=>{
 router.get('*', (requete, reponse)=>{
     reponse.render(`login`, {
         'title': 'Login',
+        'translations': reponse.locals.translations[userLanguage],
             });
 });
 
