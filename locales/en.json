@@ -61,5 +61,10 @@
     "modifyAvatar":"Change your avatar",
     "classSelection": "Choose your class (Pick wisely, it can't be changed afterwards!)",
     "warrior":"Warrior",
-    "return":"Go back"
+    "return":"Go back",
+    "userList":"Users List",
+    "ourUsers":"Our Users",
+    "Name":"Name",
+    "role":"Roles",
+    "userListClass": "Class"
   }

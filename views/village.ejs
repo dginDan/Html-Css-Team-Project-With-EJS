@@ -43,7 +43,7 @@
             <!-- pour admin & gestion = if user admin || gestion = toggle list user-->
             <% if (typeof user != "undefined") { %>
                 <% if (user.roles.includes('admin') || user.roles.includes('gestion')) {%>
-                    <a href="/listeUsers" class="btn btn-primary btn-block mb-2">Affichage de la liste des usagers</a>
+                    <a href="/listeUsers" class="btn btn-primary btn-block mb-2" style="background-color: #814f38;border: 0px">Affichage de la liste des usagers</a>
                     <% } %>
             <% } %>
         </div>

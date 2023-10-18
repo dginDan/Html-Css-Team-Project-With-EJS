@@ -61,7 +61,7 @@ body {
 .navContainer {
     display: flex;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
 }
 .navbar {
     flex: 1;
@@ -71,6 +71,7 @@ body {
     justify-content: center;
     margin-bottom: 30px;
     height: 55px;
+    width: auto;
 }
 .navbar ul {
     list-style: none;

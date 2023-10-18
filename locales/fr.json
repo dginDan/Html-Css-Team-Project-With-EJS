@@ -61,5 +61,10 @@
     "modifyAvatar":"Modifier votre Avatar",
     "classSelection": "Sélectionnez votre classe (Choisissez bien car ça ne peut être changé après!)",
     "warrior":"Guerrier",
-    "return":"Retour"
+    "return":"Retour",
+    "userList":"Liste des Usagers",
+    "ourUsers":"Nos Usagers",
+    "Name":"Nom",
+    "role":"Rôles",
+    "userListClass": "Classe"
   }
