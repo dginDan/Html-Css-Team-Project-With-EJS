@@ -31,5 +31,13 @@
     "Mysterious Man: ...",
     "Mysterious Man: I've completed my function, now leave me alone"],
     "lottery": "lottery",
-    "googleSearch": "Search Google"
+    "googleSearch": "Search Google",
+    "ajout": "Add a new discussion",
+    "auteur": "Author",
+    "confirmerDiscussion":"Add the new thread",
+    "retour":"Back to forum",
+    "forum":"Discussion forum",
+    "commentaire":"Your comment",
+    "confirmerCommentaire":"Add your comment",
+    "rien":"No discussion yet!"
   }

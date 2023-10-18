@@ -32,21 +32,35 @@ router.get('/ajouter',isAuthentified, (requete, reponse) => {
 router.post('/ajouter',isAuthentified,  (requete, reponse, next) => {
 const {titre,commentaire}=requete.body;
 const user = requete.user;
+let erreurs=[];
 
        
     if ((typeof titre === null || titre.trim().length === 0 ) || (typeof commentaire === null || commentaire.trim().length === 0 ) )
     
     {
-        this.erreurs.push({msg:'remplir toute les cases du formulaire!'});
+        erreurs.push({msg:'remplir toute les cases du formulaire!'});
 
-    }else{
+    }
+    
+    if (erreurs.length > 0) {
+        const userLanguage = requete.session.userLanguage || 'fr';
+        const user = requete.user;
+        reponse.render('discussions/ajouter', {
+            'titrePage': "Ajout d'une discussion",
+            user: user,
+            errors: erreurs,
+            titre,
+            commentaire,
+            'translations': reponse.locals.translations[userLanguage],
+        });
+    }
+    else{
         let _id = new mongoose.Types.ObjectId();
         const nouvelleDate = new Date();
         const date = nouvelleDate.toDateString();
         const message =commentaire;
         const auteur=user.nom;
         const courriel=user.email
-        console.log('discussion email', courriel);
         const nouvellediscussion= new Discussions({_id,titre,auteur,date,courriel,message})
         nouvellediscussion.save()
         .then(()=>{
@@ -60,14 +74,14 @@ const user = requete.user;
 });
 router.get('/supprimer/:_id',isModerateurAuteurDiscussion,  (requete, reponse, next) => {
     const id = requete.params._id;
+    
     Discussions.findOneAndDelete({ '_id': id }).exec()
         .then(siSupprimé => {
-            console.log('2');
             requete.flash('success_msg', `La discussion a été supprimé avec succès`);
-            console.log('3');
             reponse.redirect('/discussions');
         })
         .catch(err => console.log('supression ne fonctionne pas  ' + err))
+
 });
 
 router.get('/commentaires/:_id',isAuthentified, (requete, reponse) => {
@@ -85,16 +99,7 @@ router.get('/commentaires/:_id',isAuthentified, (requete, reponse) => {
     })
 });
 
-router.get('/commentaires/ajouter/:_id',isAuthentified, (requete, reponse) => {
-    const userLanguage = requete.session.userLanguage || 'fr';
-    const user = requete.user;
-    const _id = requete.params._id;
-    reponse.render('discussions/ajouterCommentaire', {
-        titrePage: "Ajout d'un commentaire",
-        user: user,
-        _id
-    });
-});
+
 router.post('/commentaires/ajouter/:_id',isAuthentified, (requete, reponse) => {
     const user = requete.user;
     const nouvelleDate = new Date();
@@ -109,7 +114,30 @@ router.post('/commentaires/ajouter/:_id',isAuthentified, (requete, reponse) => {
         commentaires: {
         $each: [ message ]
             }
-        }};
+    }};
+    let erreurs=[];
+    if ( (typeof commentaire === null || commentaire.trim().length === 0 ) )
+    
+    {
+        erreurs.push({msg:'remplir toute les cases du formulaire!'});
+
+    }
+    
+    if (erreurs.length > 0) {
+        const userLanguage = requete.session.userLanguage || 'fr';
+        const user = requete.user;
+        Discussions.find({"_id":id}).exec()
+        .then(discussion => {
+            reponse.render('discussions/commentaires', {
+                titrePage: "Forum de discusions",
+                user:user,
+                errors: erreurs,
+                liste:discussion,
+                'translations': reponse.locals.translations[userLanguage],
+            });
+        })
+    }
+    else{    
        
     Discussions.findOneAndUpdate(filtre, options).exec()
     .then(()=>{
@@ -117,12 +145,11 @@ router.post('/commentaires/ajouter/:_id',isAuthentified, (requete, reponse) => {
         reponse.redirect(`/discussions/commentaires/${id}`);  
     })
    .catch(err => console.log(err));
-
+    }
 });
 
 router.get('/commentaire/supprimer/:info',isModerateurAuteurCommentaire,  (requete, reponse, next) => {
    const info = requete.params.info.split(",");
-   console.log('info  .. ', info);
     const id = info.shift();
     const courriel=info.shift();
     const commentaire =info.shift();

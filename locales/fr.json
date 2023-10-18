@@ -31,5 +31,13 @@
     "Mysterious Man: ...",
     "Mysterious Man: J'ai exercé mes fonctions! Laisse moi tranquille!"],
     "lottery": "loterie",
-    "googleSearch": "Rechercher sur Google"
+    "googleSearch": "Rechercher sur Google",
+    "ajout": "Ajout d'une discussion",
+    "auteur": "Auteur",
+    "confirmerDiscussion":"Confirmer l'ajout d'une discussions",
+    "retour":"Retour au forum",
+    "forum":"Forum de discussion",
+    "commentaire":"Votre commentaire",
+    "confirmerCommentaire":"Confirmer l'ajout du commentaire",
+    "rien":"Aucune liste de discussion disponible"
   }

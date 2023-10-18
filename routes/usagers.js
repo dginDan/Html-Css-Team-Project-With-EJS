@@ -13,8 +13,8 @@ const fs = require('fs').promises;
 const Items = require('../models/Items'); 
 const Usagers = require('../models/Usagers');
 //3x is = role d'un user & ses droits expliquer dans config/auth
-const {isAuthentified, isAdmin, isGestion, isModerateur} = require('../config/auth');
-const { error } = require('console');
+const {isAuthentified, isAdmin, isModerateur} = require('../config/auth');
+
 
 const router = express.Router();
 
