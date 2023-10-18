@@ -109,7 +109,7 @@ router.post('/userAdd', isAuthentified, (requete, reponse)=>{
                 gestion
             });
             } else{
-                //next step hashing/add profile -> bd \\ if all gut insert return /menu
+                //next step hashing/add profile -> bd \\ if all gut insert return /village
                 let _id = new mongoose.Types.ObjectId();
                 const newUser = new Usagers({_id, nom, email, password, roles});
                 // hachage du mdp
@@ -201,7 +201,7 @@ router.post('/userAddClient',(requete, reponse)=>{
                 characterClass
             });
             } else{
-                //next step hashing/add profile -> bd \\ if all gut insert return /menu
+                //next step hashing/add profile -> bd \\ if all gut insert return /village
                 let _id = new mongoose.Types.ObjectId();
                 const newUser = new Usagers({_id, nom, email, password, roles, characterClass});
                 // hachage du mdp
@@ -285,12 +285,11 @@ router.post('/userModif', isAuthentified, (requete, reponse)=>{
         Usagers.findOneAndUpdate({email : email}, newUser)    
         .then(doc => {
             if (requete.user.roles.includes('admin')) {
-              requete.flash('success_msg', 'Usager modifié avec succès');
-              reponse.redirect('/listeUsers');
+                requete.flash('success_msg', 'Usager modifié avec succès');
             } else {
-              requete.flash('success_msg', 'Profil modifié avec succès');
-              reponse.redirect('/menu');
+                requete.flash('success_msg', 'Profil modifié avec succès');
             }
+            reponse.redirect('/village');
           })
     };
 });
@@ -318,7 +317,7 @@ router.get('/editerImage/:email', isAuthentified, (requete, reponse)=>{
         if (requete.user.roles.includes('admin')) {
             reponse.redirect('/listeUsers');
           } else {
-            reponse.redirect('/menu');
+            reponse.redirect('/village');
           }
     });
 });
@@ -355,7 +354,7 @@ router.post('/editImage', isAuthentified, (requete, reponse)=>{
                 if (requete.user.roles.includes('admin')) {
                     reponse.redirect('/listeUsers');
                   } else {
-                    reponse.redirect('/menu');
+                    reponse.redirect('/village');
                   }
                 
             })
@@ -365,7 +364,7 @@ router.post('/editImage', isAuthentified, (requete, reponse)=>{
                 if (requete.user.roles.includes('admin')) {
                     reponse.redirect('/listeUsers');
                   } else {
-                    reponse.redirect('/menu');
+                    reponse.redirect('/village');
                   }
             });
     };
@@ -394,7 +393,7 @@ router.get('/editerPWD/:email', isAuthentified, (requete, reponse)=>{
         if (requete.user.roles.includes('admin')) {
             reponse.redirect('/listeUsers');
           } else {
-            reponse.redirect('/menu');
+            reponse.redirect('/village');
           }
     });
 });
@@ -440,7 +439,7 @@ router.post('/editPassword', isAuthentified, (requete, reponse) => {
                     if (requete.user.roles.includes('admin')) {
                         reponse.redirect('/listeUsers');
                       } else {
-                        reponse.redirect('/menu');
+                        reponse.redirect('/village');
                       }
                     })
                     .catch(err=>{
@@ -449,7 +448,7 @@ router.post('/editPassword', isAuthentified, (requete, reponse) => {
                     if (requete.user.roles.includes('admin')) {
                         reponse.redirect('/listeUsers');
                       } else {
-                        reponse.redirect('/menu');
+                        reponse.redirect('/village');
                       }
                     });
                 });
@@ -486,11 +485,17 @@ router.get('/deleteUser/:email', isAdmin, (requete, reponse)=>{
     Usagers.deleteOne({'email': email})
     .exec()
     .then(result => {
-        console.log(result)
+        console.log(result);
+        requete.flash('success_msg', 'Usager supprimé avec succès'); // Ajouté ici
         reponse.redirect('/listeUsers');
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        console.log(err);
+        requete.flash('error_msg', 'Une erreur s\'est produite lors de la suppression'); // Ajouté ici en cas d'erreur
+        reponse.redirect('/listeUsers');
+    });
 });
+
 
 /**
  * La fonction conserverFichier deplace le fichier a conserver dans le 

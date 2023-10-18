@@ -3,18 +3,18 @@
         <div class="col-md-6 m-auto">
             <div class="card card-body login-container">
             <%- include ('./partials/messages') %>
-            <h1><i class="fas fa-solid fa-hat-wizard fa-xl"></i></i> Création de votre héro</h1>
+            <h1><i class="fas fa-solid fa-hat-wizard fa-xl"></i></i><%= translations.heroCreation %></h1>
             <form action="/userAddClient" method="post" enctype="multipart/form-data">
                 <br>
                 <div class="form-group">
-                    <label for="email">Comment vous appelez-vous, Héro ?</label>
+                    <label for="email"><%= translations.yourUsername %></label>
                     <input type="text" name="nom" id="nom" class="form-control" placeholder="Ashkel"
                     value="<%= typeof nom != 'undefined' ? nom : '' %>"
                     >
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email"><%= translations.email %></label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="abc@yandex.com"
                     value="<%= typeof email != 'undefined' ? email : '' %>" <%= typeof emailREADONLY != 'undefined' ? 'readonly' : '' %>
                     >
@@ -24,17 +24,17 @@
                 <%- include ('./partials/edit_image') %>
                 <img id="imagePreview" src="" alt="Image Preview" style="display:none;">
                 <br>
-                <button type="button" id="continueButton" class="btn btn-primary btn-block">Continuer</button>
+                <button type="button" id="continueButton" class="btn btn-primary btn-block"><%= translations.continue %></button>
                 <div>
                     <br>
-                    <p><a href="/login" class="btn btn-secondary btn-block">Annuler</a></p>
+                    <p><a href="/" class="btn btn-secondary btn-block"><%= translations.cancel %></a></p>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <div id="classChoice" class="container" style="display:none;">
-    <h2>Choisissez votre classe</h2>
+    <h2><%= translations.classSelection %></h2>
     <div class="row">
         <div class="col-4">
             <div class="class-card" id="Archer">
@@ -44,7 +44,7 @@
         </div>
         <div class="col-4">
             <div class="class-card" id="Warrior">
-                <h3>Warrior</h3>
+                <h3><%= translations.warrior %></h3>
                 <img src="/images/warrior.png" alt="Warrior">
             </div>
         </div>
@@ -55,8 +55,8 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-block" id="confirmClass">Confirmer</button>
-    <p><a href="/ajoutUsagerClient" class="btn btn-secondary btn-block">Retour</a></p>
+    <button type="submit" class="btn btn-primary btn-block" id="confirmClass"><%= translations.continue %></button>
+    <p><a href="/ajoutUsagerClient" class="btn btn-secondary btn-block"><%= translations.return %></a></p>
 </div>
 
 <div class="background-image"></div>

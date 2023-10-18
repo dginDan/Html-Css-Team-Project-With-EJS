@@ -24,7 +24,7 @@ module.exports = {
                 return next();
             } else {
                 req.flash("error_msg", "Vous devez être 'admin' pour acceder a cette page");
-                rep.redirect('/menu');
+                rep.redirect('/village');
             }            
         } else {        
         req.flash("error_msg", "Connectez-vous pour acceder au site");
@@ -41,7 +41,7 @@ module.exports = {
                 return next();
             } else {
                 req.flash("error_msg", "Vous devez être 'moderateur' pour acceder a cette page");
-                rep.redirect('/menu');
+                rep.redirect('/village');
             }            
         } else {        
         req.flash("error_msg", "Connectez-vous pour acceder au site");
@@ -61,8 +61,8 @@ module.exports = {
                 if(courriel===discussion.courriel){
                     return next();
                 } else {
-                    req.flash("error_msg", "Vous devez être 'moderateur' pour acceder a cette page");
-                    rep.redirect('/menu');
+                    req.flash("error_msg", "Vous devez être 'moderateur' pour acceder à cette page");
+                    rep.redirect('/village');
                 } 
             }); 
            

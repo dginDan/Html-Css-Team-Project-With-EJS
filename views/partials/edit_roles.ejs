@@ -1,11 +1,11 @@
 <div class="form-group">
-    Rôles:
+    <%= translations.roles %>
     Normal <input type="checkbox" name="normal" id="normal" checked disabled>
     <label for="admin">Admin </label> 
     <input type="checkbox" name="admin" id="admin" value="admin"
         <%= typeof admin != 'undefined' ? 'checked' : '' %>
     >
-    <label for="gestion">Gestion </label> 
+    <label for="gestion"><%= translations.moderator %> </label> 
     <input type="checkbox" name="gestion" id="gestion" value="gestion"
         <%= typeof gestion != 'undefined' ? 'checked' : '' %>
     >
