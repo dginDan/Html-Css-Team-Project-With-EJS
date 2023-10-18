@@ -522,3 +522,17 @@ body {
     max-height: 500px;
     display: none;
 }
+/*Bouton flotant user list*/
+.floating-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
