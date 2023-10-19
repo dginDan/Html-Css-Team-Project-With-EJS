@@ -33,10 +33,9 @@
             </a>
             <tr>
               <a href="/discussions/commentaires/<%=discussion._id%>"> 
-              <td ><div style=" word-break: break-all; max-width: 1000px;"><%= discussion.message %></div></td>
+              <td style="overflow: wrap; word-break: break-all;"><%= discussion.message %></td>
               </a>
             </tr>
-         
           <% }%>  
           </tbody>
         </table>
