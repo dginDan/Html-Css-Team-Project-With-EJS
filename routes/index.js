@@ -94,6 +94,36 @@ router.get('/quitter', (requete, reponse, next)=>{
     requete.flash('success_msg', 'Vous avez été déconnecté avec succès !');
     reponse.redirect('/')
 });
+router.get('/jouer', isAuthentified, (requete, reponse)=>{
+    const userLanguage = requete.session.userLanguage || 'fr';
+    const user = requete.user;
+    reponse.render(`jeux`, {
+        'title': 'Jeux',
+        user : user,
+        userLanguage : userLanguage,
+        'translations': reponse.locals.translations[userLanguage],
+    });
+});
+
+router.post('/updateGold', async (requete, reponse) => {
+    
+    try {
+        // Récupérer l'utilisateur actuellement connecté
+        const user = requete.user;
+        const gold = user.gold;
+        if (!user) {
+            return reponse.status(404).json({ success: false, error: "Utilisateur non trouvé" });
+        }
+
+        // Ajouter goldDropped à la quantité d'or actuelle de l'utilisateur
+        gold += Number(requete.body.goldDropped);
+        await user.save();
+
+        reponse.status(200).json({ success: true, message: "Or mis à jour avec succès" });
+    } catch (error) {
+        reponse.status(500).json({ success: false, error: error.message });
+    }
+});
 
 
 // toutes les autres pages qu'un type essaye d'access retour login
