@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack the Monster</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #gameContainer {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        #monster {
+            width: 200px;
+            height: 200px;
+            background-color: gray; /* Remplacer cela par l'image du monstre plus tard */
+            margin: 20px auto;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        #chatWindow {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        max-width: 200px;
+    }
+    #miniBossMessage {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%); 
+        background-color: #ffffff;
+        padding: 20px 40px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        font-size: 24px; 
+        font-weight: bold; 
+    }
+    </style>
+</head>
+<body>
+
+<div id="gameContainer">
+    <div id="monster"></div>
+    <button onclick="attackMonster()">Attack</button>
+    <p>HP: <span id="hp">10</span></p>
+    <p>Gold: <span id="gold">0</span></p>
+    <p>Monsters killed: <span id="kills">0</span></p>
+    <div id="chatWindow"></div>
+    <div id="miniBossMessage">Mini-boss is here!</div>
+    <label for="levelSelect">Choose Level:</label>
+    <select id="levelSelect" onchange="changeLevel()">
+        <option value="1" selected>Level 1</option>
+    </select>
+    <label for="difficultySelect">Choose Difficulty:</label>
+    <select id="difficultySelect" onchange="changeDifficulty()">
+        <option value="1" selected>Difficulty 1</option>
+    </select>
+    <p>Timer: <span id="timer">30</span></p>  
+</div>
+
+<script>
+    const DIFFICULTY_FACTOR = 5;
+    
+    let hp = 10;
+    let level = 1;
+    let gold = 0;
+    let kills = { 1: 0 };
+    let difficulty = 1;
+    let bossTimer;
+    /* Fonction appelée lors de l'attaque du monstre */
+    function attackMonster() {
+        hp -= 1000000;  
+        if (hp <= 0) {
+            kills[level] = (kills[level] || 0) + 1;
+            document.getElementById('kills').innerText = kills[level];
+            dropGold();
+            if (level == 5) {
+                moveToNextDifficulty(); // Appelle cette fonction pour changer automatiquement la difficulté
+            } else {
+                resetMonster();
+            }
+            if (kills[level] % 10 === 0 && !document.querySelector(`#levelSelect option[value="${level + 1}"]`)) {
+                addNewLevel();
+            }
+        }
+        document.getElementById('hp').innerText = hp;
+    }
+    /* Passer automatiquement à la prochaine difficulté */
+    function moveToNextDifficulty() {
+    addNewDifficulty();
+    document.getElementById('difficultySelect').value = difficulty; // Mise à jour du sélecteur avec la nouvelle difficulté
+    changeDifficulty();
+}
+      /* Ajouter un nouveau niveau au menu déroulant */
+    function addNewLevel() {
+        const levelSelect = document.getElementById('levelSelect');
+        const newOption = document.createElement('option');
+        newOption.value = level + 1;
+        newOption.innerText = "Level " + (level + 1);
+        levelSelect.appendChild(newOption);
+    }
+      /* Ajouter une nouvelle difficulté au menu déroulant */
+        function addNewDifficulty() {
+    const difficultySelect = document.getElementById('difficultySelect');
+    const nextDifficulty = difficulty + 1;
+    const existingOption = difficultySelect.querySelector(`option[value="${nextDifficulty}"]`);
+    if (!existingOption) {
+        const newOption = document.createElement('option');
+        newOption.value = nextDifficulty;
+        newOption.innerText = "Difficulty " + nextDifficulty;
+        difficultySelect.appendChild(newOption);
+        resetMonster();  // Move this line before updating difficulty value
+        difficulty = nextDifficulty;
+        difficultySelect.value = difficulty; // Sélectionne la nouvelle valeur de difficulté
+    } else {
+        resetMonster();
+    }   
+}
+      /* Mettre à jour l'état du jeu lorsqu'un niveau différent est choisi */
+    function changeLevel() {
+        level = parseInt(document.getElementById('levelSelect').value);
+        if (!kills[level]) {
+            kills[level] = 0;
+        }
+        resetMonster();
+        document.getElementById('hp').innerText = hp;
+        document.getElementById('kills').innerText = kills[level];
+    }
+    /* Mettre à jour l'état du jeu lorsqu'une difficulté différente est choisie */
+    function changeDifficulty() {
+        difficulty = parseInt(document.getElementById('difficultySelect').value);
+        level = 1;
+        kills = { 1: 0 };
+        document.getElementById('levelSelect').value = level;
+        document.getElementById('kills').innerText = kills[level];
+        resetMonster();
+        const levelSelect = document.getElementById('levelSelect');
+        levelSelect.innerHTML = '<option value="1" selected>Level 1</option>';
+    }
+    /* Réinitialise la santé du monstre */
+    function resetMonster() {
+        clearTimeout(bossTimer);
+        
+        if (difficulty == 1) {
+            hp = 10 * Math.pow(2, level - 1);
+        } else {
+            hp = 10 * Math.pow(2, level - 1) * Math.pow(DIFFICULTY_FACTOR, difficulty - 1);
+        }
+        if (level == 5) {
+            hp *= 4;
+            const miniBossMessage = document.getElementById('miniBossMessage');
+            miniBossMessage.style.display = 'block';
+            const timerElement = document.getElementById('timer');
+            let timeLeft = 30;
+            timerElement.innerText = timeLeft;
+            bossTimer = setInterval(() => {
+                timeLeft -= 1;
+                timerElement.innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(bossTimer);
+                    hp = 10 * Math.pow(2, level-1) * (difficulty === 1 ? 1 : Math.pow(DIFFICULTY_FACTOR, difficulty - 1)) * 4;
+                    document.getElementById('hp').innerText = hp;
+                }
+            }, 1000);
+        } else {
+            document.getElementById('miniBossMessage').style.display = 'none';
+        }
+    
+        document.getElementById('hp').innerText = hp;
+    }
+    /* Octroyer de l'or lorsqu'un monstre est vaincu */
+    function dropGold() {
+    const difficultyMultiplier = Math.pow(5, difficulty - 1); 
+    const minGold = level;
+    const maxGold = level * 3;
+    const goldDropped = Math.floor(Math.random() * (maxGold - minGold + 1) + minGold) * difficultyMultiplier;
+    gold += goldDropped;
+    const chatWindow = document.getElementById('chatWindow');
+    chatWindow.innerText = `You received ${goldDropped} gold!`;
+    chatWindow.style.display = 'block';
+    setTimeout(() => {
+        chatWindow.style.display = 'none';
+    }, 3000);
+    document.getElementById('gold').innerText = gold;
+}
+
+    
+    </script>
+    
+
+</body>
+</html>
