@@ -136,6 +136,8 @@
     let goldDropped = Math.floor(Math.random() * (maxGold - minGold + 1) + minGold) * difficultyMultiplier;
     gold += goldDropped;
 
+    console.log('gold drop jeux',goldDropped);
+
     let chatWindow = document.getElementById('chatWindow');
     chatWindow.innerText = `You received ${goldDropped} gold!`;
     chatWindow.style.display = 'block';
@@ -153,9 +155,10 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ goldDropped: goldDropped })
+            body: ({ goldDropped: goldDropped })
         });
         let data = await response.json();
+        console.log('data',data);
         
         if (!data.success) {
             console.error("Erreur lors de la mise à jour de l'or :", data.error);

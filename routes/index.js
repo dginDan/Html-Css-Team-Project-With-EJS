@@ -106,19 +106,23 @@ router.get('/jouer', isAuthentified, (requete, reponse)=>{
 });
 
 router.post('/updateGold', async (requete, reponse) => {
-    
+    console.log('dans le post');
     try {
         // Récupérer l'utilisateur actuellement connecté
-        const user = requete.user;
-        const gold = user.gold;
+        let user = requete.user;
+        let gold = user.gold;
+       
         if (!user) {
             return reponse.status(404).json({ success: false, error: "Utilisateur non trouvé" });
         }
 
         // Ajouter goldDropped à la quantité d'or actuelle de l'utilisateur
-        gold += Number(requete.body.goldDropped);
+        console.log('user, gold', gold);
+        console.log('goldDrop',requete.params.goldDropped);
+        gold += Number(requete.params.goldDropped);
+        console.log('user, gold1', gold);
         await user.save();
-
+        
         reponse.status(200).json({ success: true, message: "Or mis à jour avec succès" });
     } catch (error) {
         reponse.status(500).json({ success: false, error: error.message });
