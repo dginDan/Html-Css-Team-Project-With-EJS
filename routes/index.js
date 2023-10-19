@@ -105,26 +105,27 @@ router.get('/jouer', isAuthentified, (requete, reponse)=>{
     });
 });
 
-router.post('/updateGold', async (requete, reponse) => {
-    
-    try {
-        // Récupérer l'utilisateur actuellement connecté
-        const user = requete.user;
-        let gold = user.gold;
-        if (!user) {
-            return reponse.status(404).json({ success: false, error: "Utilisateur non trouvé" });
-        }
-
-        // Ajouter goldDropped à la quantité d'or actuelle de l'utilisateur
-        gold += requete.body.goldDropped;
-        console.log(requete.body.goldDropped);
-        await user.save();
-
-        reponse.status(200).json({ success: true, message: "Or mis à jour avec succès" });
-    } catch (error) {
-        reponse.status(500).json({ success: false, error: error.message });
+router.post('/updateGold', (requete, reponse) => {
+    // Récupérer l'utilisateur actuellement connecté
+    const user = requete.user;
+    if (!user) {
+        return reponse.status(404).json({ success: false, error: "Utilisateur non trouvé" });
     }
+    
+    // Ajouter goldDropped à la quantité d'or actuelle de l'utilisateur
+    let gold = user.gold;  // changement de 'const' à 'let'
+    gold += Number(requete.body.goldDropped);
+    user.gold = gold;  // Mettre à jour la propriété gold de l'objet user
+
+    user.save()
+    .then(() => {
+        reponse.status(200).json({ success: true, message: "Or mis à jour avec succès" });
+    })
+    .catch(error => {
+        reponse.status(500).json({ success: false, error: error.message });
+    });
 });
+
 
 
 // toutes les autres pages qu'un type essaye d'access retour login
