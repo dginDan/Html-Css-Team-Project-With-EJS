@@ -150,13 +150,10 @@
     try {
         let response = await fetch('/updateGold', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
             body: JSON.stringify({ goldDropped: goldDropped })
         });
         let data = await response.json();
-        
+        console.log(data);
         if (!data.success) {
             console.error("Erreur lors de la mise à jour de l'or :", data.error);
         }

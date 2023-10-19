@@ -110,13 +110,14 @@ router.post('/updateGold', async (requete, reponse) => {
     try {
         // Récupérer l'utilisateur actuellement connecté
         const user = requete.user;
-        const gold = user.gold;
+        let gold = user.gold;
         if (!user) {
             return reponse.status(404).json({ success: false, error: "Utilisateur non trouvé" });
         }
 
         // Ajouter goldDropped à la quantité d'or actuelle de l'utilisateur
-        gold += Number(requete.body.goldDropped);
+        gold += requete.body.goldDropped;
+        console.log(requete.body.goldDropped);
         await user.save();
 
         reponse.status(200).json({ success: true, message: "Or mis à jour avec succès" });
