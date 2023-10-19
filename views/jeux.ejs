@@ -1,7 +1,10 @@
 <%- include ('./partials/navigation') %>
 <div id="gameContainer">
     <div id="monster"></div>
+    <form action="/updateGold" method="POST">
+    <input type="hidden" name="goldDropped" id="goldDropped" value="0">
     <button onclick="attackMonster()">Attack</button>
+    </form>
     <p>HP: <span id="hp">10</span></p>
     <p>Gold Gain: <span id="gold">0</span></p>
     <p>Monsters killed: <span id="kills">0</span></p>
@@ -136,6 +139,7 @@
     let goldDropped = Math.floor(Math.random() * (maxGold - minGold + 1) + minGold) * difficultyMultiplier;
     gold += goldDropped;
 
+    document.getElementById('goldDropped').value = goldDropped;
     let chatWindow = document.getElementById('chatWindow');
     chatWindow.innerText = `You received ${goldDropped} gold!`;
     chatWindow.style.display = 'block';
@@ -145,32 +149,6 @@
 
     document.getElementById('gold').innerText = gold;
     console.log("Sending goldDropped value to server:", goldDropped);
-
-    // Ajout de l'appel AJAX pour mettre à jour la base de données
-    fetch('/updateGold', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ goldDropped: goldDropped }),
-        credentials: 'include'  // Inclut les cookies dans la requête
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(error => {
-                throw new Error('Server error: ' + JSON.stringify(error));
-            });
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (!data.success) {
-            console.error("Erreur lors de la mise à jour de l'or :", data.error || data);
-        }
-    })
-    .catch(error => {
-        console.error("Erreur réseau ou serveur :", error);
-    });
 }
 
     </script>
