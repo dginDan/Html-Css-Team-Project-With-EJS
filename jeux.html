@@ -1,20 +1,101 @@
-<%- include ('./partials/navigation') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack the Monster</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #gameContainer {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        #monster {
+            width: 200px;
+            height: 200px;
+            background-color: gray; /* Remplacer cela par l'image du monstre plus tard */
+            margin: 20px auto;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        #chatWindow {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        max-width: 200px;
+    }
+    #miniBossMessage {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%); 
+        background-color: #ffffff;
+        padding: 20px 40px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        font-size: 24px; 
+        font-weight: bold; 
+    }
+    </style>
+</head>
+<body>
+
 <div id="gameContainer">
     <div id="monster"></div>
-    <form action="/updateGold" method="POST">
-    <input type="hidden" name="goldDropped" id="goldDropped" value="0">
-    <button onclick="attackMonster()"><%= translations.attack %></button>
-    </form>
+    <button onclick="attackMonster()">Attack</button>
     <p>HP: <span id="hp">10</span></p>
-    <p><%= translations.goldGain %> <span id="gold">0</span></p>
-    <p><%= translations.monstersKilled %> <span id="kills">0</span></p>
+    <p>Gold: <span id="gold">0</span></p>
+    <p>Monsters killed: <span id="kills">0</span></p>
     <div id="chatWindow"></div>
-    <div id="miniBossMessage"><%= translations.miniBossHere %></div>
-    <label for="levelSelect"><%= translations.chooseLevel %></label>
+    <div id="miniBossMessage">Mini-boss is here!</div>
+    <label for="levelSelect">Choose Level:</label>
     <select id="levelSelect" onchange="changeLevel()">
         <option value="1" selected>Level 1</option>
     </select>
-    <label for="difficultySelect"><%= translations.chooseDifficulty %></label>
+    <label for="difficultySelect">Choose Difficulty:</label>
     <select id="difficultySelect" onchange="changeDifficulty()">
         <option value="1" selected>Difficulty 1</option>
     </select>
@@ -133,98 +214,23 @@
     }
     /* Octroyer de l'or lorsqu'un monstre est vaincu */
     function dropGold() {
-    let difficultyMultiplier = Math.pow(5, difficulty - 1);
-    let minGold = level;
-    let maxGold = level * 3;
-    let goldDropped = Math.floor(Math.random() * (maxGold - minGold + 1) + minGold) * difficultyMultiplier;
+    const difficultyMultiplier = Math.pow(5, difficulty - 1); 
+    const minGold = level;
+    const maxGold = level * 3;
+    const goldDropped = Math.floor(Math.random() * (maxGold - minGold + 1) + minGold) * difficultyMultiplier;
     gold += goldDropped;
-
-    console.log('gold drop jeux',goldDropped);
-
-    document.getElementById('goldDropped').value = goldDropped;
-    let chatWindow = document.getElementById('chatWindow');
+    const chatWindow = document.getElementById('chatWindow');
     chatWindow.innerText = `You received ${goldDropped} gold!`;
     chatWindow.style.display = 'block';
     setTimeout(() => {
         chatWindow.style.display = 'none';
     }, 3000);
-
     document.getElementById('gold').innerText = gold;
-    console.log("Sending goldDropped value to server:", goldDropped);
 }
 
+    
     </script>
-    <style>
-body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            text-align: center;
-        }
-        #gameContainer {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-        }
+    
 
-        #monster {
-            width: 200px;
-            height: 200px;
-            background-color: gray; /* Remplacer cela par l'image du monstre plus tard */
-            margin: 20px auto;
-            border-radius: 15px;
-        }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            background-color: #007BFF;
-            color: white;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        p {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-        #chatWindow {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: #ffffff;
-        padding: 10px 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        display: none;
-        max-width: 200px;
-    }
-    #miniBossMessage {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%); 
-        background-color: #ffffff;
-        padding: 20px 40px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        display: none;
-        font-size: 24px; 
-        font-weight: bold; 
-    }
-    </style>
+</body>
+</html>
