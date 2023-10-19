@@ -61,7 +61,7 @@ module.exports = {
                 if(courriel===discussion.courriel){
                     return next();
                 } else {
-                    req.flash("error_msg", "Vous devez être 'moderateur' pour acceder a cette page");
+                    req.flash("error_msg", "Vous devez être 'moderateur' pour acceder à cette page");
                     rep.redirect('/village');
                 } 
             }); 

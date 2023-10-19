@@ -23,7 +23,7 @@ module.exports = function(passport) {
                     if (match) {
                         return done(null, user);
                     }  else {
-                        return done(null, false, {message: 'mdp wrong'});
+                        return done(null, false, {message: 'Le mot de passe est incorrect'});
                     }
                 });
             })

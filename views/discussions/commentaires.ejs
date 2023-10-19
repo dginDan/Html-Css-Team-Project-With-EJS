@@ -3,7 +3,7 @@
     <div class="col-md-15 m-auto">
         <div class="container mt-8">
          
-      <h2><i class="fas fa-book-open"></i> Forum de discussion</h2>
+      <h2><i class="fas fa-book-open"></i> <%= translations.forum %></h2>
      <%let discussion = liste; let id= liste[0]._id;%>
       <table class="table table-striped">
           <thead>
@@ -33,6 +33,7 @@
                 <td><h4 style="overflow: wrap; word-break: break-all;"><%= commentaire.commentaire %></h4>
                 <br> <p style="font-size: smaller;"><%=commentaire.date%></p>
                 </td>
+                <td></td>
                </tr>  
               </tbody>  
            
@@ -42,8 +43,8 @@
         <div class="row mt-5">
             <div class="col-md-6 m-auto">
                 <div class="card card-body">
-                   
-                    <h1><i class="fas fa-book"></i> Votre commentaire</h1>
+                  <%- include ('../partials/messages') %>
+                    <h1><i class="fas fa-book"></i> <%= translations.commentaire %></h1>
                     <form action="/discussions/commentaires/ajouter/<%=id%>" method="post" >
                         <div class="form-group">
                       
@@ -51,11 +52,12 @@
                           
                         </div>
                                        
-                        <button type="submit" class="btn btn-primary btn-block mb-2">Confirmer l'ajout du commentaire</button>
+                        <button type="submit" class="btn btn-primary btn-block mb-2"> <%= translations.confirmer %></button>
                         <a href="/discussions" class="btn btn-secondary btn-block mb-2">
-                            Retour au forum
+                          <%= translations.forum %>
                         </a>
                     </form>
                 </div>
             </div>
           </div>   
+        

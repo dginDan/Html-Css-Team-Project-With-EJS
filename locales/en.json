@@ -67,7 +67,12 @@
     "Name":"Name",
     "role":"Roles",
     "userListClass": "Class",
-    "pressTalk":"Press Talk to speak with NPCs",
-    "pressExit":"Press Exit to go back Home",
-    "pressGamble":"Press Gamble to try your hand at lottery (Machine down for repairs........)"
+    "forum":"Discussion forum",
+    "ajout":"Add a discussion",
+    "auteur":"Author",
+    "titre":"Title",
+    "rien":"No discussion yet",
+    "confirmer":"Confirm",
+    "retour":"Return",
+    "commentaire":"Comment"
   }

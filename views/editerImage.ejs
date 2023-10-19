@@ -13,10 +13,15 @@
                         value="<%= typeof email != 'undefined' ? email : '' %>" <%= typeof emailREADONLY != 'undefined' ? 'readonly' : '' %>
                         >
                     </div>
-                <p><a href="/modifUsager" class="btn btn-secondary btn-block"><%= translations.backToProfile %></a></p>
+                <p><a href="javascript:void(0);" onclick="goBack()" class="btn btn-secondary btn-block"><%= translations.backToProfile %></a></p>
             </div>
             </form>
         </div>
     </div>
 </div>
 <div class="background-image"></div>
+<script>
+    function goBack() {
+      window.history.back();
+    }
+</script>

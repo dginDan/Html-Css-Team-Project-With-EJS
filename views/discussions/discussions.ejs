@@ -3,15 +3,15 @@
     <div class="col-md-15 m-auto">
         <div class="container mt-8">
          
-      <h2><i class="fas fa-book-open"></i> Forum de discussion</h2>
+      <h2><i class="fas fa-book-open"></i> <%= translations.forum %></h2>
    
-      <a href="/discussions/ajouter" class="btn btn-primary btn-block mb-2">Ajouter une discussion</a>
+      <a href="/discussions/ajouter" class="btn btn-primary btn-block mb-2"> <%= translations.ajout %></a>
       <% if (typeof(liste)!=="undefined" ) { %>
       <table class="table table-striped">
           <thead>
             <tr>
               <th>Question</th>
-              <th>Auteur</th>
+              <th><%= translations.auteur %></th>
               <th>Date</th>
               
             </tr>
@@ -19,12 +19,16 @@
           <tbody>
          <% for (let discussion of liste){ %>
            <tr >
-             <td><h5><% if (user.roles.includes('moderateur')||user.email===discussion.courriel) {%><a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
-              <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer la discussions"> </i>
-              </a><%}%><a href="/discussions/commentaires/<%=discussion._id%>"> <%= discussion.titre %></a></h5>
+             <td ><div style=" word-break: break-all; max-width: 1000px;">
+              <h5><a href="/discussions/commentaires/<%=discussion._id%>"> <%= discussion.titre %></a></h5>
+              </div>
              </td>
-              <td><%= discussion.auteur %></td>
-              <td><%= discussion.date %></td>
+              <td ><%= discussion.auteur %></td>
+              <td ><%= discussion.date %></td>
+              <td> <% if (user.roles.includes('moderateur')||user.email===discussion.courriel) {%>
+                <a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
+                <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer la discussions"> </i>
+                </a><%}%></td>
             </tr>
             </a>
             <tr>
@@ -37,5 +41,5 @@
         </table>
     <% } else 
     { %>
-       <h2>Aucune liste de discussion disponible</h2>
+       <h2><%= translations.rien %></h2>
     <% } %>
