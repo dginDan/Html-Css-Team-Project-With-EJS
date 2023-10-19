@@ -74,5 +74,11 @@
     "rien":"Aucune discussion a afficher",
     "confirmer":"Confirmer",
     "commentaire":"Commentaire",
-    "retour":"Retour"
+    "retour":"Retour",
+    "attack":"Attaquer",
+    "goldGain":"Pièces d'Or obtenues : ",
+    "monstersKilled":"Monstres Tués: ",
+    "miniBossHere":"Mini-boss est arrivé!!",
+    "chooseLevel":"Choisir le niveau: ",
+    "chooseDifficulty":"Choisir la difficultée"
   }

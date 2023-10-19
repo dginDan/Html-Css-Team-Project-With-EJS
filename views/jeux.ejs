@@ -3,18 +3,18 @@
     <div id="monster"></div>
     <form action="/updateGold" method="POST">
     <input type="hidden" name="goldDropped" id="goldDropped" value="0">
-    <button onclick="attackMonster()">Attack</button>
+    <button onclick="attackMonster()"><%= translations.attack %></button>
     </form>
     <p>HP: <span id="hp">10</span></p>
-    <p>Gold Gain: <span id="gold">0</span></p>
-    <p>Monsters killed: <span id="kills">0</span></p>
+    <p><%= translations.goldGain %> <span id="gold">0</span></p>
+    <p><%= translations.monstersKilled %> <span id="kills">0</span></p>
     <div id="chatWindow"></div>
-    <div id="miniBossMessage">Mini-boss is here!</div>
-    <label for="levelSelect">Choose Level:</label>
+    <div id="miniBossMessage"><%= translations.miniBossHere %></div>
+    <label for="levelSelect"><%= translations.chooseLevel %></label>
     <select id="levelSelect" onchange="changeLevel()">
         <option value="1" selected>Level 1</option>
     </select>
-    <label for="difficultySelect">Choose Difficulty:</label>
+    <label for="difficultySelect"><%= translations.chooseDifficulty %></label>
     <select id="difficultySelect" onchange="changeDifficulty()">
         <option value="1" selected>Difficulty 1</option>
     </select>
