@@ -147,15 +147,11 @@
 
     document.getElementById('gold').innerText = gold;
     console.log("Sending goldDropped value to server:", goldDropped);
-
+   
     // Ajout de l'appel AJAX pour mettre à jour la base de données
     fetch('/updateGold', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ goldDropped: goldDropped }),
-        credentials: 'include'  // Inclut les cookies dans la requête
+        body: formData
     })
     .then(response => {
         if (!response.ok) {
