@@ -22,19 +22,18 @@
     </div>
         <div id="gameInfo">
             <% if (typeof(user) !="undefined"){ %>
-                <p style="font-weight: bold;"><span class="characterKeywords"><%= translations.user %></span> <%= user.nom %></p>
+                <p style="font-weight: bold;"><span class="characterKeywords1"><%= translations.user %></span> <%= user.nom %></p>
                 <p></p>
-                <p style="font-weight: bold;"><span class="characterKeywords"><%= translations.class %></span> <%= user.characterClass %></p>
-                <p style="font-weight: bold;"><span class="characterKeywords"><%= translations.inventory %></span> <%= user.inventory == undefined? "Vous n'avez aucun item en votre possession!" : user.inventory%> %></p>
+                <p style="font-weight: bold;"><span class="characterKeywords2"><%= translations.class %></span> <%= user.characterClass %></p>
+                <p style="font-weight: bold;"><a href="/inventaire" class="link-inventaire" id="inventaireTrad" style="font-weight: bolder; color: #814f38;"><%= translations.inventory %></a>
                 <br>
                 <div style="display: flex;"><img style="height: 32px;width: auto; margin-top: -8px;" src="images/coins.png" alt=""> <p style="font-weight: bold;"><%= user.gold == undefined? '0' : user.gold %> <%= translations.currentGold %></p></div>
                 <% } %>
             <hr style="border-width: 4px;">
             <br>
-            <p id="welcome"><%= translations.welcomeProject %></p>
-            <p id="pressPlay"><%= translations.pressPlay %></p>
-            <p id="pressShop"><%= translations.pressShop %></p>
-            <p id="pressTavern"><%= translations.pressTavern %></p>
+            <p id="welcome"><%= translations.pressGamble %></p>
+            <p id="pressPlay"><%= translations.pressTalk %></p>
+            <p id="pressShop"><%= translations.pressExit %></p>
             
         </div>
 </div>

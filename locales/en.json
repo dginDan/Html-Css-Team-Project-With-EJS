@@ -66,5 +66,8 @@
     "ourUsers":"Our Users",
     "Name":"Name",
     "role":"Roles",
-    "userListClass": "Class"
+    "userListClass": "Class",
+    "pressTalk":"Press Talk to speak with NPCs",
+    "pressExit":"Press Exit to go back Home",
+    "pressGamble":"Press Gamble to try your hand at lottery (Machine down for repairs........)"
   }

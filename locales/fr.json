@@ -66,5 +66,8 @@
     "ourUsers":"Nos Usagers",
     "Name":"Nom",
     "role":"Rôles",
-    "userListClass": "Classe"
+    "userListClass": "Classe",
+    "pressTalk":"Appuyez sur Parler pour converser avec les NPCs",
+    "pressExit":"Appuyez sur Sortir pour retourner à l'Accueil",
+    "pressGamble":"Appuyez sur Loterie pour potentiellement gagner gros! (Machine en réparation.............)"
   }

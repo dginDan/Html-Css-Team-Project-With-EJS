@@ -29,10 +29,9 @@
             </a>
             <tr>
               <a href="/discussions/commentaires/<%=discussion._id%>"> 
-              <td><%= discussion.message %></td>
+              <td style="overflow: wrap; word-break: break-all;"><%= discussion.message %></td>
               </a>
             </tr>
-         
           <% }%>  
           </tbody>
         </table>
