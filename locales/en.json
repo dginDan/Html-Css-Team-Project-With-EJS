@@ -66,5 +66,13 @@
     "ourUsers":"Our Users",
     "Name":"Name",
     "role":"Roles",
-    "userListClass": "Class"
+    "userListClass": "Class",
+    "forum":"Discussion forum",
+    "ajout":"Add a discussion",
+    "auteur":"Author",
+    "titre":"Title",
+    "rien":"No discussion yet",
+    "confirmer":"Confirm",
+    "retour":"Return",
+    "commentaire":"Comment"
   }

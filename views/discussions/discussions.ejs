@@ -19,21 +19,21 @@
           <tbody>
          <% for (let discussion of liste){ %>
            <tr >
-             <td ><div style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 1000px;">
+             <td ><div style=" word-break: break-all; max-width: 1000px;">
               <h5><a href="/discussions/commentaires/<%=discussion._id%>"> <%= discussion.titre %></a></h5>
               </div>
              </td>
               <td ><%= discussion.auteur %></td>
               <td ><%= discussion.date %></td>
-              <% if (user.roles.includes('moderateur')||user.email===discussion.courriel) {%><td>
+              <td> <% if (user.roles.includes('moderateur')||user.email===discussion.courriel) {%>
                 <a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
                 <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer la discussions"> </i>
-                </a></td><%}%>
+                </a><%}%></td>
             </tr>
             </a>
             <tr>
               <a href="/discussions/commentaires/<%=discussion._id%>"> 
-              <td ><div style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 1000px;"><%= discussion.message %></div></td>
+              <td ><div style=" word-break: break-all; max-width: 1000px;"><%= discussion.message %></div></td>
               </a>
             </tr>
          
