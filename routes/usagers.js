@@ -234,7 +234,7 @@ router.get('/modifUsager/:email?', isAuthentified, (requete, reponse) => {
     Usagers.findOne({ 'email': email })
         .then(myUser => {
             const admin = myUser.roles.find(elem => elem == "admin");
-            const gestion = myUser.roles.find(elem => elem == "gestion");
+            const moderateur = myUser.roles.find(elem => elem == "moderateur");
 
             if (user.roles.includes("admin") || user.email === email) {
                 reponse.render('modifUsager', {
@@ -243,7 +243,7 @@ router.get('/modifUsager/:email?', isAuthentified, (requete, reponse) => {
                     nom: myUser.nom,
                     email: myUser.email,
                     admin: admin,
-                    gestion: gestion,
+                    moderateur: moderateur,
                     emailREADONLY: true,
                     'translations': reponse.locals.translations[userLanguage],
                 });
