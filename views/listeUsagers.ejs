@@ -1,13 +1,12 @@
 
-<h2><%= translations.userList %></h2>
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
         <div class="card card-body">
             <%- include ('./partials/messages') %>
-            <h1><i class="fas fa-solid fa-users"></i><%= translations.ourUsers %></h1>
+            <h1 style="text-align: center;"><i class="fas fa-solid fa-users"></i><%= translations.ourUsers %></h1>
             <hr>
             <form method="post">
-                <a href="/village" class="floating-button"><%= translations.backToHome %></a>
+                <a href="/village" class="floating-button" style="background-color: #3d7cc4; margin-right: 100px; margin-top: 50px;"><%= translations.backToHome %></a>
                 <div>
                     <ul class="listeUsagers-ul">
                         <% liste.forEach(function(users) { %>
@@ -20,7 +19,7 @@
                                     <span><%= translations.userListClass %></span>: <%= users.characterClass %><br>
                                 </div>                                
                                  <div class="listeUsagers-actions">
-                                    <a href="/deleteUser/<%= users.email %>" class="listeUsagers-actionIcon" onclick="return confirm('Veuillez confirmer votre suppression')"><i class="fas fa-solid fa-trash"></i></a>
+                                    <a href="/deleteUser/<%= users.email %>" class="listeUsagers-actionIcon" onclick="return confirm('Veuillez confirmer votre suppression')"><i class="fas fa-solid fa-trash" style="color: #3d7cc4;"></i></a>
                                      <a href="/modifUsager/<%= users.email %>"><i class="fas fa-solid fa-pen"></i></a>
                                  </div>
                             </li>

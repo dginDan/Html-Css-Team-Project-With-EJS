@@ -1,3 +1,4 @@
+<%- include ('./partials/navigation') %>
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
         <div class="card card-body">
@@ -5,7 +6,7 @@
             <h1><i class="fas fa-regular fa-image"></i><%= translations.modifyAvatar %></h1>
             <form action="/editImage" method="post" enctype="multipart/form-data">
                 <%- include ('./partials/edit_image') %>
-                <button type="submit" class="btn btn-primary btn-block" style="background-color:#8b572a;border: 0px;"><%= translations.continue %></button>
+                <button type="submit" class="btn btn-primary btn-block" style="background-color:#3d7cc4;border: 0px;"><%= translations.continue %></button>
                 <div>
                     <div class="form-group">
                         <label for="email"></label>
@@ -13,7 +14,7 @@
                         value="<%= typeof email != 'undefined' ? email : '' %>" <%= typeof emailREADONLY != 'undefined' ? 'readonly' : '' %>
                         >
                     </div>
-                <p><a href="javascript:void(0);" onclick="goBack()" class="btn btn-secondary btn-block"><%= translations.backToProfile %></a></p>
+                <p><a href="javascript:void(0);" onclick="goBack()" class="btn btn-secondary btn-block" style="margin-top: -38px;"><%= translations.backToProfile %></a></p>
             </div>
             </form>
         </div>

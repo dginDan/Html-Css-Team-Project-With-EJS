@@ -99,5 +99,9 @@
     "backToShop": "Back to shop",
     "quantity": "Quantity:",
     "deleteItem": "Delete item",
-    "insufficientGold": "You don't have enough gold coins to make this purchase!"
+    "insufficientGold": "You don't have enough gold coins to make this purchase!",
+    "showUserList":"Show users list",
+    "pressTalk":"Press Talk to speak with NPCs",
+    "pressExit":"Press Exit to go back to town",
+    "pressGamble":"Press Lottery to try your hand at gambling (Machine down for repairs...........)"
   }

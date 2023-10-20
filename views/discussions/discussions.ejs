@@ -4,13 +4,11 @@
         <div class="container mt-8">
          
       <h2><i class="fas fa-book-open"></i> <%= translations.forum %></h2>
-   
-      <a href="/discussions/ajouter" class="btn btn-primary btn-block mb-2"> <%= translations.ajout %></a>
       <% if (typeof(liste)!=="undefined" ) { %>
       <table class="table table-striped">
           <thead>
             <tr>
-              <th>Question</th>
+              <th>Questions</th>
               <th><%= translations.auteur %></th>
               <th>Date</th>
               
@@ -18,15 +16,15 @@
           </thead>
           <tbody>
          <% for (let discussion of liste){ %>
-           <tr >
+           <tr>
              <td ><div style=" word-break: break-all; max-width: 1000px;">
-              <h5><a href="/discussions/commentaires/<%=discussion._id%>"> <%= discussion.titre %></a></h5>
+              <h5 style="color: #8b572a;"><a href="/discussions/commentaires/<%=discussion._id%>" style="color: #3d7cc4;" > <%= discussion.titre %></a></h5>
               </div>
              </td>
               <td ><%= discussion.auteur %></td>
               <td ><%= discussion.date %></td>
               <td> <% if (user.roles.includes('moderateur')||user.email===discussion.courriel) {%>
-                <a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: crimson;" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
+                <a href="/discussions/supprimer/<%=discussion._id%>" style="text-decoration: none; color: rgb(215, 109, 130);" onclick="return confirm(`Voulez-vous vraiment supprimer la discussion ?`);">
                 <i class="fas fa-solid fa-trash" data-bs-toggle="tooltip" title="Suprrimer la discussions"> </i>
                 </a><%}%></td>
             </tr>
@@ -39,6 +37,7 @@
           <% }%>  
           </tbody>
         </table>
+        <a href="/discussions/ajouter" class="btn btn-primary btn-block mb-2" style="background-color: #3d7cc4; border: none;"> <%= translations.ajout %></a>
     <% } else 
     { %>
        <h2><%= translations.rien %></h2>

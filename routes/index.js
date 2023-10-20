@@ -104,6 +104,16 @@ router.get('/jouer', isAuthentified, (requete, reponse)=>{
         'translations': reponse.locals.translations[userLanguage],
     });
 });
+router.get('/aPropos',  (requete, reponse)=>{
+    const userLanguage = requete.session.userLanguage || 'fr';
+    const user = requete.user;
+    reponse.render(`aPropos`, {
+        'title': 'Nous Joindre',
+        user : user,
+        userLanguage : userLanguage,
+        'translations': reponse.locals.translations[userLanguage],
+    });
+});
 
 router.post('/updateGold', (requete, reponse) => {
     // Récupérer l'utilisateur actuellement connecté

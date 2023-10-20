@@ -99,5 +99,9 @@
   "goldCoins": "pièces d'or",
   "backToShop": "Retour à la boutique",
   "deleteItem": "Supprimer l'item",
-  "insufficientGold": "Vous n'avez pas assez de pièces d'or pour effectuer cet achat!"
+  "insufficientGold": "Vous n'avez pas assez de pièces d'or pour effectuer cet achat!",
+  "pressTalk":"Appuyez sur Parler pour converser avec les NPCs",
+  "pressExit":"Appuyez sur Sortir pour retourner à l'Accueil",
+  "pressGamble":"Appuyez sur Loterie pour potentiellement gagner gros! (Machine en réparation.............)",
+  "showUserList":"Affichage de la liste des usagers"
  }

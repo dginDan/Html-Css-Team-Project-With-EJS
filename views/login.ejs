@@ -2,7 +2,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6 m-auto">
-            <div class="card card-body text-center login-container">
+            <div class="card card-body text-center login-container" style="margin-top: 20vh;">
                 <h1 class="login-header"><i class="fas fa-gamepad"></i><%= translations.loginAndPlay %></h1>
                 <br>
                 <form action="/userLogin" method="post">
@@ -15,10 +15,10 @@
                         <input type="password" name="password" id="password" class="form-control" placeholder="<%= translations.enterPwd %>">
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary custom-button"><%= translations.login %></button>
-                    <p class="create-account-link"><%= translations.noAccount %> <a href="./ajoutUsagerClient"><%= translations.createAccount %></a></p>
+                    <button type="submit" class="btn btn-primary custom-button" style="background-color: #3194a8;"><%= translations.login %></button>
+                    <p class="create-account-link"><%= translations.noAccount %> <a href="./ajoutUsagerClient" style="color: #1f5d69;"><%= translations.createAccount %></a></p>
                 </form>
-                <div><a href="/setLanguage/en">EN</a>&nbsp;|&nbsp;<a href="/setLanguage/fr">FR</a></div>
+                <div><a href="/setLanguage/en" style="color: #1f5d69;">EN</a>&nbsp;|&nbsp;<a href="/setLanguage/fr" style="color: #1f5d69;">FR</a></div>
             </div>
         </div>
     </div>

@@ -32,6 +32,7 @@ boutonBartenderEn.addEventListener('click', ()=> {
     bartenderDialogue.classList.remove('hiddenBartender');
     if (indexDialogueBartenderEn > bartenderDialoguesEn.length){
         bartenderDialogue.classList.remove('bartenderTextPadding');
+        indexDialogueBartenderEn = 0;
     }
 });
 
@@ -46,5 +47,6 @@ boutonMysteryManEn.addEventListener('click', ()=>{
     mysteryManDialogue.classList.remove('hiddenMysteryMan');
     if (indexDialogueMysteryManEn > mysteryManDialoguesEn.length){
         mysteryManDialogue.classList.remove('mysteryManTextPadding');
+        indexDialogueMysteryManEn = 0;
     }
 })

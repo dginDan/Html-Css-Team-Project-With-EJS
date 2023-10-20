@@ -22,7 +22,6 @@
     </div>
         <div id="gameInfo">
             <a href="/taverne"><img class="casinoAd" src="images/casinoAd.gif" alt="casinoAd" style="width: 104%; margin-bottom: 5px;"></a>
-            <a href="/taverne"><img class="casinoAd" src="images/casinoAd.gif" alt="casinoAd" style="width: 104%;"></a>
             <hr style="border-width: 4px;">
             <% if (typeof(user) !="undefined"){ %>
                 <p style="font-weight: bold;"><span class="characterKeywords1"><%= translations.user %></span> <%= user.nom %></p>
@@ -43,7 +42,7 @@
             <!-- pour admin & gestion = if user admin || gestion = toggle list user-->
             <% if (typeof user != "undefined") { %>
                 <% if (user.roles.includes('admin') || user.roles.includes('gestion')) {%>
-                    <a href="/listeUsers" class="btn btn-primary btn-block mb-2" style="background-color: #814f38;border: 0px">Affichage de la liste des usagers</a>
+                    <a href="/listeUsers" class="btn btn-primary btn-block mb-2" style="background-color: #3d7cc4;border: 0px"><%= translations.showUserList %></a>
                     <% } %>
             <% } %>
         </div>

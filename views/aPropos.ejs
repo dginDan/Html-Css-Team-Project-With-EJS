@@ -1,0 +1,133 @@
+<%- include ('./partials/navigation') %>
+<div class="background">
+<div class="cartesContainer">
+    <div class="cartes" id="carte1">
+        <div class="photo1"></div>
+        <h4>Jacob</h4>
+        <h6>jacoblacerte@outlook.com</h6>
+        <h6>The Game Dev Genius</h6>
+    </div>
+    <div class="cartes" id="carte2">
+        <div class="photo2"></div>
+        <h4>Jessica</h4>
+        <h6>Jessica's email</h6>
+        <h6>The Store's Pillar</h6>
+    </div>
+    <div class="cartes" id="carte3">
+        <div class="photo3"></div>
+        <h4>Allan</h4>
+        <h6>Allan's email</h6>
+        <h6>The Backend Wizard</h6>
+    </div>
+    <div class="cartes" id="carte4">
+        <div class="photo4"></div>
+        <h4>Dominic</h4>
+        <h6>Dominic's email</h6>
+        <h6>The Oldschool Chatterbox</h6>
+    </div>
+    <div class="cartes" id="carte5">
+        <div class="photo5"></div>
+        <h4>Dany</h4>
+        <h6>dgdan4@hotmail.fr</h6>
+        <h6>The Frontend Enjoyer</h6>
+    </div>
+</div>
+</div>
+<style>
+    .cartesContainer {
+        width: 100vw;
+        height: 90vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .cartes {
+        width: 450px;
+        height: 300px;
+        text-align: center;
+        align-items: center;
+        background-color: #3194a8;
+        /*border-radius: 180px 180px 20px 180px;*/
+        border-radius: 1cm;
+        padding-top: 15px, 0px;
+        border: solid #ffffff 3px;
+        color: #ffffff;
+        /*
+        background-image: url('../images/plank.png');
+        background-position: 55%, 40%;
+        background-size: 222%;
+        */
+    }
+    .photo1 {
+        width: 200px;
+        height: 200px;
+        background-image: url('../images/jacob.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 27%;
+    }
+    .photo2 {
+        width: 200px;
+        height: 200px;
+        background-image: url('../images/jessica.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 27%;
+    }
+    .photo3 {
+        width: 200px;
+        height: 200px;
+        background-image: url('../images/allan.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 27%;
+    }
+    .photo4 {
+        width: 200px;
+        height: 200px;
+        background-image: url('../images/dominic.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 27%;
+    }
+    .photo5 {
+        width: 200px;
+        height: 200px;
+        background-image: url('../images/dany.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-left: 27%;
+    }
+    /*
+    .background {
+        margin-top: -15px;
+        background-image: url('/images/villageBackgroundPlaceholder.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    */
+    
+    /*
+    #carte1 {
+        border-radius: 180px 180px 20px 180px;
+    }
+    #carte2 {
+        border-radius: 180px 180px 20px 20px;
+    }
+    #carte3 {
+        border-radius: 180px 180px 180px 20px;
+    }
+    #carte4 {
+        border-radius: 180px 20px 180px 180px;
+    }
+    #carte5 {
+        border-radius: 20px 180px 180px 180px;
+    }
+    */
+</style>
