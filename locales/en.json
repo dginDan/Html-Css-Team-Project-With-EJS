@@ -98,5 +98,6 @@
     "goldCoins": "gold coins",
     "backToShop": "Back to shop",
     "quantity": "Quantity:",
-    "deleteItem": "Delete item"
+    "deleteItem": "Delete item",
+    "insufficientGold": "You don't have enough gold coins to make this purchase!"
   }

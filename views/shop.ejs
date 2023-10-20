@@ -1,5 +1,10 @@
 <%- include ('./partials/navigation') %>
 <div class="container mt-5 custom-container">
+    <% if (typeof error !== 'undefined' && error === 'gold_insuffisant') { %>
+        <div class="alert alert-danger">
+            <%= translations.insufficientGold %>
+        </div>
+    <% } %>
     <div class="row">
         
         <!-- Catégories -->

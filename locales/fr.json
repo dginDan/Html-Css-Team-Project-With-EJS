@@ -98,5 +98,6 @@
   "youHave": "Il vous reste",
   "goldCoins": "pièces d'or",
   "backToShop": "Retour à la boutique",
-  "deleteItem": "Supprimer l'item"
+  "deleteItem": "Supprimer l'item",
+  "insufficientGold": "Vous n'avez pas assez de pièces d'or pour effectuer cet achat!"
  }

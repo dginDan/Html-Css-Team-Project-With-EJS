@@ -43,6 +43,7 @@ router.get('/shop', isAuthentified, (requete, reponse) => {
                 user: user,
                 cart: data.cart,
                 'translations': reponse.locals.translations[userLanguage],
+                'error': requete.query.error
             });
         })
         .catch(err => {
@@ -144,11 +145,14 @@ router.post('/acheter-panier', isAuthentified, (requete, reponse) => {
     .then(() => {
         // Réinitialise le panier dans la session après l'achat réussi
         requete.session.cart = { items: [], total: 0 };
-        reponse.redirect('/inventaire');
+        return reponse.redirect('/inventaire');
     })
     .catch(err => {
         console.error(err);
-        reponse.status(500).send(err.message);
+        if (err.message === 'Solde en gold insuffisant') {
+            return reponse.redirect('/items/shop?error=gold_insuffisant');
+        }
+        return reponse.status(500).send(err.message);
     });
 });
 
