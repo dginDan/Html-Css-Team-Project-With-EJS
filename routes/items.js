@@ -2,7 +2,7 @@ const express = require('express');
 const {isAuthentified} = require('../config/auth');
 const Items = require('../models/Items');
 const Usagers = require('../models/Usagers');
-const mongoose = require('mongoose');
+
 
 const router = express.Router();
 
@@ -49,71 +49,6 @@ router.get('/shop', isAuthentified, (requete, reponse) => {
             console.error(err);
             reponse.status(500).send('Erreur lors de la récupération des articles.');
         });
-});
-
-router.post('/vider-panier', isAuthentified,  (requete, reponse) => {
-    // Réinitialise le panier dans la session
-    requete.session.cart = {
-        items: [],
-        total: 0
-    };
-
-    // Sauvegarde les modifications dans la session
-    requete.session.save(err => {
-        if (err) {
-            console.error("Erreur lors de la sauvegarde de la session:", err);
-            return reponse.status(500).send('Erreur lors de la sauvegarde du panier.');
-        }
-        reponse.redirect('shop');
-    });
-});
-
-router.post('/acheter-panier', isAuthentified, (requete, reponse) => {
-    // Obtenir le panier de la session
-    const cart = requete.session.cart;
-    if (!cart || cart.items.length === 0) {
-        return reponse.redirect('/shop');
-    }
-
-    Usagers.findById(requete.user._id)
-    .then(user => {
-        if (!user) {
-            throw new Error('Utilisateur non trouvé');
-        }
-
-        // Vérifie si le joueur a suffisamment de gold pour tous les items du panier
-        if (user.gold < cart.total) {
-            throw new Error('Solde en gold insuffisant');
-        }
-
-        // Déduis le coût total des items du solde du joueur
-        user.gold -= cart.total;
-
-        // Pour chaque items du panier
-        cart.items.forEach(cartItem => {
-            // Vérifie si l'item est déjà dans l'inventaire du joueur
-            const indexItem = user.inventaire.findIndex(i => i.item && i.item.toString() === cartItem.itemId);
-
-            if (indexItem !== -1) {
-                // L'item est déjà dans l'inventaire du joueur, augmente la quantité
-                user.inventaire[indexItem].quantite += cartItem.quantite;
-            } else {
-                // Ajoute le nouvel item à l'inventaire du joueur
-                user.inventaire.push({ item: cartItem.itemId, quantite: cartItem.quantite });
-            }
-        });
-
-        return user.save();
-    })
-    .then(() => {
-        // Réinitialise le panier dans la session après l'achat réussi
-        requete.session.cart = { items: [], total: 0 };
-        reponse.redirect('/inventaire');
-    })
-    .catch(err => {
-        console.error(err);
-        reponse.status(500).send(err.message);
-    });
 });
 
 router.post('/ajouter-au-panier/:id', isAuthentified, (requete, reponse) => {
@@ -167,6 +102,85 @@ router.post('/ajouter-au-panier/:id', isAuthentified, (requete, reponse) => {
             console.error(err);
             reponse.status(500).send(err.message);
         });
+});
+
+router.post('/acheter-panier', isAuthentified, (requete, reponse) => {
+    // Obtenir le panier de la session
+    const cart = requete.session.cart;
+    if (!cart || cart.items.length === 0) {
+        return reponse.redirect('/shop');
+    }
+
+    Usagers.findById(requete.user._id)
+    .then(user => {
+        if (!user) {
+            throw new Error('Utilisateur non trouvé');
+        }
+
+        // Vérifie si le joueur a suffisamment de gold pour tous les items du panier
+        if (user.gold < cart.total) {
+            throw new Error('Solde en gold insuffisant');
+        }
+
+        // Déduis le coût total des items du solde du joueur
+        user.gold -= cart.total;
+
+        // Pour chaque items du panier
+        cart.items.forEach(cartItem => {
+            // Vérifie si l'item est déjà dans l'inventaire du joueur
+            const indexItem = user.inventaire.findIndex(i => i.item && i.item.toString() === cartItem.itemId);
+
+            if (indexItem !== -1) {
+                // L'item est déjà dans l'inventaire du joueur, augmente la quantité
+                user.inventaire[indexItem].quantite += cartItem.quantite;
+            } else {
+                // Ajoute le nouvel item à l'inventaire du joueur
+                user.inventaire.push({ item: cartItem.itemId, quantite: cartItem.quantite });
+            }
+        });
+
+        return user.save();
+    })
+    .then(() => {
+        // Réinitialise le panier dans la session après l'achat réussi
+        requete.session.cart = { items: [], total: 0 };
+        reponse.redirect('/inventaire');
+    })
+    .catch(err => {
+        console.error(err);
+        reponse.status(500).send(err.message);
+    });
+});
+
+router.post('/supprimer-du-panier/:id', (requete, reponse) => {
+    const itemId = requete.params.id;
+    const cart = requete.session.cart;
+
+    const itemIndex = cart.items.findIndex(i => i.itemId === itemId);
+
+    if (itemIndex !== -1) {
+        const item = cart.items[itemIndex];
+        
+        if (item.quantite > 1) {
+            item.quantite -= 1;  // Diminue la quantité
+            cart.total -= item.prix;  // Met à jour le total
+        } else {
+            cart.items.splice(itemIndex, 1);  // Supprime l'article du panier si la quantité est 1
+            cart.total -= item.prix;  // Met à jour le total
+        }
+
+        // Sauvegarde le panier modifié dans la session
+        requete.session.cart = cart;
+        requete.session.save(err => {
+            if (err) {
+                console.error("Erreur lors de la sauvegarde de la session:", err);
+                return reponse.status(500).send('Erreur lors de la sauvegarde du panier.');
+            }
+            reponse.redirect('/items/shop');
+        });
+    } else {
+        reponse.redirect('/items/shop');
+    }
 });
 
 router.post('/supprimer/:id', isAuthentified, (requete, reponse) => {

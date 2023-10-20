@@ -429,14 +429,28 @@ body {
     color: #8b572a; 
     font-weight: bold;
 }
-
 .col-md-3 a {
-    text-decoration: none;
     color: #8b572a; 
+    font-weight: bold;
+    text-decoration: none;
 }
-
 .col-md-3 a:hover {
-    color: #502308 ; 
+    color: #502308; 
+    font-weight: bold;
+    text-decoration: none;
+}
+#btn-back{
+    padding: 5px 10px;
+    border: 1px solid #333;
+    background-color:   #8b572a;
+    color:#ffe5d1;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+#btn-back:hover{
+    background-color: #d7a66b ;
+    color: #502308;
 }
 
 .card-img-top {
@@ -451,36 +465,59 @@ body {
 
 .card-text {
     color: #8b572a ; 
+    font-weight: bold;
 }
 
-.btn.btn-custom {
-    background-color: #8b572a; 
-    border-color: #8b572a; 
-    color: #ffe5d1;
+.imagePanier{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
-.btn.btn-custom:hover, .btn.btn-custom:active, .btn.btn-custom:active:focus {
+.item-details, .item-action {
+    display: inline-block;
+    vertical-align: top;
+}
+.item-details {
+    width: calc(100% - 100px); 
+}
+.item-info {
+    margin-top: 5px;
+}
+.item-action {
+    width: 80px; 
+    margin-top: 40px;
+}
+.btn-simple {
+    background-color:#8b572a ;
+    color: #ffe5d1 ;
+    text-decoration: none;
+    font-weight: bold;
+}
+.btn-simple:hover {
     background-color: #d7a66b ;
-    border-color: #d7a66b ;
-    color:#502308 ;
-} 
+    color: #502308;
+    cursor: pointer;
 
-.badge-primary {
-    background-color: #d7a66b; 
+}
+.btn-simple-red {
+    background-color: #ff4d4d; 
+}
+.btn-simple-red:hover {
+    background-color: #ff1a1a;
+    cursor: pointer;
+}
+.total-container {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.total-text {
+    font-size: 1.5em;
+    color: #333;
 }
 
-.badge-success {
-    background-color: #8b572a; 
-}
-/*Fin du css pour shop */
-
-.badge-primary {
-    background-color: #d7a66b; 
-}
-
-.badge-success {
-    background-color: #8b572a; 
-}
 /*Fin du css pour shop */
 .background-image {
     background-image: url('../images/villageBackgroundPlaceholder.png');
