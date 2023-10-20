@@ -127,7 +127,10 @@ router.post('/updateGold', (requete, reponse) => {
     gold += Number(requete.body.goldDropped);
     user.gold = gold;  // Mettre à jour la propriété gold de l'objet user
 
+    console.log('router', user.gold);
+
     user.save()
+    
     .catch(error => {
         reponse.status(500).json({ success: false, error: error.message });
     });
