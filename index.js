@@ -62,6 +62,7 @@ app.use(
 // configuration middleware (intergiciel) Passport
 app.use(passport.initialize());
 app.use(passport.session());
+
 //middleware connect flash
 app.use(flash());
 

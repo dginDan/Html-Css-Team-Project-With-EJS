@@ -1,10 +1,10 @@
 <%- include ('./partials/navigation') %>
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Inventaire de <%= user.nom %></h2>
-    <p class="text-center">Il vous reste <%= user.gold %> pièces d'or</p>
+    <h2 class="text-center mb-4"><%= translations.inventoryOf %> <%= user.nom %></h2>
+    <p class="text-center"><%= translations.youHave %> <strong><%= user.gold %></strong> <%= translations.goldCoins %></p>
     <div class="text-center mt-5">
-        <a href="/village" class="btn btn-custom mr-2">Retour à l'accueil</a>
-        <a href="/items/shop" class="btn btn-custom">Retour à la boutique</a>
+        <a href="/village" id="btn-back"><%= translations.backToHome %></a>
+        <a href="/items/shop" id="btn-back"><%= translations.backToShop %></a>
     </div>
     
     <div class="row mt-5">
@@ -15,9 +15,9 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= entry.item.nom %></h5>
                         <p class="card-text"><%= entry.item.description %></p>
-                        <p class="card-text">Quantité: <%= entry.quantite %></p>
+                        <p class="card-text"><%= translations.quantity %> <%= entry.quantite %></p>
                         <form action="/items/supprimer/<%= entry.item._id %>" method="POST">
-                            <button type="submit" class="btn btn-custom">Supprimer l'item</button>
+                            <button type="submit" class="btn-simple-red"><%= translations.deleteItem %></button>
                         </form>
                     </div>
                 </div>
