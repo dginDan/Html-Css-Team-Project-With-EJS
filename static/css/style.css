@@ -449,8 +449,8 @@ body {
     text-decoration: none;
 }
 #btn-back:hover{
-    background-color: #d7a66b ;
-    color: #502308;
+    background-color: #000000 ;
+    color: #a628ea;
 }
 
 .card-img-top {
